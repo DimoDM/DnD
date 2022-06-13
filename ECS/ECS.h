@@ -19,6 +19,7 @@ class Entity
 {
 	Manager& manager; // make communication with manager possible for both sides;
 	Vector<Component*> componentList; // list for components
+	bool groupBitSet[32] = { false }; // make possible to group entities
 
 public :
 
@@ -30,10 +31,23 @@ public :
 	//https://en.cppreference.com/w/cpp/language/parameter_pack
 	template<typename T, typename... TArgs>
 	T& addComponent(TArgs&&... arguments); // idea behind that is to call constructors of components with parameters
+	template<typename T>
+	bool hasComponent() const;
 
 	template<typename T> 
 	T& getComponent() const;
 };
 
+class Manager
+{
+	Vector<Entity*> entities; // collection for entityes
+
+public:
+	void update(); // update all entityes
+	void draw(); //draw all entityes
+
+	Vector<Entity*>& getEntities(); // getList of entities
+	Entity& addEntity(); // add entity to array
+};
 
 
