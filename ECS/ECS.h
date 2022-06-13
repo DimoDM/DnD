@@ -27,6 +27,10 @@ public :
 
 	void update(); // call update func of components
 
+	void addGroup(std::size_t idOfGroup);
+	void delGroup(std::size_t idOfGroup);
+	bool hasGroup(std::size_t idOfGroup);
+
 	//source for parameter packs:
 	//https://en.cppreference.com/w/cpp/language/parameter_pack
 	template<typename T, typename... TArgs>
@@ -41,12 +45,14 @@ public :
 class Manager
 {
 	Vector<Entity*> entities; // collection for entityes
+	Vector<Vector<Entity*>> groupedEntities; // list of pointers to entities by groups
 
 public:
 	void update(); // update all entityes
 	void draw(); //draw all entityes
 
-	Vector<Entity*>& getEntities(); // getList of entities
+	void addToGroup(Entity* e, std::size_t idOfGroup);
+	//Vector<Entity*>& getEntities(); // getList of entities
 	Entity& addEntity(); // add entity to array
 };
 
