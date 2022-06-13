@@ -1,5 +1,6 @@
 #pragma once
 #include"../Structures/Vector.h"
+#include"../Structures/Pointer.h"
 
 class Entity; // Entity class
 class Component; // Component class
@@ -18,7 +19,7 @@ class Component
 class Entity
 {
 	Manager& manager; // make communication with manager possible for both sides;
-	Vector<Component*> componentList; // list for components
+	Vector<Pointer<Component>> componentList; // list for components
 	bool groupBitSet[32] = { false }; // make possible to group entities
 
 public :
@@ -44,8 +45,8 @@ public :
 
 class Manager
 {
-	Vector<Entity*> entities; // collection for entityes
-	Vector<Vector<Entity*>> groupedEntities; // list of pointers to entities by groups
+	Vector<Pointer<Entity>> entities; // collection for entityes
+	Vector<Vector<Pointer<Entity>>> groupedEntities; // list of pointers to entities by groups
 
 public:
 	void update(); // update all entityes
