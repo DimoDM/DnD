@@ -1,2 +1,9 @@
-﻿  main.cpp
+﻿  FileManager.cpp
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\FileManager.cpp(44,16): warning C4244: 'initializing': conversion from 'std::streamoff' to 'size_t', possible loss of data
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\FileManager.cpp(46,16): warning C4244: 'initializing': conversion from 'std::streamoff' to 'size_t', possible loss of data
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\FileManager.cpp(54,16): warning C4244: 'initializing': conversion from 'std::streamoff' to 'size_t', possible loss of data
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\FileManager.cpp(56,16): warning C4244: 'initializing': conversion from 'std::streamoff' to 'size_t', possible loss of data
+  String.cpp
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\String.cpp(58,23): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\Debug\DnD.exe

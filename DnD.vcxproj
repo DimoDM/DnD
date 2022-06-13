@@ -140,6 +140,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Structures\FileManager.cpp" />
+    <ClCompile Include="Structures\String.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Structures\FileManager.h" />
+    <ClInclude Include="Structures\String.h" />
+    <ClInclude Include="Structures\Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
