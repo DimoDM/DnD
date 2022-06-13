@@ -4,24 +4,19 @@ template<typename T>
 class Pointer
 {
 private:
-	void copyFrom(T& tmp) {
-		t = new T(tmp);
-	}
-	void free() {
-		delete t;
-	}
+
 public:
 	T* t;
+	Pointer() {
+		t = nullptr;
+	}
 	Pointer(T* tmp) {
-		copyFrom(tmp);
+		t = tmp
 	}
 	T& operator=(T& tmp) const {
-		if (&t != &tmp) {
-			free();
-			copyFrom(tmp);
-		}
+		t = tmp;
 		return t;
 	}
 
-	~Pointer()
+	~Pointer() {}
 };
