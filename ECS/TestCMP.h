@@ -3,6 +3,8 @@
 #include<iostream>
 class TestCMP : public Component
 {
+
+	TestComponent *t;
 public:
 	int test = 0;
 	TestCMP() : Component() {
@@ -18,10 +20,11 @@ public:
 	}
 	void init() override {
 		type = 1;
+		t = &entity->getComponent<TestComponent>();
 	}
 
 	void update() override {
-		std::cout << "asd" << std::endl;
+		std::cout << "asd" << t->test << std::endl;
 		test--;
 	}
 	void draw() override {

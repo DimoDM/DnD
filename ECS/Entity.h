@@ -4,6 +4,7 @@
 class Component;
 class ComponentCollection;
 class Entity;
+class Manager;
 
 class ComponentCollection
 {
@@ -97,9 +98,9 @@ public:
 	}
 
 	template<typename T>
-	const T& getComponent() const {
+	T& getComponent() const {
 		if (!hasComponent<T>()) throw new std::exception("Invalid component");
-		T* t(new T());
+		T* t = new T();
 		int type = t->type;
 		delete t;
 		//T* ptr = *static_cast<T>(componentList.getComponent(t.type));

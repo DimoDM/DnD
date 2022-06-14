@@ -9,23 +9,31 @@ int main()
 	};
 	//test for ECS
 	//Manager manager;
-	Entity player;
-	player.addGroup(groupPlayer);
-	player.addComponent<TestComponent>();
-	player.addComponent<TestCMP>(5);
-	
-	Entity monster;
-	monster.addGroup(groupMonster);
-	monster.addComponent<TestCMP>(100);
+	//Entity player;
+	//player.addGroup(groupPlayer);
+	//player.addComponent<TestComponent>();
+	//player.addComponent<TestCMP>(5);
+	//
+	//Entity monster;
+	//monster.addGroup(groupMonster);
+	//monster.addComponent<TestCMP>(100);
 
 	Entity player2;
 	player2.addGroup(groupPlayer);
 	player2.addComponent<TestComponent>();
 	player2.addComponent<TestCMP>(5);
 
-	std::cout<<(player2.getComponent<TestComponent>().test);
+	std::cout<<(player2.getComponent<TestCMP>().test);
 	player2.update();
 	player2.draw();
+
+	while (true) {
+		Entity p;
+		p.addComponent<TestComponent>();
+		Entity a;
+		a.addComponent<TestComponent>();
+		a.addComponent<TestCMP>();
+	}
 	/*
 	for (int i = 0; i < 10; i++) {
 		player.update();
