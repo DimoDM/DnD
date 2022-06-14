@@ -5,9 +5,12 @@ class TestCMP : public Component
 {
 public:
 	int test = 0;
-	TestCMP() : Component() {}
+	TestCMP() : Component() {
+		type = 1;
+	}
 	TestCMP(int n) : Component() {
 		test = n;
+		type = 1;
 	}
 	Component* clone() const override {
 		return new TestCMP(*this);

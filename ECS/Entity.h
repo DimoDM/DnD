@@ -85,6 +85,7 @@ public:
 		std::cout << c << " ";
 		componentList.push_back(c);
 		c->init();
+		std::cout << c->type << std::endl;
 		return *c;
 	}
 	template<typename T>
@@ -102,7 +103,7 @@ public:
 		int type = t->type;
 		delete t;
 		//T* ptr = *static_cast<T>(componentList.getComponent(t.type));
-		std::cout << &static_cast<T&>(componentList.getComponent(type)) << std::endl;
+		std::cout << "type: " << type << " " << &static_cast<T&>(componentList.getComponent(type)) << std::endl;
 		return static_cast<T&>(componentList.getComponent(type));
 	}
 };

@@ -5,7 +5,9 @@ class TestComponent : public Component
 {
 public:
 
-	TestComponent() : Component() {}
+	TestComponent() : Component() {
+		type = 0;
+	}
 
 	int test = 0;
 
