@@ -12,7 +12,7 @@ class Map
 public:
 	void push_back(Pair<T, D>);
 	void push_back(T first, D second);
-	const std::size_t keyIndex(T& key) const;
+	const std::size_t& keyIndex(size_t key) const;
 	D& operator[](T& key);
 };
 
@@ -29,10 +29,10 @@ void Map<T, D>::push_back(T first, D second)
 }
 
 template<typename T, typename D>
-const std::size_t Map<T, D>::keyIndex(T& key) const
+const std::size_t& Map<T, D>::keyIndex(size_t key) const
 {
-	for (int i = 0; i < data.size; i++) {
-		if (key == data[i].getFirst()) return i;
+	for (int i = 0; i < data.getSize(); i++) {
+		if (key == data.getArray()[i].getFirst()) return i;
 	}
 	return -1;
 }
@@ -42,5 +42,5 @@ D& Map<T, D>::operator[](T& key)
 {
 	std::size_t index = keyIndex(key);
 	if (index == -1) throw new std::exception("InvalidKey");
-	return data[index].getSecond();
+	return *data[index].getSecond();
 }

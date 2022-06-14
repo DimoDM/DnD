@@ -30,7 +30,7 @@ int main()
 	std::cout << std::endl;
 
 	for (int i = 0; i < manager.getGroup(groupPlayer).getSize(); i++) {
-		std::cout<<manager.getGroup(groupPlayer)[i]->getComponent<TestCMP>().test;
+		std::cout<<manager.getGroup(groupPlayer)[i]->getComponent<TestCMP>()->test;
 	}
 
 

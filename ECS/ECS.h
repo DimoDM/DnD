@@ -66,15 +66,15 @@ public :
 	template<typename T>
 	bool hasComponent() const {
 		T t;
-		return componentBitSet.keyIndex(t.type) != -1;
+		return componentBitSet.keyIndex((size_t)t.type) != -1;
 	}
 
 	template<typename T> 
-	T& getComponent() const {
+	const T* getComponent() const {
 		if (!hasComponent<T>()) throw new std::exception("Invalid component");
 		T t;
-		size_t index = componentBitSet[t.type];
-		return componentList[index];
+		//size_t index = componentBitSet.keyIndex(t.type);
+		return static_cast<T*>(componentList.getArray()[0]);
 	}
 };
 
