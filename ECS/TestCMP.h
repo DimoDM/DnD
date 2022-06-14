@@ -1,12 +1,12 @@
 #pragma once
-#include"ECS.h"
+#include"Entity.h"
 #include<iostream>
 class TestCMP : public Component
 {
 public:
 	int test = 0;
-	TestCMP() = default;
-	TestCMP(int n) {
+	TestCMP() : Component() {}
+	TestCMP(int n) : Component() {
 		test = n;
 	}
 
@@ -15,9 +15,10 @@ public:
 	}
 
 	void update() override {
+		std::cout << "asd" << std::endl;
 		test--;
 	}
 	void draw() override {
-		std::cout << test << std::endl;
+		std::cout << "CMP: " << test << std::endl;
 	}
 };

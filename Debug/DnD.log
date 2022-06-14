@@ -1,1 +1,4 @@
-﻿  DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\Debug\DnD.exe
+﻿  main.cpp
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\Entity.h(58,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\Entity.h(63,21): warning C4018: '<': signed/unsigned mismatch
+  DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\Debug\DnD.exe

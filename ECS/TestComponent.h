@@ -1,9 +1,12 @@
 #pragma once
-#include"ECS.h"
+#include"Entity.h"
 #include<iostream>
 class TestComponent : public Component
 {
 public:
+
+	TestComponent() : Component() {}
+
 	int test = 0;
 
 	void init() override {
@@ -14,6 +17,6 @@ public:
 		test++;
 	}
 	void draw() override {
-		std::cout << test << std::endl;
+		std::cout << "Test" << test << std::endl;
 	}
 };
