@@ -15,9 +15,9 @@ public:
 	Collection();
 	Collection(const Collection& other);
 	Collection& operator=(const Collection& c);
-	void addComponent(const T* c);
-	void push_back(T* c);
-	T& getComponent(size_t type) const;
+	void addElement(const T* c);
+	void link_back(T* c);
+	T& getElement(size_t type) const;
 	T& operator[](size_t index);
 	const bool hasComponent(size_t type) const;
 
@@ -84,7 +84,7 @@ Collection<T>& Collection<T>::operator=(const Collection& c)
 }
 
 template<typename T>
-void Collection<T>::addComponent(const T* c)
+void Collection<T>::addElement(const T* c)
 {
 	if (size == capacity)
 		resize();
@@ -92,7 +92,7 @@ void Collection<T>::addComponent(const T* c)
 }
 
 template<typename T>
-void Collection<T>::push_back(T* c)
+void Collection<T>::link_back(T* c)
 {
 	if (size == capacity)
 		resize();
@@ -102,7 +102,7 @@ void Collection<T>::push_back(T* c)
 }
 
 template<typename T>
-T& Collection<T>::getComponent(size_t type) const
+T& Collection<T>::getElement(size_t type) const
 {
 	for (size_t i = 0; i < size; i++) {
 		if (components[i]->type == type) return *components[i];
@@ -116,6 +116,7 @@ T& Collection<T>::operator[](size_t index)
 	if (index < 0 || index >= size) throw new std::exception("out of bounds");
 	return *components[index];
 }
+
 
 template<typename T>
 const bool Collection<T>::hasComponent(size_t type) const

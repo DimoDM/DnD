@@ -33,6 +33,8 @@ public:
 
 };
 
+
+
 class Component
 {
 public:
@@ -85,7 +87,7 @@ public:
 		T* c(new T(std::forward<TArgs>(arguments)...));
 		c->entity = this;
 		std::cout << c << " ";
-		componentList.push_back(c);
+		componentList.link_back(c);
 		c->init();
 		std::cout << c->type << std::endl;
 		return *c;
@@ -105,7 +107,7 @@ public:
 		int type = t->type;
 		delete t;
 		//T* ptr = *static_cast<T>(componentList.getComponent(t.type));
-		std::cout << "type: " << type << " " << &static_cast<T&>(componentList.getComponent(type)) << std::endl;
-		return static_cast<T&>(componentList.getComponent(type));
+		std::cout << "type: " << type << " " << &static_cast<T&>(componentList.getElement(type)) << std::endl;
+		return static_cast<T&>(componentList.getElement(type));
 	}
 };

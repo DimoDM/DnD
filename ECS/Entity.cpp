@@ -1,4 +1,4 @@
-#include "Entity.h"
+/*#include "Entity.h"
 
 void ComponentCollection::free()
 {
@@ -97,3 +97,4 @@ ComponentCollection::~ComponentCollection()
 {
 	free();
 }
+*/
