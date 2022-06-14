@@ -1,6 +1,7 @@
 #pragma once
 #include"../Structures/Vector.h"
 #include"../Structures/Pointer.h"
+#include"../Structures/Map.h"
 
 class Entity; // Entity class
 class Component; // Component class
@@ -12,7 +13,7 @@ public:
 	Entity* entity; // store ptr to Entity that would have this componet
 	const int type;
 
-	virtual void init() = 0; // init component info
+	virtual void init() {} // init component info
 	virtual void update() {} // update component info
 	virtual void draw() {} // draw if needed
 	virtual ~Component() {}
@@ -22,6 +23,7 @@ class Entity
 {
 	Manager& manager; // make communication with manager possible for both sides;
 	Vector<Pointer<Component>> componentList; // list for components
+	Map<int, int> componentBitSet;
 	bool groupBitSet[32] = { false }; // make possible to group entities
 
 public :
@@ -57,17 +59,23 @@ public :
 		T* c = new T(std::forward<TArgs>(mArgs)...);
 		c->entity = this;
 		Pointer ptr(c);
+		componentBitSet.push_back(c->type, componentList.getSize());
 		componentList.push_back(ptr);
 		c->init();
 		return *c;
 	}
 	template<typename T>
 	bool hasComponent() const {
-		return false;
+		T t;
+		return componentBitSet.keyIndex(t.type) != -1;
 	}
 
 	template<typename T> 
-	T& getComponent() const;
+	T& getComponent() const {
+		if (!hasComponent<T>()) return nullptr;
+		T t;
+		return componentList[componentBitSet[t.type]];
+	}
 };
 
 class Manager
