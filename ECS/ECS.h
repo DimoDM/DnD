@@ -84,13 +84,39 @@ class Manager
 	Vector<Vector<Pointer<Entity>>> groupedEntities; // list of pointers to entities by groups
 
 public:
-	void update(); // update all entityes
-	void draw(); //draw all entityes
+	Manager() {
+		for (int i = 0; i < 32; i++) {
+			groupedEntities[i].push_back(nullptr);
+		}
+	}
+	void update() { // update all entityes
+		for (int i = 0; i < entities.getSize(); i++) {
+			entities[i].t->update();
+		}
+	}
+	void draw() { //draw all entityes
+		for (int i = 0; i < entities.getSize(); i++) {
+			entities[i].t->draw();
+		}
+	}
 
-	void addToGroup(Entity* e, std::size_t idOfGroup);
-	Vector<Entity*>& getGroup(std::size_t idOfGroup);
+	void addToGroup(Entity* e, std::size_t idOfGroup) {
+		if (&groupedEntities[idOfGroup] == nullptr) {
+			Vector<Pointer<Entity>> v;
+			groupedEntities.push_back(v);
+		}
+		groupedEntities[idOfGroup].push_back(Pointer<Entity>(e));
+	}
+	Vector<Pointer<Entity>>& getGroup(std::size_t idOfGroup) {
+		return groupedEntities[idOfGroup];
+	}
 	//Vector<Entity*>& getEntities(); // getList of entities
-	Entity& addEntity(); // add entity to array
+	Entity& addEntity() { // add entity to array
+		Entity* e = new Entity(*this);
+		Pointer<Entity> ptr(e);
+		entities.push_back(ptr);
+		return *e;
+	}
 };
 
 
