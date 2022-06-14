@@ -10,6 +10,7 @@ class Component
 {
 public:
 	Entity* entity; // store ptr to Entity that would have this componet
+	const int type;
 
 	virtual void init() = 0; // init component info
 	virtual void update() {} // update component info
@@ -53,7 +54,7 @@ public :
 	template<typename T, typename... TArgs>
 	T& addComponent(TArgs&&... arguments) { // idea behind that is to call constructors of components with parameters
 
-		T* c(new T(std::forward<TArgs>(mArgs)...));
+		T* c = new T(std::forward<TArgs>(mArgs)...);
 		c->entity = this;
 		Pointer ptr(c);
 		componentList.push_back(ptr);
