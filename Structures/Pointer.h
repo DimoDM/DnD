@@ -11,7 +11,7 @@ public:
 		t = nullptr;
 	}
 	Pointer(T* tmp) {
-		t = tmp
+		t = tmp;
 	}
 	T& operator=(T& tmp) const {
 		t = tmp;

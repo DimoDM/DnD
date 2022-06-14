@@ -139,12 +139,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Structures\FileManager.cpp" />
     <ClCompile Include="Structures\String.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ECS\Components.h" />
+    <ClInclude Include="ECS\ECS.h" />
+    <ClInclude Include="ECS\TestCMP.h" />
+    <ClInclude Include="ECS\TestComponent.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Structures\FileManager.h" />
+    <ClInclude Include="Structures\Map.h" />
+    <ClInclude Include="Structures\Pair.h" />
+    <ClInclude Include="Structures\Pointer.h" />
     <ClInclude Include="Structures\String.h" />
     <ClInclude Include="Structures\Vector.h" />
   </ItemGroup>

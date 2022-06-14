@@ -1,7 +1,7 @@
 #pragma once
 #include"../Structures/Vector.h"
-#include"../Structures/Pointer.h"
 #include"../Structures/Map.h"
+#include<exception>
 
 class Entity; // Entity class
 class Component; // Component class
@@ -11,7 +11,7 @@ class Component
 {
 public:
 	Entity* entity; // store ptr to Entity that would have this componet
-	const int type;
+	int type;
 
 	virtual void init() {} // init component info
 	virtual void update() {} // update component info
@@ -22,8 +22,8 @@ public:
 class Entity
 {
 	Manager& manager; // make communication with manager possible for both sides;
-	Vector<Pointer<Component>> componentList; // list for components
-	Map<int, int> componentBitSet;
+	Vector<Component*> componentList; // list for components
+	Map<size_t, size_t> componentBitSet;
 	bool groupBitSet[32] = { false }; // make possible to group entities
 
 public :
@@ -32,12 +32,12 @@ public :
 
 	void update() { // call update func of components
 		for (int i = 0; i < componentList.getSize(); i++) {
-			componentList[i].t->update();
+			componentList[i]->update();
 		}
 	}
 	void draw() { // call draw func of components
 		for (int i = 0; i < componentList.getSize(); i++) {
-			componentList[i].t->draw();
+			componentList[i]->draw();
 		}
 	}
 
@@ -56,11 +56,10 @@ public :
 	template<typename T, typename... TArgs>
 	T& addComponent(TArgs&&... arguments) { // idea behind that is to call constructors of components with parameters
 
-		T* c = new T(std::forward<TArgs>(mArgs)...);
+		T* c(new T(std::forward<TArgs>(arguments)...));
 		c->entity = this;
-		Pointer ptr(c);
-		componentBitSet.push_back(c->type, componentList.getSize());
-		componentList.push_back(ptr);
+		componentBitSet.push_back((size_t)(c->type), componentList.getSize());
+		componentList.push_back(c);
 		c->init();
 		return *c;
 	}
@@ -72,16 +71,17 @@ public :
 
 	template<typename T> 
 	T& getComponent() const {
-		if (!hasComponent<T>()) return nullptr;
+		if (!hasComponent<T>()) throw new std::exception("Invalid component");
 		T t;
-		return componentList[componentBitSet[t.type]];
+		size_t index = componentBitSet[t.type];
+		return componentList[index];
 	}
 };
 
 class Manager
 {
-	Vector<Pointer<Entity>> entities; // collection for entityes
-	Vector<Vector<Pointer<Entity>>> groupedEntities; // list of pointers to entities by groups
+	Vector<Entity*> entities; // collection for entityes
+	Vector<Vector<Entity*>> groupedEntities; // list of pointers to entities by groups
 
 public:
 	Manager() {
@@ -91,30 +91,29 @@ public:
 	}
 	void update() { // update all entityes
 		for (int i = 0; i < entities.getSize(); i++) {
-			entities[i].t->update();
+			entities[i]->update();
 		}
 	}
 	void draw() { //draw all entityes
 		for (int i = 0; i < entities.getSize(); i++) {
-			entities[i].t->draw();
+			entities[i]->draw();
 		}
 	}
 
 	void addToGroup(Entity* e, std::size_t idOfGroup) {
 		if (&groupedEntities[idOfGroup] == nullptr) {
-			Vector<Pointer<Entity>> v;
+			Vector<Entity*> v;
 			groupedEntities.push_back(v);
 		}
-		groupedEntities[idOfGroup].push_back(Pointer<Entity>(e));
+		groupedEntities[idOfGroup].push_back(e);
 	}
-	Vector<Pointer<Entity>>& getGroup(std::size_t idOfGroup) {
+	Vector<Entity*>& getGroup(std::size_t idOfGroup) {
 		return groupedEntities[idOfGroup];
 	}
 	//Vector<Entity*>& getEntities(); // getList of entities
 	Entity& addEntity() { // add entity to array
 		Entity* e = new Entity(*this);
-		Pointer<Entity> ptr(e);
-		entities.push_back(ptr);
+		entities.push_back(e);
 		return *e;
 	}
 };
