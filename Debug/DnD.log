@@ -1,4 +1,8 @@
-﻿  main.cpp
+﻿  Entity.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\Entity.h(58,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\Entity.h(63,21): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\Entity.h(58,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\Entity.h(63,21): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\Debug\DnD.exe

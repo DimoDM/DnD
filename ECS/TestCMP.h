@@ -9,7 +9,10 @@ public:
 	TestCMP(int n) : Component() {
 		test = n;
 	}
+	Component* clone() const override {
+		return new TestCMP(*this);
 
+	}
 	void init() override {
 		type = 1;
 	}

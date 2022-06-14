@@ -1,6 +1,6 @@
 #pragma once
 #include"../Structures/Vector.h"
-
+#include<iostream>
 class Component;
 class ComponentCollection;
 class Entity;
@@ -20,7 +20,7 @@ public:
 	ComponentCollection(const ComponentCollection& other);
 	ComponentCollection& operator=(const ComponentCollection& c);
 	void addComponent(const Component* c);
-	void push_back(const Component* c);
+	void push_back(Component* c);
 	Component& getComponent(size_t type) const;
 	Component& operator[](size_t index);
 	const bool hasComponent(size_t type) const;
@@ -82,6 +82,7 @@ public:
 
 		T* c(new T(std::forward<TArgs>(arguments)...));
 		c->entity = this;
+		std::cout << c << " ";
 		componentList.push_back(c);
 		c->init();
 		return *c;
@@ -97,8 +98,11 @@ public:
 	template<typename T>
 	const T& getComponent() const {
 		if (!hasComponent<T>()) throw new std::exception("Invalid component");
-		T t;
+		T* t(new T());
+		int type = t->type;
+		delete t;
 		//T* ptr = *static_cast<T>(componentList.getComponent(t.type));
-		return static_cast<T&>(componentList.getComponent(t.type));
+		std::cout << &static_cast<T&>(componentList.getComponent(type)) << std::endl;
+		return static_cast<T&>(componentList.getComponent(type));
 	}
 };

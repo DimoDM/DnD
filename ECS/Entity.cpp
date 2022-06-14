@@ -57,9 +57,13 @@ void ComponentCollection::addComponent(const Component* c)
 	components[size++] = c->clone();
 }
 
-void ComponentCollection::push_back(const Component* c)
+void ComponentCollection::push_back(Component* c)
 {
-	addComponent(c);
+	if (size == capacity)
+		resize();
+	std::cout << c << " ";
+	components[size++] = c;
+	std::cout << components[size - 1] << std::endl;
 }
 
 Component& ComponentCollection::getComponent(size_t type) const
