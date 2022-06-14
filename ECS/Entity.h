@@ -1,5 +1,6 @@
 #pragma once
 #include"../Structures/Vector.h"
+#include"../Structures/Collection.h"
 #include<iostream>
 class Component;
 class ComponentCollection;
@@ -47,7 +48,7 @@ public:
 class Entity
 {
 	//Manager& manager; // make communication with manager possible for both sides;
-	ComponentCollection componentList; // list for components
+	Collection<Component> componentList; // list for components
 	bool groupBitSet[32] = { false }; // make possible to group entities
 
 public:

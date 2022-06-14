@@ -26,14 +26,6 @@ int main()
 	std::cout<<(player2.getComponent<TestCMP>().test);
 	player2.update();
 	player2.draw();
-
-	while (true) {
-		Entity p;
-		p.addComponent<TestComponent>();
-		Entity a;
-		a.addComponent<TestComponent>();
-		a.addComponent<TestCMP>();
-	}
 	/*
 	for (int i = 0; i < 10; i++) {
 		player.update();

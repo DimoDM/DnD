@@ -71,5 +71,8 @@
     <ClInclude Include="ECS\Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Structures\Collection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
