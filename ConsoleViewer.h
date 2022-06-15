@@ -20,4 +20,5 @@ public:
 	
 	void print(); // print everything
 	void loadGameTexture(const char texture, int xPos, int yPos);
+	char getElementFromGameMap(int x, int y);
 };

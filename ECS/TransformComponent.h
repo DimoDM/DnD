@@ -5,6 +5,7 @@ class TransformComponent : public Component
 {
 	int x = 1;
 	int y = 0;
+	int vel;
 
 public:
 
