@@ -49,14 +49,14 @@ public:
 
 class Entity
 {
-	//Manager& manager; // make communication with manager possible for both sides;
+	Manager& manager; // make communication with manager possible for both sides // used for groupin entities;
 	Collection<Component> componentList; // list for components
 	bool groupBitSet[32] = { false }; // make possible to group entities
 
 public:
 
-	Entity() = default;
-	//Entity(Manager& m) : manager(m) {}
+	//Entity() = default;
+	Entity(Manager& m) : manager(m) {}
 
 	void update() { // call update func of components
 		for (int i = 0; i < componentList.getSize(); i++) {
@@ -110,4 +110,21 @@ public:
 		std::cout << "type: " << type << " " << &static_cast<T&>(componentList.getElement(type)) << std::endl;
 		return static_cast<T&>(componentList.getElement(type));
 	}
+};
+
+class Manager
+{
+	Collection<Entity> entities;
+	Vector<Collection<Entity>> groupedEntities;
+
+public:
+
+	void update();
+	void draw();
+
+	void addToGroup(Entity* e, const size_t idGroup);
+
+	Collection<Entity>& getGroup(const size_t idGroup);
+
+	Entity& addEntity();
 };
