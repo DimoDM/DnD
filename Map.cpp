@@ -1,12 +1,16 @@
 #include"Map.h"
 #include<fstream>
-#include<iostream>
+#include"TextureManager.h"
+#include"ECS/Components.h"
+#include"Game.h"
 using namespace std;
 Map::Map(Manager& m) : manager(m)
 {
+	width = 10;
+	height = 10;
 }
 
-void Map::LoadMap(const char* path)
+void Map::loadMap(const char* path)
 {
 	char c;
 	std::ifstream mapFile;
@@ -15,30 +19,41 @@ void Map::LoadMap(const char* path)
 	mapFile >> width;
 	mapFile >> height;
 	mapFile.get();
-	cout << endl;
-	cout << width << " " << height;
-	for (int y = 0; y <= height; y++) {
+
+	for (int y = 0; y < height; y++) {
 		for (int x = 0; x < width; x++) {
 			mapFile.get(c);
-			cout << c;
+			addTile(x, y, c);
 		}
-		cout << endl;
-		mapFile.ignore();
+		mapFile.get(); // skip new line
 	}
-	//mapFile.ignore();
 
+	mapFile.get(); // skip empty line
 	for (int y = 0; y < height; y++)
 	{
 		for (int x = 0; x < width; x++)
 		{
 			mapFile.get(c);
-			cout << c;
+			//cout << c;
+			if (c == '1') addCollider(x, y);
 		}
+		mapFile.get(); // skip new line
+		//cout << endl;
 	}
 
 	mapFile.close();
 }
 
-void Map::AddTile(int xpos, int ypos)
+void Map::addTile(int xPos, int yPos, const char tex)
 {
+	Entity& tile(manager.addEntity());
+	tile.addComponent<TileComponent>(xPos, yPos, tex);
+	tile.addGroup(Game::groupTiles);
+}
+
+void Map::addCollider(int xPos, int yPos)
+{
+	Entity& tile(manager.addEntity());
+	tile.addComponent<ColliderComponent>(xPos, yPos);
+	tile.addGroup(Game::groupTiles);
 }

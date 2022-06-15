@@ -1,4 +1,5 @@
 #pragma once
-#include"TestComponent.h"
-#include"TestCMP.h"
-#include"MonsterComponent.h"
+#include"TileComponent.h"
+#include"ColliderComponent.h"
+#include"TransformComponent.h"
+#include"SpriteComponent.h"

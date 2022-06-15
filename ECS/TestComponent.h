@@ -11,11 +11,6 @@ public:
 
 	int test = 0;
 
-	Component* clone() const override {
-		return new TestComponent(*this);
-
-	}
-
 	void init() override {
 		type = 0;
 	}

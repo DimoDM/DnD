@@ -11,8 +11,9 @@ public:
 
 	Map(Manager& m);
 
-	void LoadMap(const char* path);
-	void AddTile(int xpos, int ypos);
+	void loadMap(const char* path);
+	void addTile(int xPos, int yPos, const char tex);
+	void addCollider(int xPos, int yPos);
 
 	~Map() {}
 };

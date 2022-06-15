@@ -9,11 +9,11 @@ void ConsoleViewer::printGameTextures()
 	for (int i = 0; i < gameTextures.getSize(); i++) {
 		cout << "|";
 		for (int j = 0; j < gameTextures[i].getSize(); j++) {
-			cout << gameTextures[i][j] << " ";
+			cout << gameTextures[i][j];
 		}
 		cout << endl;
 	}
-	for (int i = 0; i < width; i++) cout << "--";
+	for (int i = 0; i < width; i++) cout << "-";
 	cout << endl;
 }
 
@@ -52,4 +52,10 @@ ConsoleViewer* ConsoleViewer::createInstance(int width, int height)
 void ConsoleViewer::print()
 {
 	printGameTextures();
+}
+
+void ConsoleViewer::loadGameTexture(const char texture, int xPos, int yPos)
+{
+	if (xPos > width || yPos > height) throw new std::exception("invalid cell");
+	gameTextures[yPos][xPos] = texture;
 }

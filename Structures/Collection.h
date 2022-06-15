@@ -18,9 +18,9 @@ public:
 	void addElement(const T* c); // add element to collection. Used type must have clone funtion.
 	void link_back(T* c); // Warning!!! Add element to collection with same existing item (shadow copy).
 	void artificialPop_back(); // reduse size by one. Use only if you have two collections with same pointers(in order to not delete one element two times)!!!
-	T& getElement(size_t type) const; // get element by type. Use only for objects that have variable type in them!!!
+	T& getElement(size_t type) const; // get element by type. Use only for objects that have variable 'type' in them!!!
 	T& operator[](size_t index);
-	const bool hasComponent(size_t type) const; // use only for Component objects or that which have variable type in them!
+	const bool hasComponent(size_t type) const; // use only for Component objects or that which have variable 'type' in them!
 
 	const size_t getSize() const; // return number of objects in collection
 

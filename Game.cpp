@@ -9,9 +9,9 @@ Game::Game()
 void Game::init()
 {
 	ConsoleViewer::createInstance(10, 10);
-	ConsoleViewer::getInstance()->print();
 	Map map(manager);
-	map.LoadMap("assets/maze10x10.txt");
+	map.loadMap("assets/maze10x10.txt");
+	ConsoleViewer::getInstance()->print();
 }
 
 void Game::update()

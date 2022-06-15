@@ -12,7 +12,7 @@ class Component
 public:
 	Entity* entity; // store ptr to Entity that would have this componet
 	int type;
-	virtual Component* clone() const { return new Component(*this); }
+
 	virtual void init() {} // init component info
 	virtual void update() {} // update component info
 	virtual void draw() {} // draw if needed
@@ -90,7 +90,7 @@ public:
 	void draw(); // draw all entites
 	void addToGroup(Entity* e, const size_t idGroup); // add entity to specific group
 
-	Collection<Entity>& getGroup(const size_t idGroup); // get all of entites of one group
+	Collection<Entity>& getGroup(const size_t idGroup); // get all entites of one group
 	Entity& addEntity();   // add entity to collection
 
 	~Manager();

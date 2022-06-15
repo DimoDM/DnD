@@ -10,7 +10,7 @@ public:
 	void update(); // do movement and logic of game
 	void draw(); // draw state of game when we see results from update state
 
-	enum Group {
+	static enum Group {
 		groupPlayer,
 		groupEnemy,
 		groupTiles

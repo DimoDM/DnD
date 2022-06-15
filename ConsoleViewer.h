@@ -19,5 +19,5 @@ public:
 	static ConsoleViewer* createInstance(int width, int height);
 	
 	void print(); // print everything
-
+	void loadGameTexture(const char texture, int xPos, int yPos);
 };

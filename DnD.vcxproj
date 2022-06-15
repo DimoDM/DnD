@@ -146,15 +146,18 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Structures\FileManager.cpp" />
     <ClCompile Include="Structures\String.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleViewer.h" />
+    <ClInclude Include="ECS\ColliderComponent.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Components.h" />
     <ClInclude Include="ECS\ECS.h" />
     <ClInclude Include="ECS\MonsterComponent.h" />
     <ClInclude Include="ECS\TestCMP.h" />
     <ClInclude Include="ECS\TestComponent.h" />
+    <ClInclude Include="ECS\TileComponent.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Structures\Collection.h" />
@@ -164,6 +167,7 @@
     <ClInclude Include="Structures\Pointer.h" />
     <ClInclude Include="Structures\String.h" />
     <ClInclude Include="Structures\Vector.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
