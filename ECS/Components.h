@@ -4,3 +4,5 @@
 #include"TransformComponent.h"
 #include"SpriteComponent.h"
 #include"KeyboardComponent.h"
+#include"LightComponent.h"
+#include"InventoryComponent.h"
