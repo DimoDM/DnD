@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ECS\Entity.cpp" />
+    <ClCompile Include="ECS\ECS.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Structures\FileManager.cpp" />
@@ -149,7 +149,6 @@
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Components.h" />
     <ClInclude Include="ECS\ECS.h" />
-    <ClInclude Include="ECS\Entity.h" />
     <ClInclude Include="ECS\MonsterComponent.h" />
     <ClInclude Include="ECS\TestCMP.h" />
     <ClInclude Include="ECS\TestComponent.h" />

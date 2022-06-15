@@ -1,6 +1,6 @@
 #include<iostream>
 #include"ECS/Components.h"
-#include"ECS/Entity.h"
+#include"ECS/ECS.h"
 int main()
 {
 	enum Groups {
