@@ -21,6 +21,7 @@ public:
 	const Vector<T>& operator=(const Vector&);
 	T& operator[](int);
 	const size_t getSize() const;
+	T* getArray() const;
 
 	void push_back(const T&);
 	void pop_back();
@@ -98,6 +99,12 @@ template<typename T>
 const size_t Vector<T>::getSize() const
 {
 	return size;
+}
+
+template<typename T>
+T* Vector<T>::getArray() const
+{
+	return data;
 }
 
 template<typename T>
