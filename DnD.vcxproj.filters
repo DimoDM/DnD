@@ -74,5 +74,8 @@
     <ClInclude Include="Structures\Collection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ECS\MonsterComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -24,6 +24,6 @@ public:
 		test++;
 	}
 	void draw() override {
-		std::cout << "Test" << test << std::endl;
+		std::cout << "I'm a player: " << test << std::endl;
 	}
 };

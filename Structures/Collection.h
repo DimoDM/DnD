@@ -7,7 +7,7 @@ class Collection
 	size_t capacity;
 	size_t size;
 
-	void free();
+	void free(); // delete all objects in collection
 	void copyFrom(const Collection& other);
 	void resize();
 
@@ -15,23 +15,25 @@ public:
 	Collection();
 	Collection(const Collection& other);
 	Collection& operator=(const Collection& c);
-	void addElement(const T* c);
-	void link_back(T* c);
-	T& getElement(size_t type) const;
+	void addElement(const T* c); // add element to collection. Used type must have clone funtion.
+	void link_back(T* c); // Warning!!! Add element to collection with same existing item (shadow copy).
+	void artificialPop_back(); // reduse size by one. Use only if you have two collections with same pointers(in order to not delete one element two times)!!!
+	T& getElement(size_t type) const; // get element by type. Use only for objects that have variable type in them!!!
 	T& operator[](size_t index);
-	const bool hasComponent(size_t type) const;
+	const bool hasComponent(size_t type) const; // use only for Component objects or that which have variable type in them!
 
-	const size_t getSize() const;
+	const size_t getSize() const; // return number of objects in collection
 
-	~Collection();
+	~Collection(); // delete all objects in collection
 
 };
 
 template<typename T>
 void Collection<T>::free()
 {
-	for (size_t i = 0; i < size; i++)
-		delete components[i];
+
+	for (size_t i = 0; i < size; i++) 
+			delete components[i];
 	delete[] components;
 }
 
@@ -44,7 +46,7 @@ void Collection<T>::copyFrom(const Collection& other)
 
 	for (size_t i = 0; i < size; i++)
 	{
-		components[i] = other.components[i]->clone();
+		components[i] = other.components[i];
 	}
 }
 
@@ -99,6 +101,12 @@ void Collection<T>::link_back(T* c)
 	//std::cout << c << " ";
 	components[size++] = c;
 	//std::cout << components[size - 1] << std::endl;
+}
+
+template<typename T>
+void Collection<T>::artificialPop_back()
+{
+	size--;
 }
 
 template<typename T>

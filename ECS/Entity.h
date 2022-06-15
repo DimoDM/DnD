@@ -1,38 +1,10 @@
 #pragma once
 #include"../Structures/Vector.h"
 #include"../Structures/Collection.h"
-#include<iostream>
+
 class Component;
-class ComponentCollection;
-class Entity;
 class Manager;
-
-class ComponentCollection
-{
-	Component** components;
-	size_t capacity;
-	size_t size;
-
-	void free();
-	void copyFrom(const ComponentCollection& other);
-	void resize();
-
-public:
-	ComponentCollection();
-	ComponentCollection(const ComponentCollection& other);
-	ComponentCollection& operator=(const ComponentCollection& c);
-	void addComponent(const Component* c);
-	void push_back(Component* c);
-	Component& getComponent(size_t type) const;
-	Component& operator[](size_t index);
-	const bool hasComponent(size_t type) const;
-
-	const size_t getSize() const;
-
-	~ComponentCollection();
-
-};
-
+class Entity;
 
 
 class Component
@@ -49,7 +21,7 @@ public:
 
 class Entity
 {
-	Manager& manager; // make communication with manager possible for both sides // used for groupin entities;
+	Manager& manager; // make communication with manager possible for both sides // used for grouping entities;
 	Collection<Component> componentList; // list for components
 	bool groupBitSet[32] = { false }; // make possible to group entities
 
@@ -69,12 +41,9 @@ public:
 		}
 	}
 
-	void addGroup(std::size_t idOfGroup) {
-		groupBitSet[idOfGroup] = true;
-	}
-	void delGroup(std::size_t idOfGroup) {
-		groupBitSet[idOfGroup] = false;
-	}
+
+	void addGroup(std::size_t idOfGroup);
+
 	bool hasGroup(std::size_t idOfGroup) {
 		return groupBitSet[idOfGroup];
 	}
@@ -86,10 +55,8 @@ public:
 
 		T* c(new T(std::forward<TArgs>(arguments)...));
 		c->entity = this;
-		std::cout << c << " ";
 		componentList.link_back(c);
 		c->init();
-		std::cout << c->type << std::endl;
 		return *c;
 	}
 	template<typename T>
@@ -107,7 +74,6 @@ public:
 		int type = t->type;
 		delete t;
 		//T* ptr = *static_cast<T>(componentList.getComponent(t.type));
-		std::cout << "type: " << type << " " << &static_cast<T&>(componentList.getElement(type)) << std::endl;
 		return static_cast<T&>(componentList.getElement(type));
 	}
 };
@@ -119,12 +85,42 @@ class Manager
 
 public:
 
-	void update();
-	void draw();
+	void update() {  // update all entities
+		for (int i = 0; i < entities.getSize(); i++) {
+			entities[i].update();
+		}
+	}
+	void draw() { // draw all entites
+		for (int i = 0; i < entities.getSize(); i++) {
+			entities[i].draw();
+		}
+	}
 
-	void addToGroup(Entity* e, const size_t idGroup);
+	void addToGroup(Entity* e, const size_t idGroup) { // add entity to specific group
+		while (idGroup >= groupedEntities.getSize()) {
+			groupedEntities.push_back(Collection<Entity>());
+		}
+		groupedEntities[idGroup].link_back(e);
+	}
 
-	Collection<Entity>& getGroup(const size_t idGroup);
+	Collection<Entity>& getGroup(const size_t idGroup) { // get all of entites of one group
+		if (idGroup >= groupedEntities.getSize()) throw std::exception("invlaid group");
+		return groupedEntities[idGroup];
+	}
 
-	Entity& addEntity();
+	Entity& addEntity() {   // add entity to collection
+
+		Entity* e = new Entity(*this);
+		entities.link_back(e);
+		return *e;
+	}
+
+	~Manager() {
+		for (int i = 0; i < groupedEntities.getSize(); i++) {
+			int num = groupedEntities[i].getSize();
+			for (int j = 0; j < num; j++) {
+				groupedEntities[i].artificialPop_back(); // reduse number of elements in order to not delete them.
+			}
+		}
+	}
 };

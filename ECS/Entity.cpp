@@ -1,3 +1,4 @@
+#include "Entity.h"
 /*#include "Entity.h"
 
 void ComponentCollection::free()
@@ -98,3 +99,9 @@ ComponentCollection::~ComponentCollection()
 	free();
 }
 */
+
+void Entity::addGroup(std::size_t idOfGroup)
+{
+	groupBitSet[idOfGroup] = true;
+	manager.addToGroup(this, idOfGroup);
+}
