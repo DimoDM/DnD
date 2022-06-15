@@ -59,3 +59,9 @@ void ConsoleViewer::loadGameTexture(const char texture, int xPos, int yPos)
 	if (xPos > width || yPos > height) throw new std::exception("invalid cell");
 	gameTextures[yPos][xPos] = texture;
 }
+
+char ConsoleViewer::getElementFromGameMap(int x, int y)
+{
+	if (x > width || y > height) throw new std::exception("invalid cell");
+	return gameTextures[y][x];
+}

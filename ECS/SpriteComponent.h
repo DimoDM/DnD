@@ -5,7 +5,7 @@
 class SpriteComponent : public Component
 {
 	TransformComponent* transform;
-	char texture;
+	char texture = '@';
 
 public:
 

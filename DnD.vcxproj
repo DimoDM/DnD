@@ -154,10 +154,13 @@
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Components.h" />
     <ClInclude Include="ECS\ECS.h" />
+    <ClInclude Include="ECS\KeyboardComponent.h" />
     <ClInclude Include="ECS\MonsterComponent.h" />
+    <ClInclude Include="ECS\SpriteComponent.h" />
     <ClInclude Include="ECS\TestCMP.h" />
     <ClInclude Include="ECS\TestComponent.h" />
     <ClInclude Include="ECS\TileComponent.h" />
+    <ClInclude Include="ECS\TransformComponent.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Structures\Collection.h" />
