@@ -1,11 +1,12 @@
 #pragma once
 #include"ECS.h"
+#include"../Structures/Vector2D.h"
+#include"../ConsoleViewer.h"
 
 class TransformComponent : public Component
 {
-	int x = 1;
-	int y = 0;
-	int vel;
+	Vector2D pos = { 1, 0 };
+	Vector2D vel = { 0, 0 };
 
 public:
 
@@ -14,22 +15,35 @@ public:
 	}
 	TransformComponent(int x, int y) : Component() {
 		type = 2;
-		this->x = x;
-		this->y = y;
+		this->pos.x = x;
+		this->pos.y = y;
 	}
 
 	void init() override {
 	}
 
 	void update() override {
+		pos += vel;
+
+		if (ConsoleViewer::getInstance()->getElementFromGameMap(pos.x, pos.y) == '#'
+			|| pos.x >= ConsoleViewer::getInstance()->getMaxWidth()
+			|| pos.y >= ConsoleViewer::getInstance()->getMaxHeight()) {
+			pos -= vel;
+		}
 	}
 	void draw() override {
+		vel = { 0, 0 };
 	}
 
 	const int getX() const {
-		return x;
+		return pos.x;
 	}
 	const int getY() const {
-		return y;
+		return pos.y;
+	}
+
+	void setVel(int x, int y) {
+		if (x < -1 || x > 1 || y < -1 || y > 1) throw new std::exception("invalid move");
+		vel = { x, y };
 	}
 };

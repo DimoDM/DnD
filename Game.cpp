@@ -15,9 +15,9 @@ void Game::init()
 	ConsoleViewer::getInstance()->print();
 
 	Entity& player(manager.addEntity());
+	player.addComponent<KeyboardComponent>();
 	player.addComponent<TransformComponent>();
 	player.addComponent<SpriteComponent>();
-	player.addComponent<KeyboardComponent>();
 }
 
 void Game::update()

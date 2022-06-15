@@ -4,11 +4,15 @@
 
 class TileComponent : public Component
 {
-	int x;
-	int y;
-	char texture;
+	int x = 0;
+	int y = 0;
+	char texture = ' ';
 	bool visible = true;
 public:
+
+	TileComponent() : Component() {
+		type = 0;
+	}
 
 	TileComponent(int x, int y, const char tex) : Component() {
 		type = 0;

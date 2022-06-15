@@ -11,7 +11,7 @@ class KeyboardComponent : public Component
 public:
 
 	KeyboardComponent() : Component() {
-		type = 3;
+		type = 4;
 	}
 
 
@@ -25,13 +25,13 @@ public:
 		input = _getch();
 		switch (input) {
 		case 'a':
-		case 'A': cout << input; break;
+		case 'A': transform->setVel(-1, 0); break;
 		case 'd':
-		case 'D': cout << input; break;
+		case 'D': transform->setVel(1, 0); break;
 		case 's':
-		case 'S': cout << input; break;
+		case 'S': transform->setVel(0, 1); break;
 		case 'w':
-		case 'W': cout << input; break;
+		case 'W': transform->setVel(0, -1); break;
 		}
 	}
 	void draw() override {

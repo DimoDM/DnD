@@ -20,5 +20,7 @@ public:
 	
 	void print(); // print everything
 	void loadGameTexture(const char texture, int xPos, int yPos);
-	char getElementFromGameMap(int x, int y);
+	const char getElementFromGameMap(int x, int y) const;
+	const int getMaxWidth() const;
+	const int getMaxHeight() const;
 };

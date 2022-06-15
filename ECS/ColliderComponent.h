@@ -3,10 +3,14 @@
 
 class ColliderComponent : public Component
 {
-	int x;
-	int y;
+	int x = 0;
+	int y = 0;
 
 public:
+
+	ColliderComponent() : Component() {
+		type = 1;
+	}
 
 	ColliderComponent(int x, int y) : Component() {
 		type = 1;

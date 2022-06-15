@@ -146,6 +146,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Structures\FileManager.cpp" />
     <ClCompile Include="Structures\String.cpp" />
+    <ClCompile Include="Structures\Vector2D.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,7 @@
     <ClInclude Include="ECS\TestComponent.h" />
     <ClInclude Include="ECS\TileComponent.h" />
     <ClInclude Include="ECS\TransformComponent.h" />
+    <ClInclude Include="ECS\Vector2D.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Structures\Collection.h" />
@@ -170,6 +172,7 @@
     <ClInclude Include="Structures\Pointer.h" />
     <ClInclude Include="Structures\String.h" />
     <ClInclude Include="Structures\Vector.h" />
+    <ClInclude Include="Structures\Vector2D.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

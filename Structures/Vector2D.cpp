@@ -48,21 +48,21 @@ Vector2D& operator/(Vector2D& v1, Vector2D& v2) {
 	return v1.Devide(v2);
 }
 
-Vector2D& Vector2D::operator+=(const Vector2D vec) {
+Vector2D& Vector2D::operator+=(const Vector2D& vec) {
 	return this->Add(vec);
 }
-Vector2D& Vector2D::operator-=(const Vector2D vec) {
+Vector2D& Vector2D::operator-=(const Vector2D& vec) {
 	return this->Subtract(vec);
 }
-Vector2D& Vector2D::operator *= (const Vector2D vec) {
+Vector2D& Vector2D::operator *= (const Vector2D& vec) {
 	return this->Multiply(vec);
 }
-Vector2D& Vector2D::operator/=(const Vector2D vec) {
+Vector2D& Vector2D::operator/=(const Vector2D& vec) {
 	return this->Devide(vec);
 }
 
 
-Vector2D& Vector2D::operator*(const int& i) {
+Vector2D& Vector2D::operator*(const int i) {
 	this->x *= i;
 	this->y *= i;
 	return *this;

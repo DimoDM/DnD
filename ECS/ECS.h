@@ -51,7 +51,7 @@ public:
 
 template<typename T, typename... TArgs>
 T& Entity::addComponent(TArgs&&... arguments) { // idea behind that is to call constructors of components with parameters
-
+	if (hasComponent<T>()) return getComponent<T>();
 	T* c(new T(std::forward<TArgs>(arguments)...));
 	c->entity = this;
 	componentList.link_back(c);
