@@ -1,4 +1,26 @@
-﻿  main.cpp
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\main.cpp(33,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\main.cpp(38,20): warning C4018: '<': signed/unsigned mismatch
+﻿  ConsoleViewer.cpp
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\ConsoleViewer.cpp(9,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\ConsoleViewer.cpp(11,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\Vector.h(94,12): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\Vector.h(93): message : while compiling class template member function 'T &Vector<T>::operator [](int)'
+          with
+          [
+              T=char
+          ]
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\ConsoleViewer.cpp(12): message : see reference to function template instantiation 'T &Vector<T>::operator [](int)' being compiled
+          with
+          [
+              T=char
+          ]
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\ConsoleViewer.cpp(11): message : see reference to class template instantiation 'Vector<char>' being compiled
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\Vector.h(58,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\Vector.h(54): message : while compiling class template member function 'void Vector<char>::resize(void)'
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\Vector.h(114): message : see reference to function template instantiation 'void Vector<char>::resize(void)' being compiled
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\Vector.h(69): message : while compiling class template member function 'Vector<char>::Vector(void)'
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\ConsoleViewer.cpp(23): message : see reference to function template instantiation 'Vector<char>::Vector(void)' being compiled
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\Vector.h(41,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\Vector.h(37): message : while compiling class template member function 'void Vector<char>::copyFrom(const Vector<char> &)'
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\Vector.h(86): message : see reference to function template instantiation 'void Vector<char>::copyFrom(const Vector<char> &)' being compiled
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\Vector.h(48): message : while compiling class template member function 'void Vector<char>::free(void)'
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Structures\Vector.h(133): message : see reference to function template instantiation 'void Vector<char>::free(void)' being compiled
   DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\Debug\DnD.exe
