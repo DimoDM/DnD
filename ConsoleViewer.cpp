@@ -52,6 +52,8 @@ ConsoleViewer* ConsoleViewer::createInstance(int width, int height)
 void ConsoleViewer::print()
 {
 	printGameTextures();
+	cout << text.c_str();
+	text = "";
 }
 
 void ConsoleViewer::loadGameTexture(const char texture, int xPos, int yPos)
@@ -74,4 +76,15 @@ const int ConsoleViewer::getMaxWidth() const
 const int ConsoleViewer::getMaxHeight() const
 {
 	return height;
+}
+
+void ConsoleViewer::print(const char* text)
+{
+	this->text.concat(text);
+}
+
+void ConsoleViewer::println(const char* text)
+{
+	this->text.concat(text);
+	this->text.concat("\n");
 }

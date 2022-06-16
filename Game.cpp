@@ -18,6 +18,7 @@ void Game::init()
 	player.addComponent<KeyboardComponent>();
 	player.addComponent<TransformComponent>();
 	player.addComponent<SpriteComponent>();
+	player.addComponent<InventoryComponent>();
 }
 
 void Game::update()

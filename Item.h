@@ -7,7 +7,7 @@ struct Item
 	String name;
 	int type;
 
-	Item(const int i, const char* n, const Type t) {
+	Item(const int i, const char* n, const int t) {
 		id = i;
 		type = t;
 		name = n;
@@ -21,7 +21,7 @@ struct Item
 };
 
 static enum Type {
-	TypeWeapon,
+	TypeWeapon = 0,
 	TypeArmor,
 	TypeSpell,
 	TypeEmpty

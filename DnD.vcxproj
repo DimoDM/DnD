@@ -150,11 +150,14 @@
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Armor.h" />
     <ClInclude Include="ConsoleViewer.h" />
     <ClInclude Include="ECS\ColliderComponent.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Components.h" />
     <ClInclude Include="ECS\ECS.h" />
+    <ClInclude Include="ECS\InventoryComponent.h" />
+    <ClInclude Include="ECS\LightComponent.h" />
     <ClInclude Include="ECS\KeyboardComponent.h" />
     <ClInclude Include="ECS\MonsterComponent.h" />
     <ClInclude Include="ECS\SpriteComponent.h" />
@@ -163,17 +166,23 @@
     <ClInclude Include="ECS\TileComponent.h" />
     <ClInclude Include="ECS\TransformComponent.h" />
     <ClInclude Include="ECS\Vector2D.h" />
+    <ClInclude Include="Empty.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemsList.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Spell.h" />
     <ClInclude Include="Structures\Collection.h" />
     <ClInclude Include="Structures\FileManager.h" />
     <ClInclude Include="Structures\Map.h" />
+    <ClInclude Include="Structures\Optional.h" />
     <ClInclude Include="Structures\Pair.h" />
     <ClInclude Include="Structures\Pointer.h" />
     <ClInclude Include="Structures\String.h" />
     <ClInclude Include="Structures\Vector.h" />
     <ClInclude Include="Structures\Vector2D.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,20 +1,2 @@
 ﻿  ConsoleViewer.cpp
-  Game.cpp
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Game.h(17): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\TransformComponent.h(18,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\TransformComponent.h(19,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\TransformComponent.h(28,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\TransformComponent.h(28,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\TransformComponent.h(39,13): warning C4244: 'return': conversion from 'const float' to 'const int', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\TransformComponent.h(42,13): warning C4244: 'return': conversion from 'const float' to 'const int', possible loss of data
-  Map.cpp
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\TransformComponent.h(18,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\TransformComponent.h(19,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\TransformComponent.h(28,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\TransformComponent.h(28,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\TransformComponent.h(39,13): warning C4244: 'return': conversion from 'const float' to 'const int', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\TransformComponent.h(42,13): warning C4244: 'return': conversion from 'const float' to 'const int', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Game.h(17): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
-  TextureManager.cpp
-  Generating Code...
   DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\x64\Debug\DnD.exe
