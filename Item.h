@@ -1,17 +1,15 @@
 #pragma once
 #include"Structures/String.h"
 
-class Item
+struct Item
 {
 	int id;
-	int durability;
 	String name;
-	int tag;
+	int type;
 
-	Item(const char* n, const int i, const int d, const int t) {
+	Item(const int i, const char* n, const Type t) {
 		id = i;
-		durability = d;
-		tag = t;
+		type = t;
 		name = n;
 	}
 
@@ -20,4 +18,11 @@ class Item
 	virtual void use() = 0;
 
 	virtual ~Item() {}
+};
+
+static enum Type {
+	TypeWeapon,
+	TypeArmor,
+	TypeSpell,
+	TypeEmpty
 };
