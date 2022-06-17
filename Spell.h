@@ -18,4 +18,13 @@ public:
 
 	void use() override {
 	}
+
+	const char* itemToString() const override {
+		String item(Item::itemToString());
+		item += " dmg: ";
+		item += dmg;
+		item += " cost: ";
+		item += cost;
+		return item.c_str();
+	}
 };

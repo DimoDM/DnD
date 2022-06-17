@@ -1,6 +1,7 @@
 #pragma once
 #include"Structures/Vector.h"
 #include"Structures/String.h"
+#include<iostream>
 
 class ConsoleViewer
 {

@@ -16,4 +16,11 @@ public:
 
 	void use() override {
 	}
+
+	const char* itemToString() const override{
+		String item(Item::itemToString());
+		item += " dmg: ";
+		item += dmg;
+		return item.c_str();
+	}
 };
