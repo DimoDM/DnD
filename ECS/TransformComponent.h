@@ -42,6 +42,10 @@ public:
 		return pos.y;
 	}
 
+	const Vector2D& getPos() const {
+		return pos;
+	}
+
 	void setVel(int x, int y) {
 		if (x < -1 || x > 1 || y < -1 || y > 1) throw new std::exception("invalid move");
 		vel = { x, y };
