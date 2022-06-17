@@ -143,5 +143,8 @@
     <ClInclude Include="Structures\Optional.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ECS\MonsterAIComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

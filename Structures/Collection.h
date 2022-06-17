@@ -20,6 +20,7 @@ public:
 	void artificialPop_back(); // reduse size by one. Use only if you have two collections with same pointers(in order to not delete one element two times)!!!
 	T& getElement(size_t type) const; // get element by type. Use only for objects that have variable 'type' in them!!!
 	T& operator[](size_t index);
+	T* getElementByIndex(size_t index);
 	const bool hasComponent(size_t type) const; // use only for Component objects or that which have variable 'type' in them!
 
 	const size_t getSize() const; // return number of objects in collection
@@ -122,7 +123,14 @@ template<typename T>
 T& Collection<T>::operator[](size_t index)
 {
 	if (index < 0 || index >= size) throw new std::exception("out of bounds");
-	return *components[index];
+	return static_cast<T&>(*components[index]);
+}
+
+template<typename T>
+inline T* Collection<T>::getElementByIndex(size_t index)
+{
+	if (index < 0 || index >= size) throw new std::exception("out of bounds");
+	return static_cast<T*>(components[index]);
 }
 
 

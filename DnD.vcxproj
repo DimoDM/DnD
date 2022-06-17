@@ -159,6 +159,7 @@
     <ClInclude Include="ECS\InventoryComponent.h" />
     <ClInclude Include="ECS\LightComponent.h" />
     <ClInclude Include="ECS\KeyboardComponent.h" />
+    <ClInclude Include="ECS\MonsterAIComponent.h" />
     <ClInclude Include="ECS\MonsterComponent.h" />
     <ClInclude Include="ECS\SpriteComponent.h" />
     <ClInclude Include="ECS\TestCMP.h" />

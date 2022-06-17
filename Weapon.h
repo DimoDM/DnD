@@ -17,10 +17,10 @@ public:
 	void use() override {
 	}
 
-	const char* itemToString() const override{
-		String item(Item::itemToString());
+	const String itemToString() const override{
+		String item = Item::itemToString();
 		item += " dmg: ";
-		item += dmg;
-		return item.c_str();
+		item += (size_t)dmg;
+		return item;
 	}
 };

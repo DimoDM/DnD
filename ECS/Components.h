@@ -6,3 +6,4 @@
 #include"KeyboardComponent.h"
 #include"LightComponent.h"
 #include"InventoryComponent.h"
+#include"MonsterAIComponent.h"

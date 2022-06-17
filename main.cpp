@@ -15,9 +15,9 @@ int main()
 	Game game;
 	game.init();
 	while (true) {
-		game.update();
 		system("CLS");
 		game.draw();
+		game.update();
 	}
 	std::cout << "she-wolf";
 	return 0;

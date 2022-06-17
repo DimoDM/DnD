@@ -103,6 +103,12 @@ void String::concat(const String& other)
 	size = size + other.getSize();
 }
 
+void String::concat(const size_t n)
+{
+	String s(n);
+	concat(s);
+}
+
 const char* String::c_str() const
 {
 	return str;
@@ -112,6 +118,12 @@ String& String::operator+=(const String& other)
 {
 	concat(other);
 	return *this;
+}
+
+String& String::operator+=(const size_t n)
+{
+	String s(n);
+	return (*this += s);
 }
 
 String operator+(const String& lhs, const String& rhs)

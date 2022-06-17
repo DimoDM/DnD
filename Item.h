@@ -8,10 +8,10 @@ struct Item
 private:
 	const char* convertTypeToString(int t) const {
 		switch (t) {
-			case Type::TypeWeapon: return "Weapon";
-			case Type::TypeArmor: return "Armor";
-			case Type::TypeSpell: return "Spell";
-			case Type::TypeEmpty: return "";
+			case 0: return "Weapon";
+			case 1: return "Armor";
+			case 2: return "Spell";
+			case 3: return "";
 			default: return "";
 		}
 	}
@@ -30,11 +30,11 @@ public:
 
 	virtual void use() = 0;
 
-	virtual const char* itemToString() const {
+	virtual const String itemToString() const {
 		String item(convertTypeToString(type));
 		item += ": ";
 		item += name;
-		return item.c_str();
+		return item;
 	}
 
 	virtual ~Item() {}

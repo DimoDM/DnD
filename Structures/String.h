@@ -30,10 +30,12 @@ public:
 
 	size_t getSize() const;
 	void concat(const String& other);
+	void concat(const size_t n);
 
 	const char* c_str() const;
 
 	String& operator+=(const String& other);
+	String& operator+=(const size_t n);
 
 	friend std::ostream& operator<<(std::ostream& stream, const String& str);
 	friend std::istream& operator>>(std::istream& stream, String& str);

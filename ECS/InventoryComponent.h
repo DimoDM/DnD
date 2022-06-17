@@ -27,13 +27,13 @@ public:
 	}
 	void draw() override {
 		if (weapon.containsData()) {
-			ConsoleViewer::getInstance()->println(weapon.getData().itemToString());
+			ConsoleViewer::getInstance()->println(weapon.getData().itemToString().c_str());
 		}
 		if (spell.containsData()) {
-			ConsoleViewer::getInstance()->println(spell.getData().itemToString());
+			ConsoleViewer::getInstance()->println(spell.getData().itemToString().c_str());
 		}
 		if (armor.containsData()) {
-			ConsoleViewer::getInstance()->println(armor.getData().itemToString());
+			ConsoleViewer::getInstance()->println(armor.getData().itemToString().c_str());
 		}
 	}
 
