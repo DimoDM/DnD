@@ -1,7 +1,9 @@
 #pragma once
 #include"ECS/ECS.h"
 #include"GetDistance.h"
+#include"BattleView.h"
 #include"ECS/TransformComponent.h"
+#include"Menu.h"
 
 class BattleSystem
 {
@@ -36,14 +38,19 @@ public:
 
 	void battle() {
 		while (listenForBattle()) {
-			update();
 			draw();
+			update();
 		}
 	}
 
 	void update() {
 		if (playerMove) {
-
+			player->getComponent<CombatComponent>().attack();
+			monster->getComponent<StatsComponent>().takeDamage(player->getComponent<CombatComponent>().getDmgFromLastAttack());
+		}
+		else {
+			monster->getComponent<CombatComponent>().attack();
+			player->getComponent<StatsComponent>().takeDamage(player->getComponent<CombatComponent>().getDmgFromLastAttack());
 		}
 		playerMove = !playerMove;
 	}
