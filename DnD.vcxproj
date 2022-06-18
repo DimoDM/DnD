@@ -162,6 +162,7 @@
     <ClInclude Include="ECS\MonsterAIComponent.h" />
     <ClInclude Include="ECS\MonsterComponent.h" />
     <ClInclude Include="ECS\SpriteComponent.h" />
+    <ClInclude Include="ECS\StatsComponent.h" />
     <ClInclude Include="ECS\TestCMP.h" />
     <ClInclude Include="ECS\TestComponent.h" />
     <ClInclude Include="ECS\TileComponent.h" />
@@ -169,6 +170,8 @@
     <ClInclude Include="Empty.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="generateFreeVector2D.h" />
+    <ClInclude Include="BattleSystem.h" />
+    <ClInclude Include="GetDistance.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemsList.h" />
     <ClInclude Include="Map.h" />

@@ -26,6 +26,7 @@ public:
 
 	}
 	void draw() override {
+		ConsoleViewer::getInstance()->println("Inventory: ");
 		if (weapon.containsData()) {
 			ConsoleViewer::getInstance()->println(weapon.getData().itemToString().c_str());
 		}

@@ -1,25 +1,19 @@
 #pragma once
 #include"ECS.h"
+#include"TransformComponent.h"
 #include"../Structures/Collection.h"
-#include"../Game.h"
-#include"Components.h"
-#include<iostream>
 #include"../Structures/Vector2D.h"
 #include<math.h>
 #include"../generateFreeVector2D.h"
+#include"../GetDistance.h"
 using namespace std;
 
 class MonsterAIComponent : public Component
 {
 	bool isVisible = true;
 	Collection<Entity>* players;
-	TransformComponent* transform;
+	TransformComponent* transform = nullptr;
 	const int MAXDISTANCE = ConsoleViewer::getInstance()->getMaxWidth() * 3;
-
-	const int getDistanceToPlayer(const Vector2D& monsterPos, const Vector2D& playerPos) const {
-		Vector2D distance2D = { playerPos.x - monsterPos.x, playerPos.y - monsterPos.y };
-		return (abs(distance2D.x) + abs(distance2D.y));
-	}
 
 	const int getIndexOfTheClosestPlayer() const {
 
@@ -27,7 +21,7 @@ class MonsterAIComponent : public Component
 		int distance = MAXDISTANCE;
 		int index;
 		for (int i = 0; i < players->getSize(); i++) {
-			int curDis = getDistanceToPlayer(MonsterPos, players->getElementByIndex(i)->getComponent<TransformComponent>().getPos());
+			int curDis = GetDistance::getDistance(MonsterPos, players->getElementByIndex(i)->getComponent<TransformComponent>().getPos());
 			if (distance > curDis) {
 				distance = curDis;
 				index = i;
@@ -49,7 +43,7 @@ class MonsterAIComponent : public Component
 
 		for (int i = 0; i < 4; i++) {
 			mapCoordinates = { vel[i].x + monsterPos.x, vel[i].y + monsterPos.y };
-			disToPlayer[i] = getDistanceToPlayer(mapCoordinates, playerPos);
+			disToPlayer[i] = GetDistance::getDistance(mapCoordinates, playerPos);
 			if (distance > disToPlayer[i] && ConsoleViewer::getInstance()->getElementFromGameMap(mapCoordinates.x, mapCoordinates.y) != '#') {
 				distance = disToPlayer[i];
 				index = i;
@@ -84,7 +78,7 @@ public:
 	void update() override {
 		const Vector2D MonsterPos = transform->getPos();
 		const Vector2D PlayerPos = players->getElementByIndex(getIndexOfTheClosestPlayer())->getComponent<TransformComponent>().getPos();
-		const int distanceToPlayer = getDistanceToPlayer(MonsterPos, PlayerPos);
+		const int distanceToPlayer = GetDistance::getDistance(MonsterPos, PlayerPos);
 		const Vector2D newVelocity = newVel(MonsterPos, PlayerPos, distanceToPlayer);
 		transform->setVel(newVelocity.x, newVelocity.y);
 

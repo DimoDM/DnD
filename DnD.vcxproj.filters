@@ -146,5 +146,14 @@
     <ClInclude Include="generateFreeVector2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ECS\StatsComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GetDistance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 #pragma once
 #include"ECS/ECS.h"
+#include"BattleSystem.h"
 
 class Game
 {
@@ -16,6 +17,15 @@ public:
 		groupTiles
 	};
 
+	enum GameState {
+		statePlay,
+		stateBattle
+	} gameState = statePlay;
+
+
+	~Game();
+
 private:
 	Manager manager;
+	BattleSystem* battleSys = nullptr;
 };

@@ -3,6 +3,7 @@
 #include"Map.h"
 #include"ECS/Components.h"
 
+
 Game::Game()
 {
 }
@@ -18,15 +19,20 @@ void Game::init()
 	player.addComponent<TransformComponent>();
 	player.addComponent<SpriteComponent>();
 	player.addComponent<InventoryComponent>();
+	player.addComponent<StatsComponent>();
 	player.addGroup(groupPlayer);
 	
 	Entity& monster(manager.addEntity());
 	monster.addComponent<MonsterAIComponent>(manager.getGroup(groupPlayer));
 	monster.addComponent<SpriteComponent>('M');
+	monster.addGroup(groupEnemy);
+
+	battleSys = new BattleSystem(manager.getGroup(groupPlayer), manager.getGroup(groupEnemy));
 }
 
 void Game::update()
 {
+	if (battleSys->listenForBattle()) system("pause");
 	manager.update();
 }
 
@@ -34,4 +40,9 @@ void Game::draw()
 {
 	manager.draw();
 	ConsoleViewer::getInstance()->print();
+}
+
+Game::~Game()
+{
+	delete battleSys;
 }

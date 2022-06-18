@@ -7,3 +7,4 @@
 #include"LightComponent.h"
 #include"InventoryComponent.h"
 #include"MonsterAIComponent.h"
+#include"StatsComponent.h"

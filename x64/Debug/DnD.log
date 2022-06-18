@@ -1,5 +1,5 @@
 ﻿  Game.cpp
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Game.h(17): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Game.h(18): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Item.h(48,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Spell.h(22,8): warning C4114: same type qualifier used more than once
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\ItemsList.h(23,16): warning C4154: deletion of an array expression; conversion to pointer supplied
@@ -8,7 +8,9 @@ C:\Users\Dimo\Desktop\DnD\DnD\DnD\generateFreeVector2D.h(11,13): warning C4244: 
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Item.h(48,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Spell.h(22,8): warning C4114: same type qualifier used more than once
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\ItemsList.h(23,16): warning C4154: deletion of an array expression; conversion to pointer supplied
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Game.h(17): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\generateFreeVector2D.h(11,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Game.h(18): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
+  main.cpp
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Game.h(18): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
   Generating Code...
   DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\x64\Debug\DnD.exe
