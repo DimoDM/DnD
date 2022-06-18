@@ -4,8 +4,8 @@
 class Vector2D
 {
 public:
-	float x;
-	float y;
+	int x;
+	int y;
 
 	Vector2D();
 	Vector2D(int x, int y);

@@ -21,9 +21,8 @@ void Game::init()
 	player.addGroup(groupPlayer);
 	
 	Entity& monster(manager.addEntity());
-	monster.addComponent<TransformComponent>(8, 8);
-	monster.addComponent<SpriteComponent>('M');
 	monster.addComponent<MonsterAIComponent>(manager.getGroup(groupPlayer));
+	monster.addComponent<SpriteComponent>('M');
 }
 
 void Game::update()

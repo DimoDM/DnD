@@ -146,5 +146,8 @@
     <ClInclude Include="ECS\MonsterAIComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="generateFreeVector2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

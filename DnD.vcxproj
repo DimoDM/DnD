@@ -169,6 +169,7 @@
     <ClInclude Include="ECS\Vector2D.h" />
     <ClInclude Include="Empty.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="generateFreeVector2D.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemsList.h" />
     <ClInclude Include="Map.h" />
