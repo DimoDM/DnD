@@ -8,8 +8,8 @@ class InventoryComponent : public Component
 {
 
 	Optional<Weapon> weapon;
-	Optional<Armor> armor;
 	Optional<Spell> spell;
+	Optional<Armor> armor;
 
 public:
 
@@ -36,6 +36,33 @@ public:
 		if (armor.containsData()) {
 			GameView::getInstance()->println(armor.getData().itemToString().c_str());
 		}
+	}
+
+	const int getSpellDmg() const {
+		if (spell.containsData()) return spell.getData().dmg;
+		return 0;
+	}
+
+	const int getWeaponDmg() const {
+		if (weapon.containsData()) return weapon.getData().dmg;
+		return 0;
+	}
+
+	const int getSpellCost() const {
+		if (spell.containsData()) return spell.getData().cost;
+		return 0;
+	}
+
+	const String getWeaponInfo() const {
+		if (weapon.containsData()) return weapon.getData().itemToString();
+		return "";
+	}
+	const String getArmorInfo() const {
+		if (armor.containsData()) return armor.getData().itemToString();
+
+	}
+	const String getSpellInfo() const {
+		if (spell.containsData()) return spell.getData().itemToString();
 	}
 
 };

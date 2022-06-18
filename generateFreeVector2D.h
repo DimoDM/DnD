@@ -3,6 +3,7 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
+//TODO change header name
 class Random
 {
 public:

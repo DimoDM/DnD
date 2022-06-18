@@ -42,4 +42,24 @@ public:
 			GameView::getInstance()->println(s.c_str());
 		}
 	}
+
+	const int getStrenght() const {
+		return strenght;
+	}
+
+	const int getMana() const {
+		return mana;
+	}
+
+	const int getHealth() const {
+		return health;
+	}
+
+	void reduceMana(int value) {
+		mana -= value;
+	}
+
+	void takeDamage(int value) {
+		health -= value;
+	}
 };

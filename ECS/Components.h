@@ -8,3 +8,4 @@
 #include"InventoryComponent.h"
 #include"MonsterAIComponent.h"
 #include"StatsComponent.h"
+#include"CombatComponent.h"
