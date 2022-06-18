@@ -2,7 +2,8 @@
 #include"ECS/ECS.h"
 #include"GetDistance.h"
 #include"BattleView.h"
-#include"ECS/TransformComponent.h"
+#include"ECS/Components.h"
+#include"Game.h"
 #include"Menu.h"
 
 class BattleSystem
@@ -10,8 +11,8 @@ class BattleSystem
 	Collection<Entity>* players;
 	Collection<Entity>* monsters;
 
-	Entity* player;
-	Entity* monster;
+	Entity* player = nullptr;
+	Entity* monster = nullptr;
 
 	bool playerMove = true;
 
@@ -33,16 +34,20 @@ public:
 				}
 			}
 		}
+		player = nullptr;
+		monster = nullptr;
 		return false;
 	}
 
 	void battle() {
 		while (listenForBattle()) {
+			cout << "battle" << endl;
 			draw();
 			update();
 		}
 	}
 
+private:
 	void update() {
 		if (playerMove) {
 			player->getComponent<CombatComponent>().attack();
@@ -51,9 +56,12 @@ public:
 		else {
 			monster->getComponent<CombatComponent>().attack();
 			player->getComponent<StatsComponent>().takeDamage(player->getComponent<CombatComponent>().getDmgFromLastAttack());
+			system("pause");
 		}
 		playerMove = !playerMove;
 	}
 
-	void draw() {}
+	void draw() {
+		BattleView::getInstance()->print();
+	}
 };

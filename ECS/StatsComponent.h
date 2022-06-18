@@ -2,7 +2,6 @@
 #include"ECS.h"
 #include"../GameView.h"
 #include"../Structures/String.h"
-#include"../Game.h"
 
 class StatsComponent : public Component
 {
@@ -29,7 +28,7 @@ public:
 	void update() override {}
 
 	void draw() override {
-		if (entity->hasGroup(Game::groupPlayer)) {
+		if (entity->hasGroup(0)) {
 			String h("Health: ");
 			h += health;
 			String m("Mana: ");

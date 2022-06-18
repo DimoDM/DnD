@@ -22,6 +22,7 @@ class Menu
 			viewer->print(i == state ? "> " : "  ");
 			viewer->println(options[i].c_str());
 		}
+		viewer->print();
 	}
 
 	int select(int start) {
@@ -32,23 +33,24 @@ class Menu
 		case 'W': substractOne(start); return select(start);
 		case 'S': addOne(start); return select(start);
 		case 13: return start;
-		default: break;
+		default: return select(start);
 		}
 	}
 
 public:
 
-	Menu(const char* title, const char** options, int numOfOptions, ConsoleViewer& viewer) {
+	Menu(const char* title, const char** options, int numOfOptions, ConsoleViewer* viewer) {
 		this->title = title;
-		this->viewer = &viewer;
+		this->viewer = viewer;
 		for(int i = 0; i < numOfOptions; i++) {
 			this->options.push_back(options[i]);
 		}
 	}
 
-	Menu(const char* title, Vector<String> options) {
+	Menu(const char* title, Vector<String> options, ConsoleViewer* viewer) {
 		this->title = title;
 		this->options = options;
+		this->viewer = viewer;
 	}
 
 

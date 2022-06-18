@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BattleView.cpp" />
     <ClCompile Include="ConsoleViewer.cpp" />
     <ClCompile Include="ECS\ECS.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="BattleView.h" />
     <ClInclude Include="ConsoleViewer.h" />
     <ClInclude Include="ECS\ColliderComponent.h" />
+    <ClInclude Include="ECS\CombatComponent.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Components.h" />
     <ClInclude Include="ECS\ECS.h" />
@@ -178,6 +180,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemsList.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Spell.h" />
     <ClInclude Include="Structures\Collection.h" />
     <ClInclude Include="Structures\FileManager.h" />

@@ -12,7 +12,6 @@ class BattleView : public ConsoleViewer
 public:
 
 	static BattleView* getInstance();
-	static BattleView* createInstance(int width, int height);
 
 	void print() override; // print everything
 	void print(const char* text) override; // print specific text

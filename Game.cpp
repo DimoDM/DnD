@@ -20,11 +20,14 @@ void Game::init()
 	player.addComponent<SpriteComponent>();
 	player.addComponent<InventoryComponent>();
 	player.addComponent<StatsComponent>();
+	player.addComponent<CombatComponent>();
 	player.addGroup(groupPlayer);
 	
 	Entity& monster(manager.addEntity());
 	monster.addComponent<MonsterAIComponent>(manager.getGroup(groupPlayer));
 	monster.addComponent<SpriteComponent>('M');
+	monster.addComponent<CombatComponent>();
+	monster.addComponent<StatsComponent>();
 	monster.addGroup(groupEnemy);
 
 	battleSys = new BattleSystem(manager.getGroup(groupPlayer), manager.getGroup(groupEnemy));

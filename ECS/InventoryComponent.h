@@ -4,6 +4,7 @@
 #include"../ItemsList.h"
 #include"../Structures/Optional.h"
 #include"../Structures/String.h"
+
 class InventoryComponent : public Component
 {
 
@@ -26,15 +27,17 @@ public:
 
 	}
 	void draw() override {
-		GameView::getInstance()->println("Inventory: ");
-		if (weapon.containsData()) {
-			GameView::getInstance()->println(weapon.getData().itemToString().c_str());
-		}
-		if (spell.containsData()) {
-			GameView::getInstance()->println(spell.getData().itemToString().c_str());
-		}
-		if (armor.containsData()) {
-			GameView::getInstance()->println(armor.getData().itemToString().c_str());
+		if (entity->hasGroup(0)) {
+			GameView::getInstance()->println("Inventory: ");
+			if (weapon.containsData()) {
+				GameView::getInstance()->println(weapon.getData().itemToString().c_str());
+			}
+			if (spell.containsData()) {
+				GameView::getInstance()->println(spell.getData().itemToString().c_str());
+			}
+			if (armor.containsData()) {
+				GameView::getInstance()->println(armor.getData().itemToString().c_str());
+			}
 		}
 	}
 

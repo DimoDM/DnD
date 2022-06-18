@@ -1,5 +1,6 @@
 #pragma once
 #include"ECS.h"
+#include"Components.h"
 #include"../Menu.h"
 #include"../generateFreeVector2D.h"
 #include"../BattleView.h"
@@ -7,8 +8,8 @@
 class CombatComponent : public Component
 {
 
-	InventoryComponent* inventory;
-	StatsComponent* stats;
+	InventoryComponent* inventory = nullptr;
+	StatsComponent* stats = nullptr;
 	int dmg = 0;
 
 	const int rollDice() const {
@@ -33,8 +34,8 @@ public:
 
 		if (options.getSize() > 1) {
 			int attack;
-			if (entity->hasGroup(Game::groupPlayer)) {
-				Menu menu("Choose item for the attack", options);
+			if (entity->hasGroup(0)) {
+				Menu menu("Choose item for the attack", options, BattleView::getInstance());
 				attack = menu.select();
 			}
 			else attack = Random::getRandomNum(0, 1);
