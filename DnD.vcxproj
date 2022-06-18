@@ -166,7 +166,6 @@
     <ClInclude Include="ECS\TestComponent.h" />
     <ClInclude Include="ECS\TileComponent.h" />
     <ClInclude Include="ECS\TransformComponent.h" />
-    <ClInclude Include="ECS\Vector2D.h" />
     <ClInclude Include="Empty.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="generateFreeVector2D.h" />

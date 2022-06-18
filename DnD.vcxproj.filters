@@ -110,9 +110,6 @@
     <ClInclude Include="ECS\KeyboardComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ECS\Vector2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Structures\Vector2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>

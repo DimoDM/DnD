@@ -37,25 +37,26 @@ class MonsterAIComponent : public Component
 	}
 
 
-	const Vector2D newVel(const Vector2D& monsterPos, const Vector2D& playerPos) const {
-		int distance = MAXDISTANCE;
+	const Vector2D newVel(const Vector2D& monsterPos, const Vector2D& playerPos, int distance) const {
 		int disToPlayer[4] = { distance };
 		Vector2D vel[4];
 		int index = 0;
-		vel[0] = { monsterPos.x + 1, monsterPos.y };
-		vel[1] = { monsterPos.x - 1, monsterPos.y };
-		vel[2] = { monsterPos.x, monsterPos.y + 1 };
-		vel[3] = { monsterPos.x, monsterPos.y - 1 };
+		vel[0] = { 1, 0 };
+		vel[1] = { - 1, 0 };
+		vel[2] = { 0, 1 };
+		vel[3] = { 0, - 1 };
+		Vector2D mapCoordinates;
 
 		for (int i = 0; i < 4; i++) {
-			disToPlayer[i] = getDistanceToPlayer(vel[i], playerPos);
-			if (distance > disToPlayer[i]) {
+			mapCoordinates = { vel[i].x + monsterPos.x, vel[i].y + monsterPos.y };
+			disToPlayer[i] = getDistanceToPlayer(mapCoordinates, playerPos);
+			if (distance > disToPlayer[i] && ConsoleViewer::getInstance()->getElementFromGameMap(mapCoordinates.x, mapCoordinates.y) != '#') {
 				distance = disToPlayer[i];
 				index = i;
 			}
 		}
 
-		return vel[index].Subtract(monsterPos);
+		return vel[index];
 
 	}
 
@@ -83,7 +84,8 @@ public:
 	void update() override {
 		const Vector2D MonsterPos = transform->getPos();
 		const Vector2D PlayerPos = players->getElementByIndex(getIndexOfTheClosestPlayer())->getComponent<TransformComponent>().getPos();
-		const Vector2D newVelocity = newVel(MonsterPos, PlayerPos);
+		const int distanceToPlayer = getDistanceToPlayer(MonsterPos, PlayerPos);
+		const Vector2D newVelocity = newVel(MonsterPos, PlayerPos, distanceToPlayer);
 		transform->setVel(newVelocity.x, newVelocity.y);
 
 	}
