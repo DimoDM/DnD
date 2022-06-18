@@ -24,11 +24,11 @@ class Entity
 	Manager& manager; // make communication with manager possible for both sides // used for grouping entities;
 	Collection<Component> componentList; // list for components
 	bool groupBitSet[32] = { false }; // make possible to group entities
-
+	bool isActive = false;
 public:
 
 	//Entity() = default;
-	Entity(Manager& m) : manager(m) {}
+	Entity(Manager& m) : manager(m) { isActive = true; }
 
 	void update(); // call update func of components
 	void draw(); // call draw func of components
@@ -37,6 +37,8 @@ public:
 
 	bool hasGroup(std::size_t idOfGroup); // check if entity is in group
 
+	const bool getIsActive() const;
+	void setIsActive(bool value);
 	//source for parameter packs:
 	//https://en.cppreference.com/w/cpp/language/parameter_pack
 	template<typename T, typename... TArgs>

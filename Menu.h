@@ -18,6 +18,7 @@ class Menu
 	}
 
 	void printMenu(int state) {
+		viewer->println(title.c_str());
 		for (int i = 0; i < options.getSize(); i++) {
 			viewer->print(i == state ? "> " : "  ");
 			viewer->println(options[i].c_str());

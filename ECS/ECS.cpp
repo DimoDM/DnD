@@ -26,18 +26,28 @@ bool Entity::hasGroup(std::size_t idOfGroup) {
 	return groupBitSet[idOfGroup];
 }
 
+const bool Entity::getIsActive() const
+{
+	return isActive;
+}
+
+void Entity::setIsActive(bool value)
+{
+	isActive = value;
+}
+
 //Functions of manager
 ////////////////////////////////////////////////////////////////
 
 void Manager::update() {  // update all entities
 	for (int i = 0; i < entities.getSize(); i++) {
-		entities[i].update();
+		if(entities[i].getIsActive()) entities[i].update();
 	}
 }
 
 void Manager::draw() { // draw all entites
 	for (int i = 0; i < entities.getSize(); i++) {
-		entities[i].draw();
+		if (entities[i].getIsActive()) entities[i].draw();
 	}
 }
 

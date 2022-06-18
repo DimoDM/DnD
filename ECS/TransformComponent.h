@@ -50,4 +50,9 @@ public:
 		if (x < -1 || x > 1 || y < -1 || y > 1) throw new std::exception("invalid move");
 		vel = { x, y };
 	}
+
+	void setPos(int x, int y) {
+		if (x < 0 || x > GameView::getInstance()->getMaxWidth() || y < 0 || y > GameView::getInstance()->getMaxHeight()) throw new std::exception("invalid move");
+		pos = { x, y };
+	}
 };

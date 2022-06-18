@@ -21,6 +21,8 @@ public:
 	T& getElement(size_t type) const; // get element by type. Use only for objects that have variable 'type' in them!!!
 	T& operator[](size_t index);
 	T* getElementByIndex(size_t index);
+	void pop_id(size_t index);
+	void deleteElement(T& element);
 	const bool hasComponent(size_t type) const; // use only for Component objects or that which have variable 'type' in them!
 
 	const size_t getSize() const; // return number of objects in collection
@@ -131,6 +133,24 @@ inline T* Collection<T>::getElementByIndex(size_t index)
 {
 	if (index < 0 || index >= size) throw new std::exception("out of bounds");
 	return static_cast<T*>(components[index]);
+}
+
+template<typename T>
+void Collection<T>::pop_id(size_t index)
+{
+	components[index] = components[size - 1];
+	delete components[size - 1];
+}
+
+template<typename T>
+void Collection<T>::deleteElement(T& element)
+{
+	for (int i = 0; i < size; i++) {
+		if (&*components[i] == &element) {
+			pop_id(i);
+			return;
+		}
+	}
 }
 
 

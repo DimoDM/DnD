@@ -25,7 +25,8 @@ public:
 
 	void init() override {}
 
-	void update() override {}
+	void update() override {
+	}
 
 	void draw() override {
 		if (entity->hasGroup(0)) {
@@ -60,5 +61,9 @@ public:
 
 	void takeDamage(int value) {
 		health -= value;
+		if (health <= 0) {
+			entity->getComponent<TransformComponent>().setPos(0, 0);
+			entity->setIsActive(false);
+		}
 	}
 };

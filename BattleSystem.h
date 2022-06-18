@@ -50,18 +50,24 @@ public:
 private:
 	void update() {
 		if (playerMove) {
+			BattleView::getInstance()->println("Player's turn");
 			player->getComponent<CombatComponent>().attack();
 			monster->getComponent<StatsComponent>().takeDamage(player->getComponent<CombatComponent>().getDmgFromLastAttack());
+			BattleView::getInstance()->print("Monster's health: ");
+			BattleView::getInstance()->println(String(monster->getComponent<StatsComponent>().getHealth()).c_str());
 		}
 		else {
+			BattleView::getInstance()->println("Monster's turn");
 			monster->getComponent<CombatComponent>().attack();
-			player->getComponent<StatsComponent>().takeDamage(player->getComponent<CombatComponent>().getDmgFromLastAttack());
-			system("pause");
+			player->getComponent<StatsComponent>().takeDamage(monster->getComponent<CombatComponent>().getDmgFromLastAttack());
+			BattleView::getInstance()->print("Player's health: ");
+			BattleView::getInstance()->println(String(player->getComponent<StatsComponent>().getHealth()).c_str());
 		}
 		playerMove = !playerMove;
 	}
 
 	void draw() {
 		BattleView::getInstance()->print();
+		system("pause");
 	}
 };
