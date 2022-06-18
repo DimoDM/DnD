@@ -32,7 +32,7 @@ void Game::init()
 
 void Game::update()
 {
-	if (battleSys->listenForBattle()) system("pause");
+	battleSys->battle();
 	manager.update();
 }
 
