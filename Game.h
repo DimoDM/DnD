@@ -18,7 +18,7 @@ public:
 	};
 
 	enum GameState {
-		statePlay,
+		statePlay = 0,
 		stateBattle
 	} gameState = statePlay;
 

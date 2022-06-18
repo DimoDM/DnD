@@ -1,5 +1,5 @@
 #include"Game.h"
-#include"ConsoleViewer.h"
+#include"GameView.h"
 #include"Map.h"
 #include"ECS/Components.h"
 
@@ -10,7 +10,7 @@ Game::Game()
 
 void Game::init()
 {
-	ConsoleViewer::createInstance(10, 10);
+	GameView::createInstance(10, 10);
 	Map map(manager);
 	map.loadMap("assets/maze10x10.txt");
 
@@ -39,7 +39,7 @@ void Game::update()
 void Game::draw()
 {
 	manager.draw();
-	ConsoleViewer::getInstance()->print();
+	GameView::getInstance()->print();
 }
 
 Game::~Game()

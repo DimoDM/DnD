@@ -1,7 +1,7 @@
 #include "TextureManager.h"
-#include "ConsoleViewer.h"
+#include "GameView.h"
 
 void TextureManager::LoadTexture(const char texture, int xPos, int yPos)
 {
-	ConsoleViewer::getInstance()->loadGameTexture(texture, xPos, yPos);
+	GameView::getInstance()->loadGameTexture(texture, xPos, yPos);
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include"ConsoleViewer.h"
+#include"GameView.h"
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
@@ -14,12 +14,12 @@ public:
 	}
 
 	static Vector2D generateRandomCoordinates() {
-		return { getRandomNum(1, ConsoleViewer::getInstance()->getMaxWidth() - 1), getRandomNum(1, ConsoleViewer::getInstance()->getMaxHeight() - 1) };
+		return { getRandomNum(1, GameView::getInstance()->getWidth() - 1), getRandomNum(1, GameView::getInstance()->getHeight() - 1) };
 	}
 
 	static Vector2D generateValidCoordinates() {
 		Vector2D c = generateRandomCoordinates();
-		while (ConsoleViewer::getInstance()->getElementFromGameMap(c.x, c.y) != '.') {
+		while (GameView::getInstance()->getElementFromGameMap(c.x, c.y) != '.') {
 			c = generateRandomCoordinates();
 		}
 		return c;

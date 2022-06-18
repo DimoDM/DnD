@@ -142,6 +142,7 @@
     <ClCompile Include="ConsoleViewer.cpp" />
     <ClCompile Include="ECS\ECS.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameView.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Structures\FileManager.cpp" />
@@ -151,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Armor.h" />
+    <ClInclude Include="BattleView.h" />
     <ClInclude Include="ConsoleViewer.h" />
     <ClInclude Include="ECS\ColliderComponent.h" />
     <ClInclude Include="ECS\Component.h" />
@@ -169,6 +171,7 @@
     <ClInclude Include="ECS\TransformComponent.h" />
     <ClInclude Include="Empty.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameView.h" />
     <ClInclude Include="generateFreeVector2D.h" />
     <ClInclude Include="BattleSystem.h" />
     <ClInclude Include="GetDistance.h" />

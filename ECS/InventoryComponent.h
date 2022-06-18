@@ -26,15 +26,15 @@ public:
 
 	}
 	void draw() override {
-		ConsoleViewer::getInstance()->println("Inventory: ");
+		GameView::getInstance()->println("Inventory: ");
 		if (weapon.containsData()) {
-			ConsoleViewer::getInstance()->println(weapon.getData().itemToString().c_str());
+			GameView::getInstance()->println(weapon.getData().itemToString().c_str());
 		}
 		if (spell.containsData()) {
-			ConsoleViewer::getInstance()->println(spell.getData().itemToString().c_str());
+			GameView::getInstance()->println(spell.getData().itemToString().c_str());
 		}
 		if (armor.containsData()) {
-			ConsoleViewer::getInstance()->println(armor.getData().itemToString().c_str());
+			GameView::getInstance()->println(armor.getData().itemToString().c_str());
 		}
 	}
 

@@ -1,6 +1,6 @@
 #pragma once
 #include"ECS.h"
-#include"../ConsoleViewer.h"
+#include"../GameView.h"
 #include"../Structures/String.h"
 #include"../Game.h"
 
@@ -36,10 +36,10 @@ public:
 			m += mana;
 			String s("Strenght: ");
 			s += strenght;
-			ConsoleViewer::getInstance()->println("Stats: ");
-			ConsoleViewer::getInstance()->println(h.c_str());
-			ConsoleViewer::getInstance()->println(m.c_str());
-			ConsoleViewer::getInstance()->println(s.c_str());
+			GameView::getInstance()->println("Stats: ");
+			GameView::getInstance()->println(h.c_str());
+			GameView::getInstance()->println(m.c_str());
+			GameView::getInstance()->println(s.c_str());
 		}
 	}
 };

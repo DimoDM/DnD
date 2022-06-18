@@ -11,6 +11,7 @@ GameView::GameView() : ConsoleViewer() {
 GameView::GameView(int width, int height) : ConsoleViewer() {
 	this->width = width;
 	this->height = height;
+	initMap(width, height);
 }
 
 void GameView::initMap(int widht, int height)
@@ -44,6 +45,16 @@ const int GameView::getMaxWidth() const
 const int GameView::getMaxHeight() const
 {
 	return MAXHEIGHT;
+}
+
+const int GameView::getWidth() const
+{
+	return width;
+}
+
+const int GameView::getHeight() const
+{
+	return height;
 }
 
 void GameView::print()

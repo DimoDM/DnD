@@ -13,7 +13,7 @@ class MonsterAIComponent : public Component
 	bool isVisible = true;
 	Collection<Entity>* players;
 	TransformComponent* transform = nullptr;
-	const int MAXDISTANCE = ConsoleViewer::getInstance()->getMaxWidth() * 3;
+	const int MAXDISTANCE = GameView::getInstance()->getMaxWidth() * 3;
 
 	const int getIndexOfTheClosestPlayer() const {
 
@@ -44,7 +44,7 @@ class MonsterAIComponent : public Component
 		for (int i = 0; i < 4; i++) {
 			mapCoordinates = { vel[i].x + monsterPos.x, vel[i].y + monsterPos.y };
 			disToPlayer[i] = GetDistance::getDistance(mapCoordinates, playerPos);
-			if (distance > disToPlayer[i] && ConsoleViewer::getInstance()->getElementFromGameMap(mapCoordinates.x, mapCoordinates.y) != '#') {
+			if (distance > disToPlayer[i] && GameView::getInstance()->getElementFromGameMap(mapCoordinates.x, mapCoordinates.y) != '#') {
 				distance = disToPlayer[i];
 				index = i;
 			}

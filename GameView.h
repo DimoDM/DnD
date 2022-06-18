@@ -27,6 +27,8 @@ public:
 	const char getElementFromGameMap(int x, int y) const;
 	const int getMaxWidth() const;
 	const int getMaxHeight() const;
+	const int getWidth() const;
+	const int getHeight() const;
 
 	void print() override; // print everything
 	void print(const char* text) override; // print specific text

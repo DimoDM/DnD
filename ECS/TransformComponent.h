@@ -1,7 +1,7 @@
 #pragma once
 #include"ECS.h"
 #include"../Structures/Vector2D.h"
-#include"../ConsoleViewer.h"
+#include"../GameView.h"
 
 class TransformComponent : public Component
 {
@@ -25,9 +25,9 @@ public:
 	void update() override {
 		pos += vel;
 
-		if (ConsoleViewer::getInstance()->getElementFromGameMap(pos.x, pos.y) == '#'
-			|| pos.x >= ConsoleViewer::getInstance()->getMaxWidth()
-			|| pos.y >= ConsoleViewer::getInstance()->getMaxHeight()) {
+		if (GameView::getInstance()->getElementFromGameMap(pos.x, pos.y) == '#'
+			|| pos.x >= GameView::getInstance()->getMaxWidth()
+			|| pos.y >= GameView::getInstance()->getMaxHeight()) {
 			pos -= vel;
 		}
 	}
