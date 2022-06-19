@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="BattleView.cpp" />
     <ClCompile Include="ConsoleViewer.cpp" />
+    <ClCompile Include="Controllers\CreatePlayerController.cpp" />
     <ClCompile Include="ECS\ECS.cpp" />
     <ClCompile Include="ECS\SaveLoadComponent.cpp" />
     <ClCompile Include="Engine.cpp" />
