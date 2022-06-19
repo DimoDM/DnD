@@ -97,6 +97,6 @@ void GameController::loadPlayer(const char* playerFile, int& x, int& y, Optional
 	}
 
 	file.read((char*)&health, sizeof(int));
-	file.read((char*)&strenght, sizeof(int));
 	file.read((char*)&mana, sizeof(int));
+	file.read((char*)&strenght, sizeof(int));
 }

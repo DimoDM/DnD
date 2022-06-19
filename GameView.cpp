@@ -59,6 +59,7 @@ const int GameView::getHeight() const
 
 void GameView::print()
 {
+	system("CLS");
 	printGameTextures();
 	ConsoleViewer::print();
 }

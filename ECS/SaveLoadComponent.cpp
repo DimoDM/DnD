@@ -56,8 +56,8 @@ void SaveLoadComponent::saveStats(std::ofstream& stream)
 	int mana = stats->getMana();
 
 	stream.write((const char*)&health, sizeof(int));
-	stream.write((const char*)&strenght, sizeof(int));
 	stream.write((const char*)&mana, sizeof(int));
+	stream.write((const char*)&strenght, sizeof(int));
 }
 
 void SaveLoadComponent::saveName(std::ofstream& stream)

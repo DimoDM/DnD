@@ -7,6 +7,7 @@ BattleView::BattleView() : ConsoleViewer() {
 
 void BattleView::print()
 {
+	system("CLS");
 	ConsoleViewer::print();
 }
 
