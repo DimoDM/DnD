@@ -18,9 +18,16 @@ public:
 		type = 6;
 	}
 
+	InventoryComponent(Optional<Weapon> w, Optional<Armor> a, Optional<Spell> s) : Component() {
+		type = 6;
+		if (w.containsData()) weapon.setData(w.getData());
+		if (a.containsData()) armor.setData(a.getData());
+		if (s.containsData()) spell.setData(s.getData());
+	}
+
 	void init() override {
-		weapon.setData(*static_cast<Weapon*>(items[1]));
-		spell.setData(*static_cast<Spell*>(items[3]));
+		if(!weapon.containsData()) weapon.setData(*static_cast<Weapon*>(items[1]));
+		if(!spell.containsData()) spell.setData(*static_cast<Spell*>(items[3]));
 	}
 
 	void update() override {
@@ -39,6 +46,18 @@ public:
 				GameView::getInstance()->println(armor.getData().itemToString().c_str());
 			}
 		}
+	}
+
+	const Optional<Weapon>& getWeapon() const {
+		return weapon;
+	}
+
+	const Optional<Armor>& getArmor() const {
+		return armor;
+	}
+
+	const Optional<Spell>& getSpell() const {
+		return spell;
 	}
 
 	const int getSpellDmg() const {

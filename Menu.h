@@ -10,29 +10,36 @@ class Menu
 	Vector<String> options;
 	ConsoleViewer* viewer;
 
-	void substractOne(int& start) {
+	void substractOne(int& start) const {
 		start = start - 1 < 0 ? options.getSize() - 1 : start - 1;
 	}
-	void addOne(int& start) {
+	void addOne(int& start) const {
 		start = start + 1 < options.getSize() ? start + 1 : 0;
 	}
 
-	void printMenu(int state) {
+	void printMenu(int state) const {
 		viewer->println(title.c_str());
 		for (int i = 0; i < options.getSize(); i++) {
 			viewer->print(i == state ? "> " : "  ");
-			viewer->println(options[i].c_str());
+			viewer->println(options.getArray()[i].c_str());
 		}
+		system("CLS");
 		viewer->print();
 	}
 
-	int select(int start) {
+	const int select(int start) const {
 		printMenu(start);
 		char input = _getch();
 		switch (input)
 		{
-		case 'W': substractOne(start); return select(start);
-		case 'S': addOne(start); return select(start);
+		case 'W':
+		case 'w':
+		case 72:
+			substractOne(start); return select(start);
+		case 'S':
+		case 's':
+		case 80:
+				addOne(start); return select(start);
 		case 13: return start;
 		default: return select(start);
 		}
@@ -55,7 +62,7 @@ public:
 	}
 
 
-	int select() {
+	const int select() const {
 		return select(0);
 	}
 

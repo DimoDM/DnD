@@ -23,6 +23,7 @@ public:
 	void setData(const T& el);
 	void clear();
 
+	~Optional();
 
 };
 
@@ -77,6 +78,12 @@ void Optional<T>::clear()
 {
 	free();
 	data = nullptr;
+}
+
+template<typename T>
+Optional<T>::~Optional()
+{
+	free();
 }
 
 

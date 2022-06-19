@@ -9,3 +9,5 @@
 #include"MonsterAIComponent.h"
 #include"StatsComponent.h"
 #include"CombatComponent.h"
+#include"PlayerComponent.h"
+#include"SaveLoadComponent.h"

@@ -20,7 +20,7 @@ public:
 	String name;
 	int type;
 
-	Item(const int i, const char* n, const int t) {
+	Item(const int i, const String& n, const int t) {
 		id = i;
 		type = t;
 		name = n;
@@ -35,6 +35,22 @@ public:
 		item += ": ";
 		item += name;
 		return item;
+	}
+
+	virtual void save(std::ofstream& stream) {
+		stream.write((const char*)&id, sizeof(int));
+		size_t lenght = strlen(name.c_str());
+		stream.write((const char*)&lenght, sizeof(size_t));
+		stream.write(name.c_str(), lenght);
+	}
+	virtual void load(std::ifstream& stream) {
+		size_t lenght;
+		char name[100];
+		stream.read((char*)&this->id, sizeof(int));
+		stream.read((char*)&lenght, sizeof(size_t));
+		stream.read((char*)&name, lenght);
+		name[lenght] = '\0';
+		this->name = name;
 	}
 
 	virtual ~Item() {}

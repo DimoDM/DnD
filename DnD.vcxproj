@@ -141,7 +141,11 @@
   <ItemGroup>
     <ClCompile Include="BattleView.cpp" />
     <ClCompile Include="ConsoleViewer.cpp" />
+    <ClCompile Include="Controllers\CreatePlayerController.cpp" />
+    <ClCompile Include="Controllers\GameController.cpp" />
     <ClCompile Include="ECS\ECS.cpp" />
+    <ClCompile Include="ECS\SaveLoadComponent.cpp" />
+    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameView.cpp" />
     <ClCompile Include="main.cpp" />
@@ -155,6 +159,8 @@
     <ClInclude Include="Armor.h" />
     <ClInclude Include="BattleView.h" />
     <ClInclude Include="ConsoleViewer.h" />
+    <ClInclude Include="Controllers\CreatePlayerController.h" />
+    <ClInclude Include="Controllers\GameController.h" />
     <ClInclude Include="ECS\ColliderComponent.h" />
     <ClInclude Include="ECS\CombatComponent.h" />
     <ClInclude Include="ECS\Component.h" />
@@ -165,6 +171,8 @@
     <ClInclude Include="ECS\KeyboardComponent.h" />
     <ClInclude Include="ECS\MonsterAIComponent.h" />
     <ClInclude Include="ECS\MonsterComponent.h" />
+    <ClInclude Include="ECS\PlayerComponent.h" />
+    <ClInclude Include="ECS\SaveLoadComponent.h" />
     <ClInclude Include="ECS\SpriteComponent.h" />
     <ClInclude Include="ECS\StatsComponent.h" />
     <ClInclude Include="ECS\TestCMP.h" />
@@ -172,7 +180,9 @@
     <ClInclude Include="ECS\TileComponent.h" />
     <ClInclude Include="ECS\TransformComponent.h" />
     <ClInclude Include="Empty.h" />
+    <ClInclude Include="Engine.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameStages.h" />
     <ClInclude Include="GameView.h" />
     <ClInclude Include="generateFreeVector2D.h" />
     <ClInclude Include="BattleSystem.h" />
@@ -193,6 +203,9 @@
     <ClInclude Include="Structures\Vector2D.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Weapon.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\Pesho.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
