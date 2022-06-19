@@ -22,9 +22,9 @@ void GameController::startGame()
 	String name;
 
 	loadPlayer(playerName.c_str(), x, y, w, a, s, health, mana, strenght, name);
-	game->init(x, y, w, a, s, health, mana, strenght, name.c_str(), mapFile.c_str());
+	game.init(x, y, w, a, s, health, mana, strenght, name.c_str(), mapFile.c_str());
 	while (true) {
-		game->update();
+		game.update();
 	}
 
 }
@@ -43,7 +43,7 @@ const String GameController::getFileNameFromPath(fs::path path){
 const String& GameController::selectOption(const char* directory, const char* title)
 {
 	Vector<String> options;
-	for (const auto& entry : fs::directory_iterator("./data/"))
+	for (const auto& entry : fs::directory_iterator(directory))
 	{
 		options.push_back(getFileNameFromPath(entry.path()));
 	}
@@ -78,21 +78,46 @@ void GameController::loadPlayer(const char* playerFile, int& x, int& y, Optional
 	bool containsData;
 	file.read((char*)&containsData, sizeof(bool));
 	if (containsData) {
-		Weapon weapon = Weapon(w.getData());
-		file.read((char*)&weapon, sizeof(Weapon));
-		w.setData(weapon);
+		int dmg;
+		size_t lenght;
+		char name[100];
+		int id;
+		file.read((char*)&id, sizeof(int));
+		file.read((char*)&lenght, sizeof(size_t));
+		file.read((char*)&name, lenght);
+		name[lenght] = '\0';
+		file.read((char*)&dmg, sizeof(int));
+		w.setData(Weapon(id, name, dmg));
 	}
 	file.read((char*)&containsData, sizeof(bool));
 	if (containsData) {
-		Armor armor = Armor(a.getData());
-		file.read((char*)&armor, sizeof(Weapon));
-		a.setData(armor);
+		int defence;
+		size_t lenght;
+		char name[100];
+		int type;
+		int id;
+		file.read((char*)&id, sizeof(int));
+		file.read((char*)&lenght, sizeof(size_t));
+		file.read((char*)&name, lenght);
+		name[lenght] = '\0';
+		file.read((char*)&defence, sizeof(int));
+		a.setData(Armor(id, name, defence));
 	}
 	file.read((char*)&containsData, sizeof(bool));
 	if (containsData) {
-		Spell spell = Spell(s.getData());
-		file.read((char*)&spell, sizeof(Weapon));
-		s.setData(spell);
+		int dmg;
+		int mana;
+		size_t lenght;
+		char name[100];
+		int type;
+		int id;
+		file.read((char*)&id, sizeof(int));
+		file.read((char*)&lenght, sizeof(size_t));
+		file.read((char*)&name, lenght);
+		name[lenght] = '\0';
+		file.read((char*)&dmg, sizeof(int));
+		file.read((char*)&mana, sizeof(int));
+		s.setData(Spell(id, name, dmg, mana));
 	}
 
 	file.read((char*)&health, sizeof(int));

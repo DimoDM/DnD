@@ -9,6 +9,10 @@ public:
 		dmg = d;
 	}
 
+	Weapon(const Weapon& w) : Item(w.id, w.name ,w.type) {
+		dmg = w.dmg;
+	}
+
 	Item* clone() const override {
 		Item* newObj = new Weapon(*this);
 		return newObj;

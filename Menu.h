@@ -32,8 +32,14 @@ class Menu
 		char input = _getch();
 		switch (input)
 		{
-		case 'W': substractOne(start); return select(start);
-		case 'S': addOne(start); return select(start);
+		case 'W':
+		case 'w':
+		case 72:
+			substractOne(start); return select(start);
+		case 'S':
+		case 's':
+		case 80:
+				addOne(start); return select(start);
 		case 13: return start;
 		default: return select(start);
 		}

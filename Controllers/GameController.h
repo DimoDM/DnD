@@ -27,7 +27,7 @@ class GameController {
 	//const Menu* raceMenu = new Menu("SelectRace: ", raceOptions, 3, ConsoleViewer::getInstance());
 
 	ConsoleViewer* viewer = nullptr;
-	Game* game = nullptr;
+	Game game;
 
 	//void loadPlayerFromFile();
 	const String getFileNameFromPath(fs::path path);

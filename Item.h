@@ -20,7 +20,7 @@ public:
 	String name;
 	int type;
 
-	Item(const int i, const char* n, const int t) {
+	Item(const int i, const String& n, const int t) {
 		id = i;
 		type = t;
 		name = n;
