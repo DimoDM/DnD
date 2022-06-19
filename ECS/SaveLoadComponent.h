@@ -15,9 +15,6 @@ class SaveLoadComponent : public Component
 	Vector<const char*> playerFilesNames;
 
 	void savePosition(std::ofstream& stream);
-	void saveWeapon(std::ofstream& stream);
-	void saveArmor(std::ofstream& stream);
-	void saveSpell(std::ofstream& stream);
 	void saveInventory(std::ofstream& stream);
 	void saveStats(std::ofstream& stream);
 	void saveName(std::ofstream& stream);

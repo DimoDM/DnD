@@ -24,6 +24,7 @@ void GameController::startGame()
 	loadPlayer(playerName.c_str(), x, y, w, a, s, health, mana, strenght, name);
 	game.init(x, y, w, a, s, health, mana, strenght, name.c_str(), mapFile.c_str());
 	while (true) {
+		game.draw();
 		game.update();
 	}
 
@@ -78,46 +79,21 @@ void GameController::loadPlayer(const char* playerFile, int& x, int& y, Optional
 	bool containsData;
 	file.read((char*)&containsData, sizeof(bool));
 	if (containsData) {
-		int dmg;
-		size_t lenght;
-		char name[100];
-		int id;
-		file.read((char*)&id, sizeof(int));
-		file.read((char*)&lenght, sizeof(size_t));
-		file.read((char*)&name, lenght);
-		name[lenght] = '\0';
-		file.read((char*)&dmg, sizeof(int));
-		w.setData(Weapon(id, name, dmg));
+		Weapon weapon;
+		weapon.load(file);
+		w.setData(weapon);
 	}
 	file.read((char*)&containsData, sizeof(bool));
 	if (containsData) {
-		int defence;
-		size_t lenght;
-		char name[100];
-		int type;
-		int id;
-		file.read((char*)&id, sizeof(int));
-		file.read((char*)&lenght, sizeof(size_t));
-		file.read((char*)&name, lenght);
-		name[lenght] = '\0';
-		file.read((char*)&defence, sizeof(int));
-		a.setData(Armor(id, name, defence));
+		Armor armor;
+		armor.load(file);
+		a.setData(armor);
 	}
 	file.read((char*)&containsData, sizeof(bool));
 	if (containsData) {
-		int dmg;
-		int mana;
-		size_t lenght;
-		char name[100];
-		int type;
-		int id;
-		file.read((char*)&id, sizeof(int));
-		file.read((char*)&lenght, sizeof(size_t));
-		file.read((char*)&name, lenght);
-		name[lenght] = '\0';
-		file.read((char*)&dmg, sizeof(int));
-		file.read((char*)&mana, sizeof(int));
-		s.setData(Spell(id, name, dmg, mana));
+		Spell spell;
+		spell.load(file);
+		s.setData(spell);
 	}
 
 	file.read((char*)&health, sizeof(int));

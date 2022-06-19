@@ -11,41 +11,6 @@ void SaveLoadComponent::savePosition(std::ofstream& stream)
 	stream.write((const char*)&y, sizeof(int));
 }
 
-void SaveLoadComponent::saveWeapon(std::ofstream& stream)
-{
-	Optional<Weapon> w = inventory->getWeapon();
-	stream.write((const char*)&w.getData().id, sizeof(int));
-	size_t lenght = strlen(w.getData().name.c_str());
-	stream.write((const char*)&lenght, sizeof(size_t));
-	stream.write(w.getData().name.c_str(), lenght);
-	int damage = w.getData().dmg;
-	stream.write((const char*)&damage, sizeof(int));
-}
-
-void SaveLoadComponent::saveArmor(std::ofstream& stream)
-{
-	Optional<Armor> w = inventory->getArmor();
-	stream.write((const char*)&w.getData().id, sizeof(int));
-	size_t lenght = strlen(w.getData().name.c_str());
-	stream.write((const char*)&lenght, sizeof(size_t));
-	stream.write(w.getData().name.c_str(), lenght);
-	int defence = w.getData().defence;
-	stream.write((const char*)&defence, sizeof(int));
-}
-
-void SaveLoadComponent::saveSpell(std::ofstream& stream)
-{
-	Optional<Spell> w = inventory->getSpell();
-	stream.write((const char*)&w.getData().id, sizeof(int));
-	size_t lenght = strlen(w.getData().name.c_str());
-	stream.write((const char*)&lenght, sizeof(size_t));
-	stream.write(w.getData().name.c_str(), lenght);
-	int damage = w.getData().dmg;
-	int mana = w.getData().cost;
-	stream.write((const char*)&damage, sizeof(int));
-	stream.write((const char*)&mana, sizeof(int));
-}
-
 void SaveLoadComponent::saveInventory(std::ofstream& stream)
 {
 	Optional<Weapon> w = inventory->getWeapon();
@@ -55,7 +20,8 @@ void SaveLoadComponent::saveInventory(std::ofstream& stream)
 	if (w.containsData()) {
 		containsData = true;
 		stream.write((const char*)&containsData, sizeof(bool));
-		saveWeapon(stream);
+		Weapon weapon(w.getData());
+		weapon.save(stream);
 	}
 	else {
 		containsData = false;
@@ -64,7 +30,8 @@ void SaveLoadComponent::saveInventory(std::ofstream& stream)
 	if (a.containsData()) {
 		containsData = true;
 		stream.write((const char*)&containsData, sizeof(bool));
-		saveArmor(stream);
+		Armor armor(a.getData());
+		armor.save(stream);
 	}
 	else {
 		containsData = false;
@@ -73,7 +40,8 @@ void SaveLoadComponent::saveInventory(std::ofstream& stream)
 	if (s.containsData()) {
 		containsData = true;
 		stream.write((const char*)&containsData, sizeof(bool));
-		saveSpell(stream);
+		Spell spell(s.getData());
+		spell.save(stream);
 	}
 	else {
 		containsData = false;
