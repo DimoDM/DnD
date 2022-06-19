@@ -28,10 +28,10 @@ class GameController {
 
 	//void loadPlayerFromFile();
 	const String getFileNameFromPath(fs::path path);
-	const String& selectOption(const char* directory, const char* title);
+	const String& selectOption(const char* directory, const char* title, int maxLevels);
 	const String& selectPlayer();
-	const String& selectMap();
-	void loadPlayer(const char* playerFile, int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, int& level, int& xp, String& name);
+	const String& selectMap(int maxLevels);
+	void loadPlayer(const char* playerFile, int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, int& level, int& xp, int& completedLevels, String& name);
 	void playGame(const char* playerFile, const char* mapFile);
 
 public:

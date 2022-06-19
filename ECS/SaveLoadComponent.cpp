@@ -56,7 +56,9 @@ void SaveLoadComponent::saveStats(std::ofstream& stream)
 	int mana = stats->getMana();
 	int xp = stats->getXp();
 	int level = stats->getLevel();
+	int completedLevels = stats->getCompletedLevel();
 
+	stream.write((const char*)&completedLevels, sizeof(int));
 	stream.write((const char*)&level, sizeof(int));
 	stream.write((const char*)&xp, sizeof(int));
 	stream.write((const char*)&health, sizeof(int));

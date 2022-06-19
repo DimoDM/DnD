@@ -9,7 +9,7 @@ class Game
 public:
 
 	Game();
-	void init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Spell> s, int health, int mana, int strenght, int level, int xp, const char* name, const char* mapFile); // initialization state of game // load map, load player and ext.
+	void init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Spell> s, int health, int mana, int strenght, int level, int xp, int completedLevels, const char* name, const char* mapFile); // initialization state of game // load map, load player and ext.
 	//void init();
 	void update(); // do movement and logic of game
 	void draw(); // draw state of game when we see results from update state

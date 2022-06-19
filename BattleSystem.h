@@ -42,15 +42,17 @@ public:
 	int battle() {
 
 		if (listenForBattle()) {
+			int monsterDamage = 0;
 			while (player->getComponent<StatsComponent>().getHealth() > 0 && monster->getComponent<StatsComponent>().getHealth() > 0) {
 				//cout << "battle" << endl;
 				draw();
-				update();
+				monsterDamage += update();
 			}
 			if (player->getComponent<StatsComponent>().getHealth() <= 0) {
 				return -1;
 			}
 			else if (monster->getComponent<StatsComponent>().getHealth() <= 0) {
+				player->getComponent<StatsComponent>().addHealth(monsterDamage / 2);
 				player->getComponent<StatsComponent>().addXp(monster->getComponent<StatsComponent>().getLevel());
 			}
 		}
@@ -58,7 +60,8 @@ public:
 	}
 
 private:
-	void update() {
+	int update() {
+		int monsterDamage = 0;
 		if (playerMove) {
 			BattleView::getInstance()->println("Player's turn");
 			player->getComponent<CombatComponent>().attack();
@@ -69,11 +72,13 @@ private:
 		else {
 			BattleView::getInstance()->println("Monster's turn");
 			monster->getComponent<CombatComponent>().attack();
-			player->getComponent<StatsComponent>().takeDamage(monster->getComponent<CombatComponent>().getDmgFromLastAttack());
+			monsterDamage = monster->getComponent<CombatComponent>().getDmgFromLastAttack();
+			player->getComponent<StatsComponent>().takeDamage(monsterDamage);
 			BattleView::getInstance()->print("Player's health: ");
 			BattleView::getInstance()->println(String(player->getComponent<StatsComponent>().getHealth()).c_str());
 		}
 		playerMove = !playerMove;
+		return monsterDamage;
 	}
 
 	void draw() {

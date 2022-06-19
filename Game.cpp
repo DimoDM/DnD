@@ -8,7 +8,7 @@ Game::Game()
 {
 }
 
-void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Spell> s, int health, int mana, int strenght, int level, int xp, const char* name, const char* mapFile)
+void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Spell> s, int health, int mana, int strenght, int level, int xp, int completedLevels, const char* name, const char* mapFile)
 {
 	GameView::createInstance(10, 10);
 	Map map(manager);
@@ -19,7 +19,7 @@ void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Sp
 	player.addComponent<TransformComponent>(x, y);
 	player.addComponent<SpriteComponent>();
 	player.addComponent<InventoryComponent>(w, a, s);
-	player.addComponent<StatsComponent>(health, mana, strenght, level, xp);
+	player.addComponent<StatsComponent>(health, mana, strenght, level, xp, completedLevels);
 	player.addComponent<CombatComponent>();
 	player.addGroup(groupPlayer);
 

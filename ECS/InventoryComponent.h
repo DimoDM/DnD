@@ -70,6 +70,11 @@ public:
 		return 0;
 	}
 
+	const int getArmorDef() const {
+		if (armor.containsData()) return armor.getData().defence;
+		return 0;
+	}
+
 	const int getSpellCost() const {
 		if (spell.containsData()) return spell.getData().cost;
 		return 0;

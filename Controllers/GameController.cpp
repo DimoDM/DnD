@@ -12,8 +12,15 @@ void GameController::startGame()
 	String playerName = "./data/";
 	playerName += selectPlayer();
 	playerName += ".txt";
+
+	int completedLevels;
+	std::ifstream file;
+	FileManager::openFile(file, playerName.c_str(), ios::binary);
+	file.read((char*)&completedLevels, sizeof(int));
+	file.close();
+
 	String mapFile = "./assets/"; 
-	mapFile += selectMap();
+	mapFile += selectMap(completedLevels);
 	mapFile += ".txt";
 
 	playGame(playerName.c_str(), mapFile.c_str());
@@ -24,14 +31,15 @@ void GameController::playGame(const char* playerFile, const char* mapFile)
 {
 	{
 		Game game;
-		int x, y, health, mana, strenght, level, xp;
+		int x, y, health, mana, strenght, level, xp, completedLevels;
 		Optional<Weapon> w;
 		Optional<Armor> a;
 		Optional<Spell> s;
 		String name;
 
-		loadPlayer(playerFile, x, y, w, a, s, health, mana, strenght, level, xp, name);
-		game.init(x, y, w, a, s, health, mana, strenght, level, xp, name.c_str(), mapFile);
+
+		loadPlayer(playerFile, x, y, w, a, s, health, mana, strenght, level, xp, completedLevels, name);
+		game.init(x, y, w, a, s, health, mana, strenght, level, xp, completedLevels, name.c_str(), mapFile);
 		while (game.isRunning()) {
 			game.draw();
 			game.update();
@@ -55,12 +63,18 @@ const String GameController::getFileNameFromPath(fs::path path){
 	return c;
 }
 
-const String& GameController::selectOption(const char* directory, const char* title)
+const String& GameController::selectOption(const char* directory, const char* title, int maxLevels)
 {
 	Vector<String> options;
 	for (const auto& entry : fs::directory_iterator(directory))
 	{
-		options.push_back(getFileNameFromPath(entry.path()));
+		String fName(getFileNameFromPath(entry.path()));
+		if (fName.c_str()[0] >= '0' && fName.c_str()[0] <= '9') {
+			int fileLevel = fName.c_str()[0] - '0';
+			if (fileLevel <= maxLevels)
+				options.push_back(fName);
+		}
+		else options.push_back(fName);
 	}
 	Menu m(title, options, viewer);
 	int choice = m.select();
@@ -70,20 +84,21 @@ const String& GameController::selectOption(const char* directory, const char* ti
 
 const String& GameController::selectPlayer()
 {
-	return selectOption("./data/", "Select player: ");
+	return selectOption("./data/", "Select player: ", 100);
 }
 
-const String& GameController::selectMap()
+const String& GameController::selectMap(int maxLevels)
 {
-	return selectOption("./assets/", "SelectMap: ");
+	return selectOption("./assets/", "SelectMap: ", maxLevels);
 }
 
-void GameController::loadPlayer(const char* playerFile, int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, int& level, int& xp, String& name)
+void GameController::loadPlayer(const char* playerFile, int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, int& level, int& xp, int& completedLevels, String& name)
 {
 	std::ifstream file;
 	FileManager::openFile(file, playerFile, ios::binary);
 	size_t lenght;
 
+	file.read((char*)&completedLevels, sizeof(int));
 	file.read((char*)&level, sizeof(int));
 	file.read((char*)&xp, sizeof(int));
 	file.read((char*)&health, sizeof(int));
