@@ -14,6 +14,11 @@ class SaveLoadComponent : public Component
 
 	Vector<const char*> playerFilesNames;
 
+	void savePosition(std::ofstream& stream);
+	void saveInventory(std::ofstream& stream);
+	void saveStats(std::ofstream& stream);
+	void saveName(std::ofstream& stream);
+
 public:
 
 	SaveLoadComponent();
@@ -21,7 +26,6 @@ public:
 	void init() override;
 
 	void save();
-	void load();
 
 
 };

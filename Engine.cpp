@@ -12,7 +12,8 @@ void Engine::run()
 	{
 	case stageMainMenu: gameStage = (GameStage)mainMenu->select();
 		break;
-	case stageCreatePlayer: playerController.isValidName("Dimo");
+	case stageCreatePlayer: playerController->createPlayer();
+		gameStage = stageMainMenu;
 		break;
 	default:
 		break;
@@ -23,4 +24,5 @@ void Engine::run()
 Engine::~Engine()
 {
 	delete mainMenu;
+	delete playerController;
 }

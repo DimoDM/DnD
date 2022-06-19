@@ -8,7 +8,7 @@ class Engine
 	const char *mainMenuOptions[3] = { "start game", "create player", "exit" };
 	const Menu* mainMenu = new Menu("Main menu", mainMenuOptions , 3, ConsoleViewer::getInstance());
 
-	CreatePlayerController playerController;
+	CreatePlayerController* playerController = new CreatePlayerController(ConsoleViewer::getInstance());
 
 public:
 

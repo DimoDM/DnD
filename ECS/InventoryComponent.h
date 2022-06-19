@@ -41,6 +41,18 @@ public:
 		}
 	}
 
+	const Optional<Weapon>& getWeapon() const {
+		return weapon;
+	}
+
+	const Optional<Armor>& getArmor() const {
+		return armor;
+	}
+
+	const Optional<Spell>& getSpell() const {
+		return spell;
+	}
+
 	const int getSpellDmg() const {
 		if (spell.containsData()) return spell.getData().dmg;
 		return 0;
