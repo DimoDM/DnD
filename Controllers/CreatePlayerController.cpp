@@ -19,9 +19,9 @@ void CreatePlayerController::createPlayer()
     int race = raceMenu->select();
     switch (race)
     {
-    case 0: player->addComponent<StatsComponent>(50, 20, 30); break;
-    case 1: player->addComponent<StatsComponent>(50, 40, 10); break;
-    case 2: player->addComponent<StatsComponent>(50, 10, 40); break;
+    case 0: player->addComponent<StatsComponent>(50, 20, 30, 1, 0); break;
+    case 1: player->addComponent<StatsComponent>(50, 40, 10, 1, 0); break;
+    case 2: player->addComponent<StatsComponent>(50, 10, 40, 1, 0); break;
     default: player->addComponent<StatsComponent>(); break;
     }
 

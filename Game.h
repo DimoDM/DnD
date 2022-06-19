@@ -9,7 +9,7 @@ class Game
 public:
 
 	Game();
-	void init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Spell> s, int health, int mana, int strenght, const char* name, const char* mapFile); // initialization state of game // load map, load player and ext.
+	void init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Spell> s, int health, int mana, int strenght, int level, int xp, const char* name, const char* mapFile); // initialization state of game // load map, load player and ext.
 	//void init();
 	void update(); // do movement and logic of game
 	void draw(); // draw state of game when we see results from update state
@@ -25,10 +25,14 @@ public:
 		stateBattle
 	} gameState = statePlay;
 
-	static bool isRunning;
+	bool isRunning() {
+		return _isRunning;
+	}
+
 	~Game();
 
 private:
+	bool _isRunning;
 	Manager manager;
 	BattleSystem* battleSys = nullptr;
 };

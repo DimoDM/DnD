@@ -22,15 +22,17 @@ class GameController {
 	String strVal = "";
 
 	ConsoleViewer* viewer = nullptr;
-	Game game;
+
+	const char* continueOptions[3] = { "Yes", "No" };
+	Menu* gameOverMenu = nullptr;
 
 	//void loadPlayerFromFile();
 	const String getFileNameFromPath(fs::path path);
 	const String& selectOption(const char* directory, const char* title);
 	const String& selectPlayer();
 	const String& selectMap();
-	void loadPlayer(const char* playerFile, int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, String& name);
-
+	void loadPlayer(const char* playerFile, int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, int& level, int& xp, String& name);
+	void playGame(const char* playerFile, const char* mapFile);
 
 public:
 

@@ -54,7 +54,11 @@ void SaveLoadComponent::saveStats(std::ofstream& stream)
 	int health = stats->getHealth();
 	int strenght = stats->getStrenght();
 	int mana = stats->getMana();
+	int xp = stats->getXp();
+	int level = stats->getLevel();
 
+	stream.write((const char*)&level, sizeof(int));
+	stream.write((const char*)&xp, sizeof(int));
 	stream.write((const char*)&health, sizeof(int));
 	stream.write((const char*)&mana, sizeof(int));
 	stream.write((const char*)&strenght, sizeof(int));
@@ -89,10 +93,10 @@ void SaveLoadComponent::save()
 	name += ".txt";
 	FileManager::openFile(file, name.c_str(), ios::binary | ios::trunc);
 
+	saveStats(file);
 	saveName(file);
 	savePosition(file);
 	saveInventory(file);
-	saveStats(file);
 
 	file.close();
 }

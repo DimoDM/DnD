@@ -6,7 +6,7 @@ void Engine::run()
 	{
 	case stageMainMenu: gameStage = (GameStage)(mainMenu->select() + 1);
 		break;
-	case stageStartGame: gameController->startGame(); break;
+	case stageStartGame: gameController->startGame(); gameStage = stageMainMenu; break;
 	case stageCreatePlayer: playerController->createPlayer();
 		gameStage = stageMainMenu;
 		break;

@@ -39,12 +39,22 @@ public:
 		return false;
 	}
 
-	void battle() {
-		while (listenForBattle()) {
-			cout << "battle" << endl;
-			draw();
-			update();
+	int battle() {
+
+		if (listenForBattle()) {
+			while (player->getComponent<StatsComponent>().getHealth() > 0 && monster->getComponent<StatsComponent>().getHealth() > 0) {
+				//cout << "battle" << endl;
+				draw();
+				update();
+			}
+			if (player->getComponent<StatsComponent>().getHealth() <= 0) {
+				return -1;
+			}
+			else if (monster->getComponent<StatsComponent>().getHealth() <= 0) {
+				player->getComponent<StatsComponent>().addXp(monster->getComponent<StatsComponent>().getLevel());
+			}
 		}
+		return 0;
 	}
 
 private:

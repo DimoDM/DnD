@@ -4,6 +4,7 @@
 GameController::GameController(ConsoleViewer* consoleViewer)
 {
 	viewer = consoleViewer;
+	gameOverMenu = new Menu("You died. Start again?", continueOptions, 2, viewer);
 }
 
 void GameController::startGame()
@@ -15,18 +16,31 @@ void GameController::startGame()
 	mapFile += selectMap();
 	mapFile += ".txt";
 
-	int x, y, health, mana, strenght;
-	Optional<Weapon> w;
-	Optional<Armor> a;
-	Optional<Spell> s;
-	String name;
+	playGame(playerName.c_str(), mapFile.c_str());
 
-	loadPlayer(playerName.c_str(), x, y, w, a, s, health, mana, strenght, name);
-	game.init(x, y, w, a, s, health, mana, strenght, name.c_str(), mapFile.c_str());
-	while (true) {
-		game.draw();
-		game.update();
+}
+
+void GameController::playGame(const char* playerFile, const char* mapFile)
+{
+	{
+		Game game;
+		int x, y, health, mana, strenght, level, xp;
+		Optional<Weapon> w;
+		Optional<Armor> a;
+		Optional<Spell> s;
+		String name;
+
+		loadPlayer(playerFile, x, y, w, a, s, health, mana, strenght, level, xp, name);
+		game.init(x, y, w, a, s, health, mana, strenght, level, xp, name.c_str(), mapFile);
+		while (game.isRunning()) {
+			game.draw();
+			game.update();
+		}
 	}
+
+	int choice = gameOverMenu->select();
+	if (!choice) playGame(playerFile, mapFile);
+	else return;
 
 }
 
@@ -64,11 +78,18 @@ const String& GameController::selectMap()
 	return selectOption("./assets/", "SelectMap: ");
 }
 
-void GameController::loadPlayer(const char* playerFile, int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, String& name)
+void GameController::loadPlayer(const char* playerFile, int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, int& level, int& xp, String& name)
 {
 	std::ifstream file;
 	FileManager::openFile(file, playerFile, ios::binary);
 	size_t lenght;
+
+	file.read((char*)&level, sizeof(int));
+	file.read((char*)&xp, sizeof(int));
+	file.read((char*)&health, sizeof(int));
+	file.read((char*)&mana, sizeof(int));
+	file.read((char*)&strenght, sizeof(int));
+
 	file.read((char*)&lenght, sizeof(size_t));
 	char* pName = new char[100];
 	file.read(pName, lenght);
@@ -95,8 +116,4 @@ void GameController::loadPlayer(const char* playerFile, int& x, int& y, Optional
 		spell.load(file);
 		s.setData(spell);
 	}
-
-	file.read((char*)&health, sizeof(int));
-	file.read((char*)&mana, sizeof(int));
-	file.read((char*)&strenght, sizeof(int));
 }
