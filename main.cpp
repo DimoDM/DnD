@@ -3,9 +3,12 @@
 #include<Windows.h>
 #include<conio.h>
 #include<time.h>
+#include"Engine.h"
 
 int main()
 {
+	Engine e;
+		e.run();
 	//system("mode 650");
 	//SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, 0);
 	system("mode con COLS=700");
