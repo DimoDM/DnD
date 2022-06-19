@@ -1,17 +1,4 @@
 #include"GameController.h"
-//source:
-//https://www.delftstack.com/howto/cpp/how-to-get-list-of-files-in-a-directory-cpp/
-//https://stackoverflow.com/questions/48312460/c17-filesystem-is-not-a-namespace-name
-//https://en.cppreference.com/w/cpp/experimental/fs/path
-#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING 1
-#if __cplusplus < 201703L// If the version of C++ is less than 17
-// It was still in the experimental:: namespace
-#include <experimental/filesystem>
-namespace fs = std::experimental::filesystem;
-#else
-#include <filesystem>
-namespace fs = std::filesystem;
-#endif
 
 
 GameController::GameController(ConsoleViewer* consoleViewer)
@@ -19,7 +6,27 @@ GameController::GameController(ConsoleViewer* consoleViewer)
 	viewer = consoleViewer;
 }
 
-String getPlayerNameFromPath(fs::path path) {
+void GameController::startGame()
+{
+	String playerName = "./data/";
+	playerName += selectPlayer();
+	playerName += ".txt";
+	String mapFile = "./assets/"; 
+	mapFile += selectMap();
+	mapFile += ".txt";
+
+	int x, y, health, mana, strenght;
+	Optional<Weapon> w;
+	Optional<Armor> a;
+	Optional<Spell> s;
+	String name;
+
+	loadPlayer(x, y, w, a, s, health, mana, strenght, name);
+	game->init(x, y, w, a, s, health, mana, strenght, name.c_str(), mapFile.c_str());
+
+}
+
+const String GameController::getFileNameFromPath(fs::path path){
 	int index = 0;
 	char c[100];
 	while (strcmp((const char*)(path.filename().c_str() + index), ".")) {
@@ -30,16 +37,29 @@ String getPlayerNameFromPath(fs::path path) {
 	return c;
 }
 
-const char* GameController::selectPlayer()
+const String& GameController::selectOption(const char* directory, const char* title)
 {
 	Vector<String> options;
 	for (const auto& entry : fs::directory_iterator("./data/"))
 	{
-		//String n = getPlayerNameFromPath(entry.path());
-		
-		std::cout << getPlayerNameFromPath(entry.path()) << std::endl;
+		options.push_back(getFileNameFromPath(entry.path()));
 	}
+	Menu m(title, options, viewer);
+	int choice = m.select();
+	strVal = options[choice];
+	return strVal;
+}
 
-	system("pause");
-	return "";
+const String& GameController::selectPlayer()
+{
+	return selectOption("./data/", "Select player: ");
+}
+
+const String& GameController::selectMap()
+{
+	return selectOption("./assets/", "SelectMap: ");
+}
+
+void GameController::loadPlayer(int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, String& name)
+{
 }

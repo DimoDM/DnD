@@ -4,9 +4,9 @@ void Engine::run()
 {
 	switch (gameStage)
 	{
-	case stageMainMenu: gameController->selectPlayer();
-		gameStage = stageMainMenu;
+	case stageMainMenu: gameStage = (GameStage)mainMenu->select();
 		break;
+	case stageStartGame: gameController->startGame();
 	case stageCreatePlayer: playerController->createPlayer();
 		gameStage = stageMainMenu;
 		break;

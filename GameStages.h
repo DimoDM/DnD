@@ -2,6 +2,7 @@
 
 enum GameStage {
 	stageMainMenu = 0,
+	stageStartGame,
 	stageCreatePlayer,
 	stageExit
 };
