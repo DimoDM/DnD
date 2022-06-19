@@ -34,7 +34,7 @@ class GameController {
 	const String& selectOption(const char* directory, const char* title);
 	const String& selectPlayer();
 	const String& selectMap();
-	void loadPlayer(int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, String& name);
+	void loadPlayer(const char* playerFile, int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, String& name);
 
 
 public:

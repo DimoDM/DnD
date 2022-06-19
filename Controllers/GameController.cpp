@@ -1,5 +1,5 @@
 #include"GameController.h"
-
+#include"../Structures/FileManager.h"
 
 GameController::GameController(ConsoleViewer* consoleViewer)
 {
@@ -21,8 +21,11 @@ void GameController::startGame()
 	Optional<Spell> s;
 	String name;
 
-	loadPlayer(x, y, w, a, s, health, mana, strenght, name);
+	loadPlayer(playerName.c_str(), x, y, w, a, s, health, mana, strenght, name);
 	game->init(x, y, w, a, s, health, mana, strenght, name.c_str(), mapFile.c_str());
+	while (true) {
+		game->update();
+	}
 
 }
 
@@ -60,6 +63,39 @@ const String& GameController::selectMap()
 	return selectOption("./assets/", "SelectMap: ");
 }
 
-void GameController::loadPlayer(int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, String& name)
+void GameController::loadPlayer(const char* playerFile, int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, String& name)
 {
+	std::ifstream file;
+	FileManager::openFile(file, playerFile, ios::binary);
+	size_t lenght;
+	file.read((char*)&lenght, sizeof(size_t));
+	char* pName = new char[100];
+	file.read(pName, lenght);
+	pName[lenght + 1] = '\0';
+	name = pName;
+	file.read((char*)&x, sizeof(int));
+	file.read((char*)&y, sizeof(int));
+	bool containsData;
+	file.read((char*)&containsData, sizeof(bool));
+	if (containsData) {
+		Weapon weapon = Weapon(w.getData());
+		file.read((char*)&weapon, sizeof(Weapon));
+		w.setData(weapon);
+	}
+	file.read((char*)&containsData, sizeof(bool));
+	if (containsData) {
+		Armor armor = Armor(a.getData());
+		file.read((char*)&armor, sizeof(Weapon));
+		a.setData(armor);
+	}
+	file.read((char*)&containsData, sizeof(bool));
+	if (containsData) {
+		Spell spell = Spell(s.getData());
+		file.read((char*)&spell, sizeof(Weapon));
+		s.setData(spell);
+	}
+
+	file.read((char*)&health, sizeof(int));
+	file.read((char*)&strenght, sizeof(int));
+	file.read((char*)&mana, sizeof(int));
 }
