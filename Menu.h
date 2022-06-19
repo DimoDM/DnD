@@ -23,6 +23,7 @@ class Menu
 			viewer->print(i == state ? "> " : "  ");
 			viewer->println(options.getArray()[i].c_str());
 		}
+		system("CLS");
 		viewer->print();
 	}
 

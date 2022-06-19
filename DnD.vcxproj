@@ -202,6 +202,9 @@
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\Pesho.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

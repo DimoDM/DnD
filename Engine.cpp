@@ -7,7 +7,6 @@
 
 void Engine::run()
 {
-
 	switch (gameStage)
 	{
 	case stageMainMenu: gameStage = (GameStage)mainMenu->select();
@@ -15,6 +14,7 @@ void Engine::run()
 	case stageCreatePlayer: playerController->createPlayer();
 		gameStage = stageMainMenu;
 		break;
+	case stageExit: return;
 	default:
 		break;
 	}
