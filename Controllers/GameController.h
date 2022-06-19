@@ -19,12 +19,7 @@ namespace fs = std::filesystem;
 
 class GameController {
 
-
-
-	const char* fileDir = "../data";
 	String strVal = "";
-	//const char* raceOptions[3] = { "Human", "Mage", "Warrior" };
-	//const Menu* raceMenu = new Menu("SelectRace: ", raceOptions, 3, ConsoleViewer::getInstance());
 
 	ConsoleViewer* viewer = nullptr;
 	Game game;

@@ -25,7 +25,7 @@ public:
 		stateBattle
 	} gameState = statePlay;
 
-
+	static bool isRunning;
 	~Game();
 
 private:
