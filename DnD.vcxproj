@@ -142,6 +142,7 @@
     <ClCompile Include="BattleView.cpp" />
     <ClCompile Include="ConsoleViewer.cpp" />
     <ClCompile Include="Controllers\CreatePlayerController.cpp" />
+    <ClCompile Include="Controllers\GameController.cpp" />
     <ClCompile Include="ECS\ECS.cpp" />
     <ClCompile Include="ECS\SaveLoadComponent.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="BattleView.h" />
     <ClInclude Include="ConsoleViewer.h" />
     <ClInclude Include="Controllers\CreatePlayerController.h" />
+    <ClInclude Include="Controllers\GameController.h" />
     <ClInclude Include="ECS\ColliderComponent.h" />
     <ClInclude Include="ECS\CombatComponent.h" />
     <ClInclude Include="ECS\Component.h" />

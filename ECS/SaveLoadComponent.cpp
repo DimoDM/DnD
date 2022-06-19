@@ -3,14 +3,6 @@
 #include<iostream>
 #include"../Structures/FileManager.h"
 
-//source:
-//https://www.delftstack.com/howto/cpp/how-to-get-list-of-files-in-a-directory-cpp/
-//https://stackoverflow.com/questions/48312460/c17-filesystem-is-not-a-namespace-name
-//https://en.cppreference.com/w/cpp/experimental/fs/path
-//#include <experimental\filesystem>
-//
-//using experimental::filesystem::directory_iterator;
-
 void SaveLoadComponent::savePosition(std::ofstream& stream)
 {
 	int x = transform->getX();

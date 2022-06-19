@@ -1,15 +1,11 @@
 #include"Engine.h"
 
-#include<fstream>
-#include<iostream>
-
-
-
 void Engine::run()
 {
 	switch (gameStage)
 	{
-	case stageMainMenu: gameStage = (GameStage)mainMenu->select();
+	case stageMainMenu: gameController->selectPlayer();
+		gameStage = stageMainMenu;
 		break;
 	case stageCreatePlayer: playerController->createPlayer();
 		gameStage = stageMainMenu;
