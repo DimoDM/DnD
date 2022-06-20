@@ -28,6 +28,7 @@ public:
 	void init() override {
 		if(!weapon.containsData()) weapon.setData(*static_cast<Weapon*>(items[1]));
 		if(!spell.containsData()) spell.setData(*static_cast<Spell*>(items[3]));
+		if (!armor.containsData()) armor.clear();
 	}
 
 	void update() override {
@@ -63,6 +64,35 @@ public:
 	const int getSpellDmg() const {
 		if (spell.containsData()) return spell.getData().dmg;
 		return 0;
+	}
+
+	const Item* getItemByType(int type) const {
+		switch (type)
+		{
+		case 0: if (weapon.containsData()) return (&weapon.getData()); break;
+		case 1: if (armor.containsData()) return (&armor.getData()); break;
+		case 2: if (spell.containsData()) return (&spell.getData()); break;
+		default: return nullptr;
+		}
+		return nullptr;
+	}
+
+	Item* swapItem(Item* item) {
+		if (item == nullptr) return nullptr;
+		Item* swap = item->clone();
+		delete item;
+		switch (swap->type)
+		{
+		case 0: if (weapon.containsData()) { item = weapon.getData().clone(); }
+			  else { item = nullptr; } weapon.setData(static_cast<Weapon&>(*swap)); break;
+		case 1: if (armor.containsData()) { item = armor.getData().clone(); }
+			  else { item = nullptr; } armor.setData(static_cast<Armor&>(*swap)); break;
+		case 2: if (spell.containsData()) { item = spell.getData().clone(); }
+			  else { item = nullptr; } spell.setData(static_cast<Spell&>(*swap)); break;
+		default:
+			break;
+		}
+		return item;
 	}
 
 	const int getWeaponDmg() const {

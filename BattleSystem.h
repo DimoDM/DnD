@@ -43,6 +43,7 @@ public:
 
 		if (listenForBattle()) {
 			int monsterDamage = 0;
+			playerMove = Random::getRandomNum(0, 1);
 			while (player->getComponent<StatsComponent>().getHealth() > 0 && monster->getComponent<StatsComponent>().getHealth() > 0) {
 				//cout << "battle" << endl;
 				draw();
@@ -55,6 +56,10 @@ public:
 				player->getComponent<StatsComponent>().addHealth(monsterDamage / 2);
 				player->getComponent<StatsComponent>().addXp(monster->getComponent<StatsComponent>().getLevel());
 			}
+			player = nullptr;
+			monster = nullptr;
+			BattleView::getInstance()->print();
+
 		}
 		return 0;
 	}

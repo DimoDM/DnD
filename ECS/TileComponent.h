@@ -35,4 +35,12 @@ public:
 		visible = true;
 		TextureManager::LoadTexture(texture, x, y);
 	}
+
+	const int getX() const {
+		return x;
+	}
+
+	const int getY() const {
+		return y;
+	}
 };
