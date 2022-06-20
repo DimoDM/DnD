@@ -3,6 +3,7 @@
 #include"BattleSystem.h"
 #include"Structures/Optional.h"
 #include"ItemsList.h"
+#include"FindTreasureSystem.h"
 
 class Game
 {
@@ -36,4 +37,5 @@ private:
 	bool _isRunning;
 	Manager manager;
 	BattleSystem* battleSys = nullptr;
+	FindTreasureSystem* findTreasureSys = nullptr;
 };
