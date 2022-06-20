@@ -1,5 +1,2 @@
-﻿  StatsComponent.cpp
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
+﻿  RandomValues.cpp
   DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\x64\Debug\DnD.exe

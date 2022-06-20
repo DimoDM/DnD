@@ -8,7 +8,6 @@
 /// <returns></returns>
 int Random::getRandomNum(int start, int end) {
 	int random;
-	srand(time(NULL));
 	random = rand() % (end - start) + start;
 	return random;
 }
