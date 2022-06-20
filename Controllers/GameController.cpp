@@ -80,7 +80,7 @@ const String GameController::getNextMapFile(const char* mapFile) {
 	for (int i = 0; i < newMapFile.getSize(); i++)
 		mf[i] = newMapFile.c_str()[i];
 	mf[newMapFile.getSize()] = '\0';
-	mf[9] += 1;
+	if(mf[9] + 1 <= '4') mf[9] += 1;
 	newMapFile = "";
 	newMapFile += mf;
 	return newMapFile;
