@@ -61,6 +61,7 @@ void StatsComponent::levelUp() {
 /// <param name="points"></param>
 void StatsComponent::increaseLevel(int points) {
 	const char* statsOptions[3] = { "Health", "Mana", "Strenght" };
+	draw();
 	Menu selectStat("Select Statuce to increace:", statsOptions, 3, GameView::getInstance());
 
 	int p;

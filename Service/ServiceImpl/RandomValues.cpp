@@ -18,7 +18,7 @@ int Random::getRandomNum(int start, int end) {
 /// </summary>
 /// <returns></returns>
 Vector2D Random::generateRandomCoordinates() {
-	return { getRandomNum(3, GameView::getInstance()->getWidth() - 3), getRandomNum(3, GameView::getInstance()->getHeight() - 3) };
+	return { getRandomNum(2, GameView::getInstance()->getWidth() - 1), getRandomNum(2, GameView::getInstance()->getHeight() - 1) };
 }
 
 /// <summary>

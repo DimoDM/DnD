@@ -39,6 +39,8 @@ void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Sp
 	gameStage = &stage;
 	*gameStage = GameStage::stagePlay;
 	_isRunning = true;
+	manager.draw();
+	GameView::getInstance()->print();
 }
 
 void Game::update()

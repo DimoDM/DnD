@@ -20,7 +20,10 @@ protected:
 	/// <summary>
 	/// create instance with default parameters
 	/// </summary>
-	ConsoleViewer() = default;
+	ConsoleViewer() {
+		system("mode con COLS=700");
+		system("Title = DnD");
+	}
 
 public:
 

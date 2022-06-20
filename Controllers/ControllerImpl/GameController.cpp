@@ -47,9 +47,12 @@ void GameController::playGame(const char* playerFile, const char* mapFile)
 
 		loadPlayer(playerFile, x, y, w, a, s, health, mana, strenght, level, xp, completedLevels, name);
 		game.init(x, y, w, a, s, health, mana, strenght, level, xp, completedLevels, name.c_str(), mapFile, gameStage);
+		w.clear();
+		a.clear();
+		s.clear();
 		while (gameStage == GameStage::stagePlay) {
-			game.draw();
 			game.update();
+			game.draw();
 		}
 	}
 	int choice;
