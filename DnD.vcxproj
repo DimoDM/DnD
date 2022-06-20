@@ -179,6 +179,7 @@
     <ClInclude Include="ECS\TestComponent.h" />
     <ClInclude Include="ECS\TileComponent.h" />
     <ClInclude Include="ECS\TransformComponent.h" />
+    <ClInclude Include="ECS\TreasureComponent.h" />
     <ClInclude Include="Empty.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Game.h" />

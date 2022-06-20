@@ -30,7 +30,7 @@ public:
 					monsters->getElementByIndex(j)->getComponent<TransformComponent>().getPos()) <= 1) {
 					player = players->getElementByIndex(i);
 					monster = monsters->getElementByIndex(j);
-					return true;
+					return player->getIsActive() && monster->getIsActive();
 				}
 			}
 		}

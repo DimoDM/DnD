@@ -3,6 +3,7 @@
 #include"TextureManager.h"
 #include"ECS/Components.h"
 #include"Game.h"
+#include"generateFreeVector2D.h"
 using namespace std;
 Map::Map(Manager& m) : manager(m)
 {
@@ -16,8 +17,21 @@ void Map::loadMap(const char* path)
 	std::ifstream mapFile;
 	mapFile.open(path);
 
+	int lvl;
 	mapFile >> width;
 	mapFile >> height;
+	mapFile >> lvl;
+	mapFile.get();
+
+	mapFile >> exitX;
+	mapFile >> exitY;
+	mapFile.get();
+
+	int numOfMonsters;
+	int numOfTreasures;
+
+	mapFile >> numOfMonsters;
+	mapFile >> numOfTreasures;
 	mapFile.get();
 
 	for (int y = 0; y < height; y++) {
@@ -41,6 +55,10 @@ void Map::loadMap(const char* path)
 		//cout << endl;
 	}
 
+	for (int i = 0; i < numOfMonsters; i++) addMonster(lvl);
+	for (int i = 0; i < numOfTreasures; i++) addTreasure(lvl);
+
+
 	mapFile.close();
 }
 
@@ -56,4 +74,24 @@ void Map::addCollider(int xPos, int yPos)
 	Entity& tile(manager.addEntity());
 	tile.addComponent<ColliderComponent>(xPos, yPos);
 	tile.addGroup(Game::groupTiles);
+}
+
+void Map::addMonster(int lvl)
+{
+	Entity& monster(manager.addEntity());
+	monster.addComponent<MonsterAIComponent>(manager.getGroup(Game::groupPlayer));
+	monster.addComponent<SpriteComponent>('M');
+	monster.addComponent<CombatComponent>();
+	int health = 50 + (10 * lvl);
+	int mana = 20 + (10 * lvl);
+	int strenght = 30 + (10 * lvl);
+	monster.addComponent<StatsComponent>(health, mana, strenght, lvl, 0, lvl);
+	monster.addGroup(Game::groupEnemy);
+}
+
+void Map::addTreasure(int lvl)
+{
+	Entity& treasure(manager.addEntity());
+	treasure.addComponent<TreasureComponent>(lvl);
+	treasure.addGroup(Game::groupTreasures);
 }

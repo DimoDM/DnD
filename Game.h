@@ -17,7 +17,8 @@ public:
 	static enum Group {
 		groupPlayer,
 		groupEnemy,
-		groupTiles
+		groupTiles,
+		groupTreasures
 	};
 
 	enum GameState {

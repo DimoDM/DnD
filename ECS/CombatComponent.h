@@ -50,6 +50,8 @@ public:
 		else {
 			dmg = stats->getStrenght() + inventory->getSpellDmg() + inventory->getWeaponDmg();
 			stats->reduceMana(inventory->getSpellCost());
+			BattleView::getInstance()->print("Mana: ");
+			BattleView::getInstance()->println(String(stats->getMana()).c_str());
 		}
 
 		int dice = rollDice();

@@ -5,8 +5,9 @@
 #include"Empty.h"
 #include"Spell.h"
 
+const int SIZEITEMS = 7;
 
-static Item* items[7] = {
+static Item* items[SIZEITEMS] = {
 		{ new Empty() },
 		{ new Weapon(1, "Wooden sword", 3) },
 		{ new Weapon(2, "Dragon Slayer", 30) },
