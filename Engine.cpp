@@ -1,5 +1,8 @@
 #include"Engine.h"
 
+/// <summary>
+/// handle program stages of work
+/// </summary>
 void Engine::run()
 {
 	switch (engineStage)

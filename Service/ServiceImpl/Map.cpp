@@ -1,9 +1,9 @@
-#include"Map.h"
+#include"../Map.h"
 #include<fstream>
-#include"TextureManager.h"
-#include"ECS/Components.h"
-#include"Game.h"
-#include"generateFreeVector2D.h"
+#include"../TextureManager.h"
+#include"../../Models/ECS/ECS.h"
+#include"../Game.h"
+#include"../RandomValues.h"
 using namespace std;
 Map::Map(Manager& m)
 {
@@ -38,19 +38,6 @@ void Map::loadMap(const char* path)
 		}
 		mapFile.get(); // skip new line
 	}
-
-	mapFile.get(); // skip empty line
-	//for (int y = 0; y < height; y++)
-	//{
-	//	for (int x = 0; x < width; x++)
-	//	{
-	//		mapFile.get(c);
-	//		//cout << c;
-	//		if (c == '1') addCollider(x, y);
-	//	}
-	//	mapFile.get(); // skip new line
-	//	//cout << endl;
-	//}
 
 	mapFile.close();
 }

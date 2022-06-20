@@ -1,8 +1,11 @@
-#include"Game.h"
-#include"GameView.h"
-#include"Map.h"
-#include"ECS/Components.h"
-#include"GameStages.h"
+#include"../Game.h"
+#include"../../Views/GameView.h"
+#include"../Map.h"
+#include"../../Models/ECS/ECS.h"
+#include"../../Models/GameStages.h"
+#include"../../Structures/Optional.h"
+#include"../../Models/Items/ItemsList.h"
+#include"../../Models/ECS/Components.h"
 
 
 Game::Game()
@@ -27,7 +30,7 @@ void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Sp
 	player.addComponent<StatsComponent>(health, mana, strenght, level, xp, completedLevels);
 	player.addComponent<CombatComponent>();
 	player.addComponent<PlayerComponent>(name);
-	player.addComponent<SaveLoadComponent>();
+	player.addComponent<SaveInFileComponent>();
 	player.addGroup(groupPlayer);
 
 	battleSys = new BattleSystem(manager.getGroup(groupPlayer), manager.getGroup(groupEnemy));

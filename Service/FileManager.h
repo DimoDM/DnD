@@ -1,6 +1,9 @@
 #pragma once
 #include<fstream>
 
+/// <summary>
+/// Service class that handle open logic for files
+/// </summary>
 class FileManager
 {
 public:

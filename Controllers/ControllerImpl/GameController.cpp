@@ -1,5 +1,5 @@
-#include"GameController.h"
-#include"../Structures/FileManager.h"
+#include"../GameController.h"
+#include"../../Service/FileManager.h"
 
 GameController::GameController(ConsoleViewer* consoleViewer)
 {

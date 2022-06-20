@@ -1,9 +1,13 @@
 #pragma once
-#include"Menu.h"
-#include"ConsoleViewer.h"
-#include"EngineStages.h"
+#include"Service/Menu.h"
+#include"Views/ConsoleViewer.h"
+#include"Models/EngineStages.h"
 #include"Controllers/CreatePlayerController.h"
 #include"Controllers/GameController.h"
+
+/// <summary>
+/// run all logic of game, main controller and user menu
+/// </summary>
 class Engine
 {
 	const char *mainMenuOptions[3] = { "start game", "create player", "exit" };
@@ -14,6 +18,9 @@ class Engine
 
 public:
 
+	/// <summary>
+	/// handle program stages of work
+	/// </summary>
 	void run();
 
 	~Engine();

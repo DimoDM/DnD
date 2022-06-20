@@ -1,9 +1,9 @@
 #pragma once
 #include"ECS.h"
-#include"../GameView.h"
-#include"../Structures/String.h"
-#include"../Menu.h"
 
+/// <summary>
+/// handle stats of entity
+/// </summary>
 class StatsComponent : public Component
 {
 
@@ -14,125 +14,51 @@ class StatsComponent : public Component
 	int xp = 0;
 	int levelCompleted = 1;
 
-	void levelUp() {
-		switch (level) {
-		case 1: if (xp >= 2) { xp -= 2; level++; increaceLevel(30); levelUp(); }; break;
-		case 2: if (xp >= 6) { xp -= 6; level++; increaceLevel(30); levelUp(); }; break;
-		case 3: if (xp >= 15) { xp -= 15; level++; increaceLevel(30); levelUp(); }; break;
-		case 4: if (xp >= 32) { xp -= 32; level++; increaceLevel(30); levelUp(); }; break;
-		default: if (xp >= 70) { xp -= 70; level++; increaceLevel(30); levelUp(); }; break;
-		}
-	}
+	/// <summary>
+	/// level up logic
+	/// </summary>
+	void levelUp();
 
-	void increaceLevel(int points) {
-		const char* statsOptions[3] = { "Health", "Mana", "Strenght" };
-		Menu selectStat("Select Statuce to increace:", statsOptions, 3, GameView::getInstance());
-
-		int p;
-		while (points > 0) {
-			int choice = selectStat.select();
-			cout << "Available points: " << points << endl << "Enter points to increace with: ";
-			cin >> p;
-			p = points - p > 0 ? p : points;
-			points -= p;
-			switch (choice)
-			{
-			case 0: health += p; break;
-			case 1: mana += p; break;
-			case 2: strenght += p; break;
-			default:
-				break;
-			}
-		}
-		ConsoleViewer::getInstance()->print();
-	}
+	/// <summary>
+	/// level up logic
+	/// </summary>
+	/// <param name="points"></param>
+	void increaseLevel(int points);
 
 public:
 
-	StatsComponent() : Component() {
-		type = 8;
-	}
+	StatsComponent();
 
-	StatsComponent(int h, int m, int s, int l, int x, int c) : Component() {
-		type = 8;
-		health = h;
-		mana = m;
-		level = l;
-		strenght = s;
-		xp = x;
-		levelCompleted = c;
-	}
+	StatsComponent(int h, int m, int s, int l, int x, int c);
 
-	void init() override {}
+	/// <summary>
+	/// ...show entity stats
+	/// </summary>
+	void draw();
 
-	void update() override {
-	}
+	const int getStrenght() const;
 
-	void draw() override {
-		if (entity->hasGroup(0)) {
-			String h("Health: ");
-			h += health;
-			String m("Mana: ");
-			m += mana;
-			String s("Strenght: ");
-			s += strenght;
-			String l("Level: ");
-			l += level;
-			GameView::getInstance()->println("Stats: ");
-			GameView::getInstance()->println(h.c_str());
-			GameView::getInstance()->println(m.c_str());
-			GameView::getInstance()->println(s.c_str());
-			GameView::getInstance()->println(l.c_str());
-		}
-	}
+	const int getMana() const;
 
-	const int getStrenght() const {
-		return strenght;
-	}
+	const int getHealth() const;
 
-	const int getMana() const {
-		return mana;
-	}
+	const int getLevel() const;
 
-	const int getHealth() const {
-		return health;
-	}
+	const int getCompletedLevel() const;
 
-	const int getLevel() const {
-		return level;
-	}
+	void completeLevel();
 
-	const int getCompletedLevel() const {
-		return levelCompleted;
-	}
+	const int getXp() const;
 
-	void completeLevel() {
-		levelCompleted++;
-	}
+	void addXp(int value);
 
-	const int getXp() const {
-		return xp;
-	}
+	void reduceMana(int value);
 
-	void addXp(int value) {
-		xp += value;
-		levelUp();
-	}
+	void addHealth(int value);
 
-	void reduceMana(int value) {
-		mana -= value;
-	}
-
-	void addHealth(int value) {
-		health += value;
-	}
-
-	void takeDamage(int value) {
-		int protection = entity->getComponent<InventoryComponent>().getArmorDef();
-		health -= value - protection;
-		if (health <= 0) {
-			entity->getComponent<TransformComponent>().setPos(0, 0);
-			entity->setIsActive(false);
-		}
-	}
+	/// <summary>
+	/// ...reduce health and if hit zero make entity non active
+	/// </summary>
+	/// <param name="value"></param>
+	void takeDamage(int value);
 };

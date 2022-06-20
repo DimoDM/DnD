@@ -1,8 +1,10 @@
 #pragma once
 #include"ECS.h"
-#include"../Structures/Vector2D.h"
-#include"../GameView.h"
+#include"../../Structures/Vector2D.h"
 
+/// <summary>
+/// ...this component is responsible to storage coordinates of entity and handle it's movement
+/// </summary>
 class TransformComponent : public Component
 {
 	Vector2D pos = { 1, 0 };
@@ -10,49 +12,22 @@ class TransformComponent : public Component
 
 public:
 
-	TransformComponent() : Component() {
-		type = 2;
-	}
-	TransformComponent(int x, int y) : Component() {
-		type = 2;
-		this->pos.x = x;
-		this->pos.y = y;
-	}
+	TransformComponent();
+	TransformComponent(int x, int y);
+	/// <summary>
+	/// ...component loop logic
+	/// </summary>
+	void update() override;
+	/// <summary>
+	/// ...component preparation for draw logic
+	/// </summary>
+	void draw() override;
 
-	void init() override {
-	}
+	const int getX() const;
+	const int getY() const;
 
-	void update() override {
-		pos += vel;
+	const Vector2D& getPos() const;
+	void setVel(int x, int y);
 
-		if (GameView::getInstance()->getElementFromGameMap(pos.x, pos.y) == '#'
-			|| pos.x >= GameView::getInstance()->getMaxWidth()
-			|| pos.y >= GameView::getInstance()->getMaxHeight()) {
-			pos -= vel;
-		}
-	}
-	void draw() override {
-		vel = { 0, 0 };
-	}
-
-	const int getX() const {
-		return pos.x;
-	}
-	const int getY() const {
-		return pos.y;
-	}
-
-	const Vector2D& getPos() const {
-		return pos;
-	}
-
-	void setVel(int x, int y) {
-		if (x < -1 || x > 1 || y < -1 || y > 1) throw new std::exception("invalid move");
-		vel = { x, y };
-	}
-
-	void setPos(int x, int y) {
-		if (x < 0 || x > GameView::getInstance()->getMaxWidth() || y < 0 || y > GameView::getInstance()->getMaxHeight()) throw new std::exception("invalid move");
-		pos = { x, y };
-	}
+	void setPos(int x, int y);
 };

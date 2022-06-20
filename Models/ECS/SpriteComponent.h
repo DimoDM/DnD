@@ -1,7 +1,9 @@
 #pragma once
 #include"ECS.h"
-#include"../TextureManager.h"
 
+/// <summary>
+/// this component is responcible for drawing of entity
+/// </summary>
 class SpriteComponent : public Component
 {
 	TransformComponent* transform;
@@ -9,22 +11,16 @@ class SpriteComponent : public Component
 
 public:
 
-	SpriteComponent() : Component() {
-		type = 3;
-	}
-	SpriteComponent(char tex) : Component() {
-		type = 3;
-		texture = tex;
-	}
+	SpriteComponent();
+	SpriteComponent(char tex);
 
-	void init() override {
-		if (!entity->hasComponent<TransformComponent>()) entity->addComponent<TransformComponent>();
-		transform = &entity->getComponent<TransformComponent>();
-	}
+	/// <summary>
+	/// initialize component
+	/// </summary>
+	void init() override;
 
-	void update() override {
-	}
-	void draw() override {
-		TextureManager::LoadTexture(texture, transform->getX(), transform->getY());
-	}
+	/// <summary>
+	/// Draw logic of entity
+	/// </summary>
+	void draw() override;
 };

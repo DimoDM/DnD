@@ -1,7 +1,7 @@
-#include"SaveLoadComponent.h"
+#include"../SaveInFileComponent.h"
 #include<fstream>
 #include<iostream>
-#include"../Structures/FileManager.h"
+#include"../../Service/FileManager.h"
 
 void SaveLoadComponent::savePosition(std::ofstream& stream)
 {

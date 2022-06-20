@@ -1,13 +1,10 @@
-#include "CreatePlayerController.h"
-#include"../ECS/ECS.h"
-#include"../ECS/Components.h"
+#include "../CreatePlayerController.h"
+#include"../../Models/ECS/ECS.h"
+#include"../../Models/ECS/Components.h"
 
-const bool CreatePlayerController::isValidName(const char* name) const
-{
-//TDOD
-    return true;
-}
-
+/// <summary>
+/// initialize player parameters and save them to file
+/// </summary>
 void CreatePlayerController::createPlayer()
 {
     Manager m;
@@ -31,8 +28,8 @@ void CreatePlayerController::createPlayer()
     String name;
     std::cin >> name;
     player->addComponent<PlayerComponent>(name.c_str());
-    player->addComponent<SaveLoadComponent>();
-    player->getComponent<SaveLoadComponent>().save();
+    player->addComponent<SaveInFileComponent>();
+    player->getComponent<SaveInFileComponent>().save();
 
     delete player;
 }

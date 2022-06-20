@@ -1,7 +1,9 @@
 #pragma once
 #include"ECS.h"
-#include"../TextureManager.h"
 
+/// <summary>
+/// ...This component is responcible to storage textures of game graphics and their's coordinates and draw them
+/// </summary>
 class TileComponent : public Component
 {
 	int x = 0;
@@ -10,37 +12,23 @@ class TileComponent : public Component
 	bool visible = true;
 public:
 
-	TileComponent() : Component() {
-		type = 0;
-	}
+	TileComponent();
+	TileComponent(int x, int y, const char tex);
 
-	TileComponent(int x, int y, const char tex) : Component() {
-		type = 0;
-		this->x = x;
-		this->y = y;
-		this->texture = tex;
-	}
+	/// <summary>
+	/// ...initialize game texture in viewer
+	/// </summary>
+	void init() override;
+	/// <summary>
+	/// ...save game texture
+	/// </summary>
+	void draw() override;
 
-	void init() override {
-		if(visible) TextureManager::LoadTexture(texture, x, y);
-	}
+	/// <summary>
+	/// ...unused feature, do nothing at the moment
+	/// </summary>
+	void makeVisible();
 
-	void update() override {
-	}
-	void draw() override {
-		if (visible) TextureManager::LoadTexture(texture, x, y);
-	}
-
-	void makeVisible() {
-		visible = true;
-		TextureManager::LoadTexture(texture, x, y);
-	}
-
-	const int getX() const {
-		return x;
-	}
-
-	const int getY() const {
-		return y;
-	}
+	const int getX() const;
+	const int getY() const;
 };

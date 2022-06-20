@@ -70,11 +70,14 @@ Entity& Manager::addEntity() {   // add entity to collection
 	return *e;
 }
 
+/// <summary>
+/// ...reduse number of elements in order to not delete them, becouse they are still used in the another collection
+/// </summary>
 Manager::~Manager() {
 	for (int i = 0; i < groupedEntities.getSize(); i++) {
 		int num = groupedEntities[i].getSize();
 		for (int j = 0; j < num; j++) {
-			groupedEntities[i].artificialPop_back(); // reduse number of elements in order to not delete them.
+			groupedEntities[i].artificialPop_back();
 		}
 	}
 }

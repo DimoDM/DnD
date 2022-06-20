@@ -1,6 +1,10 @@
 #pragma once
-#include"../Menu.h"
+#include"../Service/Menu.h"
+#include"../Views/ConsoleViewer.h"
 
+/// <summary>
+/// Controller witch create player
+/// </summary>
 class CreatePlayerController
 {
 	const char* fileDir = "../data";
@@ -11,6 +15,8 @@ class CreatePlayerController
 
 public:
 	CreatePlayerController( ConsoleViewer* consoleViewer);
-	const bool isValidName(const char* name) const;
+	/// <summary>
+	/// initialize player parameters and save them to file
+	/// </summary>
 	void createPlayer();
 };

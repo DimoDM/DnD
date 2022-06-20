@@ -1,5 +1,5 @@
-#include "TextureManager.h"
-#include "GameView.h"
+#include "../TextureManager.h"
+#include "../../Views/GameView.h"
 
 void TextureManager::LoadTexture(const char texture, int xPos, int yPos)
 {

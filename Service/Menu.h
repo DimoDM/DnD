@@ -1,7 +1,7 @@
 #pragma once
-#include"Structures/String.h"
-#include"Structures/Vector.h"
-#include"ConsoleViewer.h"
+#include"../Structures/String.h"
+#include"../Structures/Vector.h"
+#include"../Views/ConsoleViewer.h"
 #include<conio.h>
 
 class Menu
@@ -10,13 +10,25 @@ class Menu
 	Vector<String> options;
 	ConsoleViewer* viewer;
 
+	/// <summary>
+	/// move cursor upwards
+	/// </summary>
+	/// <param name="start"></param>
 	void substractOne(int& start) const {
 		start = start - 1 < 0 ? options.getSize() - 1 : start - 1;
 	}
+	/// <summary>
+	/// move cursor downwards
+	/// </summary>
+	/// <param name="start"></param>
 	void addOne(int& start) const {
 		start = start + 1 < options.getSize() ? start + 1 : 0;
 	}
 
+	/// <summary>
+	/// print menu
+	/// </summary>
+	/// <param name="state"></param>
 	void printMenu(int state) const {
 		viewer->println(title.c_str());
 		for (int i = 0; i < options.getSize(); i++) {
@@ -27,6 +39,11 @@ class Menu
 		viewer->print();
 	}
 
+	/// <summary>
+	/// select option from menu and return maded choice
+	/// </summary>
+	/// <param name="start"></param>
+	/// <returns></returns>
 	const int select(int start) const {
 		printMenu(start);
 		char input = _getch();
@@ -61,7 +78,10 @@ public:
 		this->viewer = viewer;
 	}
 
-
+	/// <summary>
+	/// select option from menu starting from begginign of the list
+	/// </summary>
+	/// <returns></returns>
 	const int select() const {
 		return select(0);
 	}

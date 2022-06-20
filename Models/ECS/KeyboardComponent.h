@@ -2,38 +2,26 @@
 #include"ECS.h"
 #include<conio.h>
 #include<iostream>
+#include"TransformComponent.h"
 using namespace std;
 
+/// <summary>
+/// ...this component is responcible to handle keyboard input from player while playing
+/// </summary>
 class KeyboardComponent : public Component
 {
 	TransformComponent * transform;
 
 public:
-
+	/// <summary>
+	/// ... read keyboard input and move player
+	/// </summary>
 	KeyboardComponent() : Component() {
 		type = 4;
 	}
 
+	void init() override;
 
-	void init() override {
-		if (!entity->hasComponent<TransformComponent>()) entity->addComponent<TransformComponent>();
-		transform = &entity->getComponent<TransformComponent>();
-	}
+	void update() override;
 
-	void update() override {
-		char input;
-		input = _getch();
-		switch (input) {
-		case 'a':
-		case 'A': transform->setVel(-1, 0); break;
-		case 'd':
-		case 'D': transform->setVel(1, 0); break;
-		case 's':
-		case 'S': transform->setVel(0, 1); break;
-		case 'w':
-		case 'W': transform->setVel(0, -1); break;
-		}
-	}
-	void draw() override {
-	}
 };

@@ -7,27 +7,67 @@ class Collection
 	size_t capacity;
 	size_t size;
 
-	void free(); // delete all objects in collection
+	/// <summary>
+	/// ...delete all objects in collection
+	/// </summary>
+	void free();
 	void copyFrom(const Collection& other);
 	void resize();
 
 public:
+	/// <summary>
+	/// default constructor
+	/// </summary>
 	Collection();
+	/// <summary>
+	/// copy constructor
+	/// </summary>
+	/// <param name="other"></param>
 	Collection(const Collection& other);
+	/// <summary>
+	/// operator=
+	/// </summary>
+	/// <param name="c"></param>
+	/// <returns></returns>
 	Collection& operator=(const Collection& c);
-	void addElement(const T* c); // add element to collection. Used type must have clone funtion.
-	void link_back(T* c); // Warning!!! Add element to collection with same existing item (shadow copy).
-	void artificialPop_back(); // reduse size by one. Use only if you have two collections with same pointers(in order to not delete one element two times)!!!
-	T& getElement(size_t type) const; // get element by type. Use only for objects that have variable 'type' in them!!!
+	/// <summary>
+	/// ...add element to collection. Used type must have clone funtion.
+	/// </summary>
+	/// <param name="c"></param>
+	void addElement(const T* c);
+	/// <summary>
+	/// ...Warning!!! Add element to collection with same existing item (shadow copy).
+	/// </summary>
+	/// <param name="c"></param>
+	void link_back(T* c);
+	/// <summary>
+	/// ...reduse size by one. Use only if you have two collections with same pointers(in order to not delete one element two times)!!!
+	/// </summary>
+	void artificialPop_back();
+	/// <summary>
+	/// ...get element by type. Use only for objects that have variable 'type' in them!!!
+	/// </summary>
+	/// <param name="type"></param>
+	/// <returns></returns>
+	T& getElement(size_t type) const;
 	T& operator[](size_t index);
 	T* getElementByIndex(size_t index);
 	void pop_id(size_t index);
 	void deleteElement(T& element);
-	const bool hasComponent(size_t type) const; // use only for Component objects or that which have variable 'type' in them!
+	/// <summary>
+	/// use only for Component objects or that which have variable 'type' in them!
+	/// </summary>
+	/// <param name="type"></param>
+	/// <returns></returns>
+	const bool hasComponent(size_t type) const;
 
-	const size_t getSize() const; // return number of objects in collection
+	/// <summary>
+	/// return number of objects in collection
+	/// </summary>
+	/// <returns></returns>
+	const size_t getSize() const;
 
-	~Collection(); // delete all objects in collection
+	~Collection();
 
 };
 
@@ -169,6 +209,10 @@ const size_t Collection<T>::getSize() const
 	return size;
 }
 
+/// <summary>
+/// delete all objects in collection/ handle with dyn arrays in collection
+/// </summary>
+/// <typeparam name="T"></typeparam>
 template<typename T>
 Collection<T>::~Collection()
 {

@@ -1,7 +1,10 @@
 #pragma once
 #include"ECS.h"
-#include"../Structures/String.h"
+#include"../../Structures/String.h"
 
+/// <summary>
+/// Storage name of player
+/// </summary>
 class PlayerComponent : public Component
 {
 	String name = "Player";
@@ -12,16 +15,13 @@ public:
 		type = 11;
 	}
 
-	PlayerComponent(const char* name) : Component() {
-		type = 11;
-		this->name = name;
-	}
+	PlayerComponent(const char* name);
 
-	void init() override {}
-
-	const char* getName() const {
-		return name.c_str();
-	}
+	/// <summary>
+	/// get name of player
+	/// </summary>
+	/// <returns></returns>
+	const char* getName() const;
 
 
 };

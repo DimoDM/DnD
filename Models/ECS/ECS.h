@@ -1,6 +1,6 @@
 #pragma once
-#include"../Structures/Vector.h"
-#include"../Structures/Collection.h"
+#include"../../Structures/Vector.h"
+#include"../../Structures/Collection.h"
 
 class Component;
 class Manager;
@@ -10,39 +10,86 @@ class Entity;
 class Component
 {
 public:
-	Entity* entity; // store ptr to Entity that would have this componet
+	/// <summary>
+	/// ...store ptr to Entity that would have this componet
+	/// </summary>
+	Entity* entity;
 	int type;
 
-	virtual void init() {} // init component info
-	virtual void update() {} // update component info
-	virtual void draw() {} // draw if needed
+	/// <summary>
+	/// ...init component info
+	/// </summary>
+	virtual void init() {}
+	/// <summary>
+	/// ...update component info
+	/// </summary>
+	virtual void update() {}
+	/// <summary>
+	/// draw if needed
+	/// </summary>
+	virtual void draw() {}
 	virtual ~Component() {}
 };
 
 class Entity
 {
-	Manager& manager; // make communication with manager possible for both sides // used for grouping entities;
-	Collection<Component> componentList; // list for components
-	bool groupBitSet[32] = { false }; // make possible to group entities
+	/// <summary>
+	/// ...make communication with manager possible for both sides // used for grouping entities;
+	/// </summary>
+	Manager& manager;
+	/// <summary>
+	/// ...list for components
+	/// </summary>
+	Collection<Component> componentList;
+	/// <summary>
+	/// ...make possible to group entities
+	/// </summary>
+	bool groupBitSet[32] = { false };
 	bool isActive = false;
 public:
 
-	//Entity() = default;
 	Entity(Manager& m) : manager(m) { isActive = true; }
 
-	void update(); // call update func of components
-	void draw(); // call draw func of components
+	/// <summary>
+	/// call update func of components
+	/// </summary>
+	void update();
+	/// <summary>
+	/// call draw func of components
+	/// </summary>
+	void draw();
 
-	void addGroup(std::size_t idOfGroup); // add entity to group
+	/// <summary>
+	/// add entity to group
+	/// </summary>
+	/// <param name="idOfGroup"></param>
+	void addGroup(std::size_t idOfGroup);
 
-	bool hasGroup(std::size_t idOfGroup); // check if entity is in group
+	/// <summary>
+	///  check if entity is in group
+	/// </summary>
+	/// <param name="idOfGroup"></param>
+	/// <returns></returns>
+	bool hasGroup(std::size_t idOfGroup);
 
 	const bool getIsActive() const;
 	void setIsActive(bool value);
-	//source for parameter packs:
-	//https://en.cppreference.com/w/cpp/language/parameter_pack
+	/// <summary>
+	/// ...source for parameter packs knowage: https://en.cppreference.com/w/cpp/language/parameter_pack
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="...TArgs"></typeparam>
+	/// <param name="...arguments"></param>
+	/// <returns></returns>
 	template<typename T, typename... TArgs>
-	T& addComponent(TArgs&&... arguments); // idea behind that is to call constructors of components with parameters
+	/// <summary>
+	/// idea behind using parameter pack is to call constructors of components with parameters
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="...TArgs"></typeparam>
+	/// <param name="...arguments"></param>
+	/// <returns></returns>
+	T& addComponent(TArgs&&... arguments);
 
 	template<typename T>
 	bool hasComponent() const;
@@ -51,8 +98,15 @@ public:
 	T& getComponent() const;
 };
 
+/// <summary>
+/// ...add component to component collection
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <typeparam name="...TArgs"></typeparam>
+/// <param name="...arguments"></param>
+/// <returns></returns>
 template<typename T, typename... TArgs>
-T& Entity::addComponent(TArgs&&... arguments) { // idea behind that is to call constructors of components with parameters
+T& Entity::addComponent(TArgs&&... arguments) {
 	if (hasComponent<T>()) return getComponent<T>();
 	T* c(new T(std::forward<TArgs>(arguments)...));
 	c->entity = this;
@@ -61,6 +115,11 @@ T& Entity::addComponent(TArgs&&... arguments) { // idea behind that is to call c
 	return *c;
 }
 
+/// <summary>
+/// ...check if component is already added
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <returns></returns>
 template<typename T>
 bool Entity::hasComponent() const {
 	Component* c = new T();
@@ -69,6 +128,11 @@ bool Entity::hasComponent() const {
 	return componentList.hasComponent(type);
 }
 
+/// <summary>
+/// ...get component by it's type
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <returns></returns>
 template<typename T>
 T& Entity::getComponent() const {
 	if (!hasComponent<T>()) throw new std::exception("Invalid component");
@@ -79,6 +143,9 @@ T& Entity::getComponent() const {
 	return static_cast<T&>(componentList.getElement(type));
 }
 
+/// <summary>
+/// ...this class create and handle all created entities
+/// </summary>
 class Manager
 {
 	Collection<Entity> entities;
@@ -88,12 +155,33 @@ public:
 
 	Manager() = default;
 
-	void update();  // update all entities
-	void draw(); // draw all entites
-	void addToGroup(Entity* e, const size_t idGroup); // add entity to specific group
+	/// <summary>
+	/// ...update all entities
+	/// </summary>
+	void update();
+	/// <summary>
+	/// draw all entites
+	/// </summary>
+	void draw();
+	/// <summary>
+	/// add entity to specific group(group entities)
+	/// </summary>
+	/// <param name="e"></param>
+	/// <param name="idGroup"></param>
+	void addToGroup(Entity* e, const size_t idGroup);
 
-	Collection<Entity>& getGroup(const size_t idGroup); // get all entites of one group
-	Entity& addEntity();   // add entity to collection
+	/// <summary>
+	/// get all entites of one group
+	/// </summary>
+	/// <param name="idGroup"></param>
+	/// <returns></returns>
+	Collection<Entity>& getGroup(const size_t idGroup);
+
+	/// <summary>
+	/// add entity to collection
+	/// </summary>
+	/// <returns></returns>
+	Entity& addEntity();
 
 	~Manager();
 };

@@ -1,129 +1,60 @@
 #pragma once
 #include"ECS.h"
-#include"../ConsoleViewer.h"
-#include"../ItemsList.h"
-#include"../Structures/Optional.h"
-#include"../Structures/String.h"
+#include"../../Views/GameView.h"
+#include"../Items/ItemsList.h"
+#include"../../Structures/Optional.h"
+#include"../../Structures/String.h"
 
+/// <summary>
+/// this component is responcible to handle items in player's inventar
+/// </summary>
 class InventoryComponent : public Component
 {
 
+	/// <summary>
+	/// inventory content
+	/// </summary>
 	Optional<Weapon> weapon;
 	Optional<Spell> spell;
 	Optional<Armor> armor;
 
 public:
 
-	InventoryComponent() : Component() {
-		type = 6;
-	}
+	InventoryComponent();
 
-	InventoryComponent(Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s) : Component() {
-		type = 6;
-		weapon = w;
-		armor = a;
-		spell = s;
-	}
+	InventoryComponent(Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s);
+	/// <summary>
+	/// ...set default inventory for player
+	/// </summary>
+	void init() override;
+	/// <summary>
+	/// ...show us inventory
+	/// </summary>
+	void draw() override;
 
-	void init() override {
-		if (entity->hasGroup(0)) {
-			if (!weapon.containsData()) weapon.setData(*static_cast<Weapon*>(items[0]));
-			if (!spell.containsData()) spell.setData(*static_cast<Spell*>(items[2]));
-			if (!armor.containsData()) armor.clear();
-		}
-	}
+	const int getSpellDmg() const;
+	/// <summary>
+	/// ...return item from inventory 
+	/// </summary>
+	/// <param name="type"></param>
+	/// <returns></returns>
+	const Item* getItemByType(int type) const;
+	/// <summary>
+	/// ...swap item from our inventar with that we use for parameter
+	/// </summary>
+	/// <param name="item"></param>
+	/// <returns></returns>
+	Item* swapItem(Item* item);
 
-	void update() override {
+	const Optional<Weapon>& getWeapon() const;
+	const Optional<Armor>& getArmor() const;
+	const Optional<Spell>& getSpell() const;
 
-	}
-	void draw() override {
-		if (entity->hasGroup(0)) {
-			GameView::getInstance()->println("Inventory: ");
-			if (weapon.containsData()) {
-				GameView::getInstance()->println(weapon.getData().itemToString().c_str());
-			}
-			if (spell.containsData()) {
-				GameView::getInstance()->println(spell.getData().itemToString().c_str());
-			}
-			if (armor.containsData()) {
-				GameView::getInstance()->println(armor.getData().itemToString().c_str());
-			}
-		}
-	}
-
-	const Optional<Weapon>& getWeapon() const {
-		return weapon;
-	}
-
-	const Optional<Armor>& getArmor() const {
-		return armor;
-	}
-
-	const Optional<Spell>& getSpell() const {
-		return spell;
-	}
-
-	const int getSpellDmg() const {
-		if (spell.containsData()) return spell.getData().dmg;
-		return 0;
-	}
-
-	const Item* getItemByType(int type) const {
-		switch (type)
-		{
-		case 0: if (weapon.containsData()) return (&weapon.getData()); break;
-		case 1: if (armor.containsData()) return (&armor.getData()); break;
-		case 2: if (spell.containsData()) return (&spell.getData()); break;
-		default: return nullptr;
-		}
-		return nullptr;
-	}
-
-	Item* swapItem(Item* item) {
-		if (item == nullptr) return nullptr;
-		Item* swap = item->clone();
-		delete item;
-		switch (swap->type)
-		{
-		case 0: if (weapon.containsData()) { item = weapon.getData().clone(); }
-			  else { item = nullptr; } weapon.setData(static_cast<Weapon&>(*swap)); break;
-		case 1: if (armor.containsData()) { item = armor.getData().clone(); }
-			  else { item = nullptr; } armor.setData(static_cast<Armor&>(*swap)); break;
-		case 2: if (spell.containsData()) { item = spell.getData().clone(); }
-			  else { item = nullptr; } spell.setData(static_cast<Spell&>(*swap)); break;
-		default:
-			break;
-		}
-		return item;
-	}
-
-	const int getWeaponDmg() const {
-		if (weapon.containsData()) return weapon.getData().dmg;
-		return 0;
-	}
-
-	const int getArmorDef() const {
-		if (armor.containsData()) return armor.getData().defence;
-		return 0;
-	}
-
-	const int getSpellCost() const {
-		if (spell.containsData()) return spell.getData().cost;
-		return 0;
-	}
-
-	const String getWeaponInfo() const {
-		if (weapon.containsData()) return weapon.getData().itemToString();
-		return "";
-	}
-	const String getArmorInfo() const {
-		if (armor.containsData()) return armor.getData().itemToString();
-		return "";
-
-	}
-	const String getSpellInfo() const {
-		if (spell.containsData()) return spell.getData().itemToString();
-		return "";
-	}
+	const int getWeaponDmg() const;
+	const int getArmorDef() const;
+	const int getSpellCost() const;
+	const String getWeaponInfo() const;
+	const String getArmorInfo() const;
+	const String getSpellInfo() const;
 
 };

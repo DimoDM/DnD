@@ -2,11 +2,16 @@
 #include "Item.h"
 #include"Armor.h"
 #include"Weapon.h"
-#include"Empty.h"
 #include"Spell.h"
 
+/// <summary>
+/// list size
+/// </summary>
 const int SIZEITEMS = 12;
 
+/// <summary>
+/// global list of all items
+/// </summary>
 static Item* items[SIZEITEMS] = {
 		{ new Weapon(0, "Wooden sword", 10)},
 		{ new Armor(1, "Wood Armor", 5)},
@@ -22,6 +27,9 @@ static Item* items[SIZEITEMS] = {
 		{ new Spell(11, "Flying knifes", 130, 40) },
 };
 
+/// <summary>
+/// func for deleting list
+/// </summary>
 static void deleteItems() {
 	for (int i = 0; i < SIZEITEMS; i++) {
 		delete items[i];

@@ -1,4 +1,4 @@
-#include"BattleView.h"
+#include"../BattleView.h"
 
 BattleView* BattleView::instance = nullptr;
 

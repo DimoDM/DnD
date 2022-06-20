@@ -1,4 +1,4 @@
-#include "FileManager.h"
+#include "../FileManager.h"
 #pragma once
 
 void FileManager::openFile(std::ofstream& file, const char* fileName, std::ios_base::openmode mode)
