@@ -26,7 +26,7 @@ void SaveInFileComponent::init()
 void SaveInFileComponent::save()
 {
 	std::ofstream file;
-	String name = "data/";
+	String name = "./data/";
 	name += player->getName();
 	name += ".txt";
 	FileManager::openFile(file, name.c_str(), ios::binary | ios::trunc);

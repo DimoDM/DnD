@@ -1,5 +1,6 @@
 #pragma once
 #include"ECS.h"
+#include"TransformComponent.h"
 
 /// <summary>
 /// this component is responcible for drawing of entity

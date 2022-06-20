@@ -3,6 +3,7 @@
 #include"../Service/Menu.h"
 #include"../Service/Game.h"
 #include"../Models/GameStages.h"
+#include"../Models/Items/ItemsList.h"
 //source:
 //https://www.delftstack.com/howto/cpp/how-to-get-list-of-files-in-a-directory-cpp/
 //https://stackoverflow.com/questions/48312460/c17-filesystem-is-not-a-namespace-name

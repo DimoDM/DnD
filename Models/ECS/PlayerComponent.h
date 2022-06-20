@@ -11,9 +11,7 @@ class PlayerComponent : public Component
 
 public:
 
-	PlayerComponent() : Component(){
-		type = 11;
-	}
+	PlayerComponent();
 
 	PlayerComponent(const char* name);
 

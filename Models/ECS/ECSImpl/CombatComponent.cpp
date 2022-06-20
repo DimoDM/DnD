@@ -30,7 +30,7 @@ void CombatComponent::init() {
 		Optional<Weapon> w;
 		w.clear();
 		Optional<Armor> a;
-		a.setData(*static_cast<Armor*>(items[5]));
+		a.setData(*static_cast<Armor*>(items[4]));
 		Optional<Spell> s;
 		s.clear();
 		entity->addComponent<InventoryComponent>(w, a, s);

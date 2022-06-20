@@ -16,10 +16,7 @@ public:
 	/// <summary>
 	/// ... read keyboard input and move player
 	/// </summary>
-	KeyboardComponent() : Component() {
-		type = 4;
-	}
-
+	KeyboardComponent();
 	void init() override;
 
 	void update() override;

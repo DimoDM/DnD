@@ -15,9 +15,9 @@ Game::Game()
 void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Spell> s, int health, int mana, int strenght, int level, int xp, int completedLevels, const char* name, const char* mapFile, GameStage& stage)
 {
 	Map map(manager);
-	map.loadMap(mapFile);
-
+	map.loadDimentions(mapFile);
 	GameView::createInstance(map.getWidth(), map.getHeight());
+	map.loadMap(mapFile);
 	manager.draw();
 
 	map.loadEntites();

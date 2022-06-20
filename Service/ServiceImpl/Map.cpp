@@ -3,6 +3,10 @@
 #include"../TextureManager.h"
 #include"../../Models/ECS/ECS.h"
 #include"../Game.h"
+#include"../../Models/ECS/CombatComponent.h"
+#include"../../Models/ECS/StatsComponent.h"
+#include"../../Models/ECS/MonsterAiComponent.h"
+#include"../../Models/ECS/SpriteComponent.h"
 #include"../RandomValues.h"
 using namespace std;
 Map::Map(Manager& m)
@@ -11,6 +15,19 @@ Map::Map(Manager& m)
 	width = 10;
 	height = 10;
 }
+
+void Map::loadDimentions(const char* path) 
+{
+	std::ifstream mapFile;
+	mapFile.open(path);
+
+	mapFile >> width;
+	mapFile >> height;
+	mapFile >> lvl;
+	mapFile.get();
+	mapFile.close();
+}
+
 
 void Map::loadMap(const char* path)
 {
@@ -53,13 +70,6 @@ void Map::addTile(int xPos, int yPos, const char tex)
 {
 	Entity& tile(manager->addEntity());
 	tile.addComponent<TileComponent>(xPos, yPos, tex);
-	tile.addGroup(Game::groupTiles);
-}
-
-void Map::addCollider(int xPos, int yPos)
-{
-	Entity& tile(manager->addEntity());
-	tile.addComponent<ColliderComponent>(xPos, yPos);
 	tile.addGroup(Game::groupTiles);
 }
 

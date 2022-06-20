@@ -37,7 +37,7 @@ const int Menu::select(int start) const {
 	}
 }
 
-Menu::Menu(const char* title, const char** options, int numOfOptions, ConsoleViewer* viewer) {
+inline Menu::Menu(const char* title, const char** options, int numOfOptions, ConsoleViewer* viewer) {
 	this->title = title;
 	this->viewer = viewer;
 	for (int i = 0; i < numOfOptions; i++) {

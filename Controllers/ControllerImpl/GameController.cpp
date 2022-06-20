@@ -17,7 +17,7 @@ void GameController::startGame()
 
 	int completedLevels;
 	std::ifstream file;
-	FileManager::openFile(file, playerName.c_str(), ios::binary);
+	FileManager::openFile(file, playerName.c_str(), std::ios::binary);
 	file.read((char*)&completedLevels, sizeof(int));
 	file.close();
 
@@ -129,7 +129,7 @@ const String& GameController::selectMap(int maxLevels)
 void GameController::loadPlayer(const char* playerFile, int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, int& level, int& xp, int& completedLevels, String& name)
 {
 	std::ifstream file;
-	FileManager::openFile(file, playerFile, ios::binary);
+	FileManager::openFile(file, playerFile, std::ios::binary);
 	size_t lenght;
 
 	file.read((char*)&completedLevels, sizeof(int));

@@ -9,6 +9,7 @@ void CreatePlayerController::createPlayer()
 {
     Manager m;
     Entity* player = new Entity(m);
+    player->addGroup(0);
     player->addComponent<TransformComponent>(1, 0);
     player->addComponent<SpriteComponent>();
     player->addComponent<InventoryComponent>();

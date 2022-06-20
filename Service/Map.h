@@ -17,6 +17,10 @@ public:
 	Map(Manager& m);
 
 	/// <summary>
+	/// load parameters of map
+	/// </summary>
+	void loadDimentions(const char* path);
+	/// <summary>
 	/// load map and create entittes
 	/// </summary>
 	/// <param name="path"></param>
