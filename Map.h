@@ -19,5 +19,10 @@ public:
 	void addMonster(int lvl);
 	void addTreasure(int lvl);
 
+	const int getExitX() const;
+	const int getExitY() const;
+	const int getWidth() const;
+	const int getHeight() const;
+
 	~Map() {}
 };

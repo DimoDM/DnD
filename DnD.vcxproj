@@ -203,11 +203,9 @@
     <ClInclude Include="Structures\String.h" />
     <ClInclude Include="Structures\Vector.h" />
     <ClInclude Include="Structures\Vector2D.h" />
+    <ClInclude Include="NextLevelSystem.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Weapon.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="data\Pesho.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

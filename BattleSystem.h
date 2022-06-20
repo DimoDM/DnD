@@ -46,8 +46,8 @@ public:
 			playerMove = Random::getRandomNum(0, 1);
 			while (player->getComponent<StatsComponent>().getHealth() > 0 && monster->getComponent<StatsComponent>().getHealth() > 0) {
 				//cout << "battle" << endl;
-				draw();
 				monsterDamage += update();
+				draw();
 			}
 			if (player->getComponent<StatsComponent>().getHealth() <= 0) {
 				return -1;
@@ -58,7 +58,7 @@ public:
 			}
 			player = nullptr;
 			monster = nullptr;
-			BattleView::getInstance()->print();
+			GameView::getInstance()->print();
 
 		}
 		return 0;
@@ -72,7 +72,9 @@ private:
 			player->getComponent<CombatComponent>().attack();
 			monster->getComponent<StatsComponent>().takeDamage(player->getComponent<CombatComponent>().getDmgFromLastAttack());
 			BattleView::getInstance()->print("Monster's health: ");
-			BattleView::getInstance()->println(String(monster->getComponent<StatsComponent>().getHealth()).c_str());
+			if (monster->getComponent<StatsComponent>().getHealth() > 0)
+				BattleView::getInstance()->println(String(monster->getComponent<StatsComponent>().getHealth()).c_str());
+			else BattleView::getInstance()->println("0");
 		}
 		else {
 			BattleView::getInstance()->println("Monster's turn");
@@ -80,7 +82,9 @@ private:
 			monsterDamage = monster->getComponent<CombatComponent>().getDmgFromLastAttack();
 			player->getComponent<StatsComponent>().takeDamage(monsterDamage);
 			BattleView::getInstance()->print("Player's health: ");
-			BattleView::getInstance()->println(String(player->getComponent<StatsComponent>().getHealth()).c_str());
+			if (player->getComponent<StatsComponent>().getHealth() > 0)
+				BattleView::getInstance()->println(String(player->getComponent<StatsComponent>().getHealth()).c_str());
+			else BattleView::getInstance()->println("0");
 		}
 		playerMove = !playerMove;
 		return monsterDamage;

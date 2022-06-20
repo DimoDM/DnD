@@ -44,7 +44,7 @@ class StatsComponent : public Component
 				break;
 			}
 		}
-
+		ConsoleViewer::getInstance()->print();
 	}
 
 public:
@@ -76,10 +76,13 @@ public:
 			m += mana;
 			String s("Strenght: ");
 			s += strenght;
+			String l("Level: ");
+			l += level;
 			GameView::getInstance()->println("Stats: ");
 			GameView::getInstance()->println(h.c_str());
 			GameView::getInstance()->println(m.c_str());
 			GameView::getInstance()->println(s.c_str());
+			GameView::getInstance()->println(l.c_str());
 		}
 	}
 

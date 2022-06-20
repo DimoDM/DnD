@@ -82,9 +82,9 @@ void Map::addMonster(int lvl)
 	monster.addComponent<MonsterAIComponent>(manager.getGroup(Game::groupPlayer));
 	monster.addComponent<SpriteComponent>('M');
 	monster.addComponent<CombatComponent>();
-	int health = 50 + (10 * lvl);
-	int mana = 20 + (10 * lvl);
-	int strenght = 30 + (10 * lvl);
+	int health = 50 + (10 * (lvl - 1));
+	int mana = 20 + (10 * (lvl - 1));
+	int strenght = 30 + (10 * (lvl - 1));
 	monster.addComponent<StatsComponent>(health, mana, strenght, lvl, 0, lvl);
 	monster.addGroup(Game::groupEnemy);
 }
@@ -94,4 +94,24 @@ void Map::addTreasure(int lvl)
 	Entity& treasure(manager.addEntity());
 	treasure.addComponent<TreasureComponent>(lvl);
 	treasure.addGroup(Game::groupTreasures);
+}
+
+const int Map::getExitX() const
+{
+	return exitX;
+}
+
+const int Map::getExitY() const
+{
+	return exitY;
+}
+
+const int Map::getWidth() const
+{
+	return width;
+}
+
+const int Map::getHeight() const
+{
+	return height;
 }

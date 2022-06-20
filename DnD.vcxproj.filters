@@ -209,8 +209,8 @@
     <ClInclude Include="FindTreasureSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="data\Pesho.txt" />
+    <ClInclude Include="NextLevelSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

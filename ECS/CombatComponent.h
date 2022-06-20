@@ -42,14 +42,20 @@ public:
 			switch (attack)
 			{
 			case 0: dmg = stats->getStrenght() + inventory->getWeaponDmg(); break;
-			case 1: dmg = stats->getStrenght() + inventory->getSpellDmg(); break;
+			case 1: dmg = stats->getStrenght() / 5 + inventory->getSpellDmg(); stats->reduceMana(inventory->getSpellCost()); break;
 			default:
 				break;
 			}
 		}
 		else {
-			dmg = stats->getStrenght() + inventory->getSpellDmg() + inventory->getWeaponDmg();
-			stats->reduceMana(inventory->getSpellCost());
+			if (inventory->getSpellDmg() > 0 && stats->getMana() >= inventory->getSpellCost()) {
+				dmg = stats->getStrenght() / 5 + inventory->getSpellDmg();
+				stats->reduceMana(inventory->getSpellCost());
+			}
+			else if (inventory->getWeaponDmg() > 0) {
+				dmg = stats->getStrenght() + inventory->getWeaponDmg();
+			}
+			else dmg = stats->getStrenght();
 			BattleView::getInstance()->print("Mana: ");
 			BattleView::getInstance()->println(String(stats->getMana()).c_str());
 		}

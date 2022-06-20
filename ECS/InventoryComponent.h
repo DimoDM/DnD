@@ -26,8 +26,8 @@ public:
 	}
 
 	void init() override {
-		if(!weapon.containsData()) weapon.setData(*static_cast<Weapon*>(items[1]));
-		if(!spell.containsData()) spell.setData(*static_cast<Spell*>(items[3]));
+		if(!weapon.containsData()) weapon.setData(*static_cast<Weapon*>(items[0]));
+		if(!spell.containsData()) spell.setData(*static_cast<Spell*>(items[2]));
 		if (!armor.containsData()) armor.clear();
 	}
 

@@ -34,7 +34,7 @@ public:
 		pos = { tile->getX(), tile->getY() };
 		const int MAXLVL = 5;
 		const int MAXINDEXLVL = SIZEITEMS / MAXLVL;
-		int index = Random::getRandomNum(MAXINDEXLVL * (lvl + 1), MAXINDEXLVL * (lvl+2));
+		int index = Random::getRandomNum(MAXINDEXLVL * (lvl - 1), MAXINDEXLVL * (lvl));
 		item = items[index]->clone();
 	}
 

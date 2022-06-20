@@ -108,7 +108,7 @@ void GameController::loadPlayer(const char* playerFile, int& x, int& y, Optional
 	file.read((char*)&lenght, sizeof(size_t));
 	char* pName = new char[100];
 	file.read(pName, lenght);
-	pName[lenght + 1] = '\0';
+	pName[lenght] = '\0';
 	name = pName;
 	file.read((char*)&x, sizeof(int));
 	file.read((char*)&y, sizeof(int));

@@ -4,6 +4,7 @@
 #include"Structures/Optional.h"
 #include"ItemsList.h"
 #include"FindTreasureSystem.h"
+#include"NextLevelSystem.h"
 
 class Game
 {
@@ -38,4 +39,5 @@ private:
 	Manager manager;
 	BattleSystem* battleSys = nullptr;
 	FindTreasureSystem* findTreasureSys = nullptr;
+	NextLevelSystem* lvlSys = nullptr;
 };

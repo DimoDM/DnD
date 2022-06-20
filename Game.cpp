@@ -22,10 +22,13 @@ void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Sp
 	player.addComponent<InventoryComponent>(w, a, s);
 	player.addComponent<StatsComponent>(health, mana, strenght, level, xp, completedLevels);
 	player.addComponent<CombatComponent>();
+	player.addComponent<PlayerComponent>(name);
+	player.addComponent<SaveLoadComponent>();
 	player.addGroup(groupPlayer);
 
 	battleSys = new BattleSystem(manager.getGroup(groupPlayer), manager.getGroup(groupEnemy));
 	findTreasureSys = new FindTreasureSystem(manager.getGroup(groupPlayer), manager.getGroup(groupTreasures));
+	lvlSys = new NextLevelSystem(map.getExitX(), map.getExitY(), manager.getGroup(groupPlayer));
 
 	_isRunning = true;
 }
@@ -37,6 +40,7 @@ void Game::update()
 		_isRunning = false;
 		return;
 	}
+	lvlSys->isAtTheExit();
 	manager.update();
 }
 
@@ -49,4 +53,6 @@ void Game::draw()
 Game::~Game()
 {
 	delete battleSys;
+	delete findTreasureSys;
+	delete lvlSys;
 }
