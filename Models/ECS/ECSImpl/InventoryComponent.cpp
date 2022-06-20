@@ -6,6 +6,14 @@ InventoryComponent::InventoryComponent() : Component() {
 
 InventoryComponent::InventoryComponent(Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s) : Component() {
 	type = 6;
+	//tried to fix the bug for new players
+	//if (w.containsData())weapon.setData(w.getData());
+	//else weapon.clear();
+	//if (a.containsData())armor.setData(a.getData());
+	//else armor.clear();
+	//if (s.containsData())spell.setData(s.getData());
+	//else spell.clear();
+
 	weapon = w;
 	armor = a;
 	spell = s;

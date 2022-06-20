@@ -78,6 +78,7 @@ class GameController {
 	void loadPlayer(const char* playerFile, int& x, int& y, Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s, int& health, int& mana, int& strenght, int& level, int& xp, int& completedLevels, String& name);
 	/// <summary>
 	/// start play game
+	/// there is bug at 57 line game crash when new player exit from first level
 	/// </summary>
 	/// <param name="playerFile"></param>
 	/// <param name="mapFile"></param>

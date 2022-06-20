@@ -70,6 +70,7 @@ void Optional<T>::copyFrom(const Optional<T>& other)
 template <typename T>
 void Optional<T>::free()
 {
+	//crash when new player play at gameController 57 line!
 	delete data;
 }
 
