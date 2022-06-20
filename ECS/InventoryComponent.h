@@ -18,17 +18,19 @@ public:
 		type = 6;
 	}
 
-	InventoryComponent(Optional<Weapon> w, Optional<Armor> a, Optional<Spell> s) : Component() {
+	InventoryComponent(Optional<Weapon>& w, Optional<Armor>& a, Optional<Spell>& s) : Component() {
 		type = 6;
-		if (w.containsData()) weapon.setData(w.getData());
-		if (a.containsData()) armor.setData(a.getData());
-		if (s.containsData()) spell.setData(s.getData());
+		weapon = w;
+		armor = a;
+		spell = s;
 	}
 
 	void init() override {
-		if(!weapon.containsData()) weapon.setData(*static_cast<Weapon*>(items[0]));
-		if(!spell.containsData()) spell.setData(*static_cast<Spell*>(items[2]));
-		if (!armor.containsData()) armor.clear();
+		if (entity->hasGroup(0)) {
+			if (!weapon.containsData()) weapon.setData(*static_cast<Weapon*>(items[0]));
+			if (!spell.containsData()) spell.setData(*static_cast<Spell*>(items[2]));
+			if (!armor.containsData()) armor.clear();
+		}
 	}
 
 	void update() override {
@@ -116,10 +118,12 @@ public:
 	}
 	const String getArmorInfo() const {
 		if (armor.containsData()) return armor.getData().itemToString();
+		return "";
 
 	}
 	const String getSpellInfo() const {
 		if (spell.containsData()) return spell.getData().itemToString();
+		return "";
 	}
 
 };

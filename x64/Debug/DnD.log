@@ -46,5 +46,4 @@ C:\Users\Dimo\Desktop\DnD\DnD\DnD\generateFreeVector2D.h(12,13): warning C4244: 
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Menu.h(14,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Game.h(25): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
   Generating Code...
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\InventoryComponent.h(123): warning C4715: 'InventoryComponent::getSpellInfo': not all control paths return a value
   DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\x64\Debug\DnD.exe
