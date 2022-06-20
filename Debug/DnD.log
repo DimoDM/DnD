@@ -1,2 +1,8 @@
 ﻿  main.cpp
-  DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\Debug\DnD.exe
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\main.cpp(61,34): warning C4244: 'initializing': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\main.cpp(63,1): error C4146: unary minus operator applied to unsigned type, result still unsigned
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\main.cpp(419,58): error C4146: unary minus operator applied to unsigned type, result still unsigned
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\main.cpp(41,30): message : while evaluating constexpr function 'PCG::pcg32_random_r'
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\main.cpp(75,15): message : while evaluating constexpr function 'PCG::operator ()'
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\main.cpp(222,46): message : while evaluating constexpr function 'distribution'
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\main.cpp(419,27): message : while evaluating constexpr function 'make_maze'
