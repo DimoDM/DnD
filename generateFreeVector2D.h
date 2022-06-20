@@ -15,7 +15,7 @@ public:
 	}
 
 	static Vector2D generateRandomCoordinates() {
-		return { getRandomNum(1, GameView::getInstance()->getWidth() - 1), getRandomNum(1, GameView::getInstance()->getHeight() - 1) };
+		return { getRandomNum(3, GameView::getInstance()->getWidth() - 1), getRandomNum(3, GameView::getInstance()->getHeight() - 1) };
 	}
 
 	static Vector2D generateValidCoordinates() {

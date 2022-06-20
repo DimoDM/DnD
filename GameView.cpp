@@ -16,7 +16,7 @@ GameView::GameView(int width, int height) : ConsoleViewer() {
 
 void GameView::initMap(int widht, int height)
 {
-	if (width > MAXWIDTH || width < 3 || height > MAXHEIGHT || height < 3) throw new exception("invalid arguments");
+	if (width > MAXWIDTH || width < 2 || height > MAXHEIGHT || height < 2) throw new exception("invalid arguments");
 	for (int i = 0; i < height; i++) {
 		gameTextures.push_back(Vector<char>());
 		for (int j = 0; j < width; j++) {
@@ -95,6 +95,7 @@ GameView* GameView::getInstance()
 
 GameView* GameView::createInstance(int width, int height)
 {
-	if (instance == nullptr) instance = new GameView(width, height);
+	delete instance;
+	instance = new GameView(width, height);
 	return instance;
 }

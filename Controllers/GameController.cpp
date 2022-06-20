@@ -76,10 +76,13 @@ void GameController::playGame(const char* playerFile, const char* mapFile)
 
 const String GameController::getNextMapFile(const char* mapFile) {
 	String newMapFile(mapFile);
-	char* mf = new char[newMapFile.getSize()];
+	char mf[100];
+	for (int i = 0; i < newMapFile.getSize(); i++)
+		mf[i] = newMapFile.c_str()[i];
+	mf[newMapFile.getSize()] = '\0';
 	mf[9] += 1;
-	newMapFile = mf;
-	delete mf;
+	newMapFile = "";
+	newMapFile += mf;
 	return newMapFile;
 }
 

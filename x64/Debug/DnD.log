@@ -1,17 +1,2 @@
-﻿  GameController.cpp
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Menu.h(14,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ItemsList.h(23,16): warning C4154: deletion of an array expression; conversion to pointer supplied
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\generateFreeVector2D.h(12,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Game.h(25): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
-  Game.cpp
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ItemsList.h(23,16): warning C4154: deletion of an array expression; conversion to pointer supplied
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\generateFreeVector2D.h(12,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Menu.h(14,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Game.h(25): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
-  Generating Code...
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\ECS\InventoryComponent.h(123): warning C4715: 'InventoryComponent::getSpellInfo': not all control paths return a value
+﻿  GameView.cpp
   DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\x64\Debug\DnD.exe

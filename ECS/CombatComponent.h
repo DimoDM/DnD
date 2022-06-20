@@ -33,7 +33,7 @@ public:
 		if (inventory->getSpellInfo().getSize() > 1 && stats->getMana() > inventory->getSpellCost())
 			options.push_back(inventory->getSpellInfo());
 
-		if (options.getSize() > 1 && entity->hasGroup(0)) {
+		if (options.getSize() > 1) {
 			int attack;
 			if (entity->hasGroup(0)) {
 				Menu menu("Choose item for the attack", options, BattleView::getInstance());
@@ -43,7 +43,7 @@ public:
 			switch (attack)
 			{
 			case 0: dmg = stats->getStrenght() + inventory->getWeaponDmg(); break;
-			case 1: dmg = stats->getStrenght() / 5 + inventory->getSpellDmg(); stats->reduceMana(inventory->getSpellCost()); break;
+			case 1: dmg = stats->getStrenght() + inventory->getSpellDmg(); stats->reduceMana(inventory->getSpellCost()); break;
 			default:
 				break;
 			}

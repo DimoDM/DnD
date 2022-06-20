@@ -11,9 +11,13 @@ Game::Game()
 
 void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Spell> s, int health, int mana, int strenght, int level, int xp, int completedLevels, const char* name, const char* mapFile, GameStage& stage)
 {
-	GameView::createInstance(10, 10);
 	Map map(manager);
 	map.loadMap(mapFile);
+
+	GameView::createInstance(map.getWidth(), map.getHeight());
+	manager.draw();
+
+	map.loadEntites();
 
 	Entity& player(manager.addEntity());
 	player.addComponent<KeyboardComponent>();

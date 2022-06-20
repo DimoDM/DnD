@@ -6,14 +6,18 @@ class Map
 	int height;
 	int exitX;
 	int exitY;
+	int numOfMonsters = 0;
+	int numOfTreasures = 0;
+	int lvl;
 	const char* mapFilePath;
-	Manager& manager;
+	Manager* manager;
 	
 public:
 
 	Map(Manager& m);
 
 	void loadMap(const char* path);
+	void loadEntites();
 	void addTile(int xPos, int yPos, const char tex);
 	void addCollider(int xPos, int yPos);
 	void addMonster(int lvl);
