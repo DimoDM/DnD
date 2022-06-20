@@ -37,7 +37,7 @@ GameController::~GameController()
 
 void GameController::playGame(const char* playerFile, const char* mapFile)
 {
-	{
+	
 		Game game;
 		int x, y, health, mana, strenght, level, xp, completedLevels;
 		Optional<Weapon> w;
@@ -51,7 +51,7 @@ void GameController::playGame(const char* playerFile, const char* mapFile)
 			game.draw();
 			game.update();
 		}
-	}
+	
 	int choice;
 	switch (gameStage)
 	{

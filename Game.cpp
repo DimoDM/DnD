@@ -32,7 +32,7 @@ void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Sp
 
 	battleSys = new BattleSystem(manager.getGroup(groupPlayer), manager.getGroup(groupEnemy));
 	findTreasureSys = new FindTreasureSystem(manager.getGroup(groupPlayer), manager.getGroup(groupTreasures));
-	lvlSys = new NextLevelSystem(map.getExitX(), map.getExitY(), manager.getGroup(groupPlayer));
+	lvlSys = new NextLevelSystem(map.getExitX(), map.getExitY(), map.mapLvl(), manager.getGroup(groupPlayer));
 	gameStage = &stage;
 	*gameStage = GameStage::stagePlay;
 	_isRunning = true;
@@ -40,6 +40,7 @@ void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Sp
 
 void Game::update()
 {
+	manager.update();
 	findTreasureSys->findTreasure();
 	if (battleSys->battle() == -1) {
 		*gameStage = GameStage::stageDeath;
@@ -51,7 +52,6 @@ void Game::update()
 		_isRunning = false;
 		return;
 	}
-	manager.update();
 }
 
 void Game::draw()

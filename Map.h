@@ -27,6 +27,7 @@ public:
 	const int getExitY() const;
 	const int getWidth() const;
 	const int getHeight() const;
+	const int mapLvl() const;
 
 	~Map() {}
 };

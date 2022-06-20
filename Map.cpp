@@ -115,3 +115,8 @@ const int Map::getHeight() const
 {
 	return height;
 }
+
+const int Map::mapLvl() const
+{
+	return lvl;
+}

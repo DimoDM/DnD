@@ -44,6 +44,7 @@ class MonsterAIComponent : public Component
 		for (int i = 0; i < 4; i++) {
 			mapCoordinates = { vel[i].x + monsterPos.x, vel[i].y + monsterPos.y };
 			disToPlayer[i] = GetDistance::getDistance(mapCoordinates, playerPos);
+			if(mapCoordinates.x > 1 && mapCoordinates.x < 9 && mapCoordinates.y > 1 && mapCoordinates.y < 9)
 			if (distance > disToPlayer[i] && GameView::getInstance()->getElementFromGameMap(mapCoordinates.x, mapCoordinates.y) != '#') {
 				distance = disToPlayer[i];
 				index = i;

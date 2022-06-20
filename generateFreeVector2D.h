@@ -10,12 +10,12 @@ public:
 	static int getRandomNum(int start, int end) {
 		int random;
 		srand(time(NULL));
-		random = rand() % end + start;
+		random = rand() % (end - start) + start;
 		return random;
 	}
 
 	static Vector2D generateRandomCoordinates() {
-		return { getRandomNum(3, GameView::getInstance()->getWidth() - 1), getRandomNum(3, GameView::getInstance()->getHeight() - 1) };
+		return { getRandomNum(3, GameView::getInstance()->getWidth() - 3), getRandomNum(3, GameView::getInstance()->getHeight() - 3) };
 	}
 
 	static Vector2D generateValidCoordinates() {
