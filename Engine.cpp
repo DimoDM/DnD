@@ -2,13 +2,13 @@
 
 void Engine::run()
 {
-	switch (gameStage)
+	switch (engineStage)
 	{
-	case stageMainMenu: gameStage = (GameStage)(mainMenu->select() + 1);
+	case stageMainMenu: engineStage = (EngineStage)(mainMenu->select() + 1);
 		break;
-	case stageStartGame: gameController->startGame(); gameStage = stageMainMenu; break;
+	case stageStartGame: gameController->startGame(); engineStage = stageMainMenu; break;
 	case stageCreatePlayer: playerController->createPlayer();
-		gameStage = stageMainMenu;
+		engineStage = stageMainMenu;
 		break;
 	case stageExit: return;
 	default:

@@ -1,10 +1,8 @@
 #pragma once
 
 enum GameStage {
-	stageMainMenu = 0,
-	stageStartGame,
-	stageCreatePlayer,
-	stageExit
+	stageInit = 0,
+	stagePlay,
+	stageDeath,
+	stageNextLvl
 };
-
-static GameStage gameStage = stageMainMenu;

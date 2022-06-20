@@ -30,9 +30,10 @@ public:
 		//const int MAXOPTIONS = 2;
 		Vector<String> options;
 		if (inventory->getWeaponInfo().getSize() > 1) options.push_back(inventory->getWeaponInfo());
-		if (inventory->getSpellInfo().getSize() > 1) options.push_back(inventory->getSpellInfo());
+		if (inventory->getSpellInfo().getSize() > 1 && stats->getMana() > inventory->getSpellCost())
+			options.push_back(inventory->getSpellInfo());
 
-		if (options.getSize() > 1) {
+		if (options.getSize() > 1 && entity->hasGroup(0)) {
 			int attack;
 			if (entity->hasGroup(0)) {
 				Menu menu("Choose item for the attack", options, BattleView::getInstance());
@@ -72,7 +73,15 @@ public:
 	}
 
 	void init() override {
-		if (!entity->hasComponent<InventoryComponent>()) entity->addComponent<InventoryComponent>();
+		if (!entity->hasComponent<InventoryComponent>()) {
+			Optional<Weapon> w;
+			w.clear();
+			Optional<Armor> a;
+			a.setData(*static_cast<Armor*>(items[5]));
+			Optional<Spell> s;
+			s.clear();
+			entity->addComponent<InventoryComponent>(w, a, s);
+		}
 		inventory = &entity->getComponent<InventoryComponent>();
 		if (!entity->hasComponent<StatsComponent>()) entity->addComponent<StatsComponent>();
 		stats = &entity->getComponent<StatsComponent>();

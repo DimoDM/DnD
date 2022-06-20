@@ -79,13 +79,13 @@ void Map::addCollider(int xPos, int yPos)
 void Map::addMonster(int lvl)
 {
 	Entity& monster(manager.addEntity());
-	monster.addComponent<MonsterAIComponent>(manager.getGroup(Game::groupPlayer));
-	monster.addComponent<SpriteComponent>('M');
-	monster.addComponent<CombatComponent>();
 	int health = 50 + (10 * (lvl - 1));
 	int mana = 20 + (10 * (lvl - 1));
 	int strenght = 30 + (10 * (lvl - 1));
+	monster.addComponent<MonsterAIComponent>(manager.getGroup(Game::groupPlayer));
+	monster.addComponent<SpriteComponent>('M');
 	monster.addComponent<StatsComponent>(health, mana, strenght, lvl, 0, lvl);
+	monster.addComponent<CombatComponent>();
 	monster.addGroup(Game::groupEnemy);
 }
 

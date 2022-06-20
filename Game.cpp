@@ -2,14 +2,14 @@
 #include"GameView.h"
 #include"Map.h"
 #include"ECS/Components.h"
-
+#include"GameStages.h"
 
 
 Game::Game()
 {
 }
 
-void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Spell> s, int health, int mana, int strenght, int level, int xp, int completedLevels, const char* name, const char* mapFile)
+void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Spell> s, int health, int mana, int strenght, int level, int xp, int completedLevels, const char* name, const char* mapFile, GameStage& stage)
 {
 	GameView::createInstance(10, 10);
 	Map map(manager);
@@ -29,18 +29,24 @@ void Game::init(int x, int y, Optional<Weapon> w, Optional<Armor> a, Optional<Sp
 	battleSys = new BattleSystem(manager.getGroup(groupPlayer), manager.getGroup(groupEnemy));
 	findTreasureSys = new FindTreasureSystem(manager.getGroup(groupPlayer), manager.getGroup(groupTreasures));
 	lvlSys = new NextLevelSystem(map.getExitX(), map.getExitY(), manager.getGroup(groupPlayer));
-
+	gameStage = &stage;
+	*gameStage = GameStage::stagePlay;
 	_isRunning = true;
 }
 
 void Game::update()
 {
-	findTreasureSys->findTreasure(manager);
+	findTreasureSys->findTreasure();
 	if (battleSys->battle() == -1) {
+		*gameStage = GameStage::stageDeath;
 		_isRunning = false;
 		return;
 	}
-	lvlSys->isAtTheExit();
+	if (lvlSys->isAtTheExit()) {
+		*gameStage = GameStage::stageNextLvl;
+		_isRunning = false;
+		return;
+	}
 	manager.update();
 }
 

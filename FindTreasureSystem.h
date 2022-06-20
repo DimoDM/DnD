@@ -53,7 +53,7 @@ public:
 		this->treasures = &treasures;
 	}
 
-	void findTreasure(Manager& manager) {
+	void findTreasure() {
 		for (int i = 0; i < players->getSize(); i++) {
 			for (int j = 0; j < treasures->getSize(); j++)
 				if (isPlayerOverTreasure(players->getElementByIndex(i)->getComponent<TransformComponent>(), 

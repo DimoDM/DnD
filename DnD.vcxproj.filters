@@ -188,9 +188,6 @@
     <ClInclude Include="Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameStages.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Controllers\CreatePlayerController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -210,6 +207,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NextLevelSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineStages.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStages.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

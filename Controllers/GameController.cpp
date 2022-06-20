@@ -5,6 +5,8 @@ GameController::GameController(ConsoleViewer* consoleViewer)
 {
 	viewer = consoleViewer;
 	gameOverMenu = new Menu("You died. Start again?", continueOptions, 2, viewer);
+	nextLvlMenu = new Menu("Congratulations! Will you continue the game?", continueOptions, 2, viewer);
+
 }
 
 void GameController::startGame()
@@ -27,6 +29,12 @@ void GameController::startGame()
 
 }
 
+GameController::~GameController()
+{
+	delete gameOverMenu;
+	delete nextLvlMenu;
+}
+
 void GameController::playGame(const char* playerFile, const char* mapFile)
 {
 	{
@@ -37,19 +45,42 @@ void GameController::playGame(const char* playerFile, const char* mapFile)
 		Optional<Spell> s;
 		String name;
 
-
 		loadPlayer(playerFile, x, y, w, a, s, health, mana, strenght, level, xp, completedLevels, name);
-		game.init(x, y, w, a, s, health, mana, strenght, level, xp, completedLevels, name.c_str(), mapFile);
-		while (game.isRunning()) {
+		game.init(x, y, w, a, s, health, mana, strenght, level, xp, completedLevels, name.c_str(), mapFile, gameStage);
+		while (gameStage == GameStage::stagePlay) {
 			game.draw();
 			game.update();
 		}
 	}
+	int choice;
+	switch (gameStage)
+	{
+	case stageDeath:
+		choice = gameOverMenu->select();
+		if (!choice) {
+			playGame(playerFile, mapFile);
+		}
+		else return;
+		break;
+	case stageNextLvl:
+		choice = nextLvlMenu->select();
+		if (!choice) playGame(playerFile, getNextMapFile(mapFile).c_str());
+		break;
+	default:
+		break;
+	}
 
-	int choice = gameOverMenu->select();
-	if (!choice) playGame(playerFile, mapFile);
-	else return;
+	gameStage = GameStage::stagePlay;
 
+}
+
+const String GameController::getNextMapFile(const char* mapFile) {
+	String newMapFile(mapFile);
+	char* mf = new char[newMapFile.getSize()];
+	mf[9] += 1;
+	newMapFile = mf;
+	delete mf;
+	return newMapFile;
 }
 
 const String GameController::getFileNameFromPath(fs::path path){
@@ -131,4 +162,5 @@ void GameController::loadPlayer(const char* playerFile, int& x, int& y, Optional
 		spell.load(file);
 		s.setData(spell);
 	}
+	file.close();
 }
