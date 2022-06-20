@@ -54,7 +54,7 @@ void GameController::playGame(const char* playerFile, const char* mapFile)
 			game.update();
 			game.draw();
 		}
-	}.
+	}
 	int choice;
 	switch (gameStage)
 	{
