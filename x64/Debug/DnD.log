@@ -1,55 +1,46 @@
 ﻿  CreatePlayerController.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
   GameController.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Service\Game.h(49): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
   Engine.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Service\Game.h(49): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
   CombatComponent.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
   InventoryComponent.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
   SaveInFileComponent.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
   StatsComponent.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
+  TreasureComponent.cpp
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
   BattleSystem.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Service\Game.h(49): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
   FindTreasureSystem.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
   Game.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Service\Game.h(49): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
   Map.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Service\Game.h(49): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
   NextLevelSystem.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
-C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\ItemsList.h(37,16): warning C4154: deletion of an array expression; conversion to pointer supplied
   Generating Code...
   DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\x64\Debug\DnD.exe

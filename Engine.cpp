@@ -1,4 +1,5 @@
 #include"Engine.h"
+#include"Models/Items/ItemsList.h"
 
 /// <summary>
 /// handle program stages of work
@@ -24,4 +25,5 @@ Engine::~Engine()
 {
 	delete mainMenu;
 	delete playerController;
+	deleteItems();
 }
