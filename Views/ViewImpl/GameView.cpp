@@ -74,6 +74,11 @@ void GameView::println(const char* text)
 	ConsoleViewer::println(text);
 }
 
+void GameView::free()
+{
+	delete instance;
+}
+
 void GameView::printGameTextures()
 {
 	for (int i = 0; i < gameTextures.getSize(); i++) {

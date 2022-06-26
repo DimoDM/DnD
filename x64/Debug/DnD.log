@@ -15,12 +15,14 @@ C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: sam
   InventoryComponent.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
+  MonsterAIComponent.cpp
   SaveInFileComponent.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
   StatsComponent.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
+  TransformComponent.cpp
   TreasureComponent.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
@@ -39,8 +41,17 @@ C:\Users\Dimo\Desktop\DnD\DnD\DnD\Service\Game.h(49): warning C4091: 'static ': 
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Service\Game.h(49): warning C4091: 'static ': ignored on left of 'Game::Group' when no variable is declared
+  Menu.cpp
+C:\Users\Dimo\Desktop\DnD\DnD\DnD\Service\ServiceImpl\Menu.cpp(4,59): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   NextLevelSystem.cpp
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Item.h(64,2): warning C4091: 'static ': ignored on left of 'Type' when no variable is declared
 C:\Users\Dimo\Desktop\DnD\DnD\DnD\Models\Items\Spell.h(38,8): warning C4114: same type qualifier used more than once
+  RandomValues.cpp
+  TextureManager.cpp
+  BattleView.cpp
+  ConsoleViewer.cpp
+  Generating Code...
+  Compiling...
+  GameView.cpp
   Generating Code...
   DnD.vcxproj -> C:\Users\Dimo\Desktop\DnD\DnD\x64\Debug\DnD.exe
