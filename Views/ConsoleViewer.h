@@ -43,4 +43,6 @@ public:
 	/// </summary>
 	/// <param name="text"></param>
 	virtual void println(const char* text);
+
+	virtual void free();
 };

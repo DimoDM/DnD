@@ -34,5 +34,4 @@ static void deleteItems() {
 	for (int i = 0; i < SIZEITEMS; i++) {
 		delete items[i];
 	}
-	delete[] items;
 }

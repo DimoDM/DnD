@@ -1,4 +1,7 @@
 #include"Engine.h"
+#include"Models/Items/ItemsList.h"
+#include"Views/BattleView.h"
+#include"Views/GameView.h"
 
 /// <summary>
 /// handle program stages of work
@@ -24,4 +27,8 @@ Engine::~Engine()
 {
 	delete mainMenu;
 	delete playerController;
+	deleteItems();
+	BattleView::getInstance()->free();
+	GameView::getInstance()->free();
+	ConsoleViewer::getInstance()->free();
 }

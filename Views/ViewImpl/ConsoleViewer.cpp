@@ -26,3 +26,8 @@ void ConsoleViewer::println(const char* text)
 	this->text.concat(text);
 	this->text.concat("\n");
 }
+
+void ConsoleViewer::free()
+{
+	delete instance;
+}

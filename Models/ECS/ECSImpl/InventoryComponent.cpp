@@ -68,6 +68,7 @@ Item* InventoryComponent::swapItem(Item* item) {
 	default:
 		break;
 	}
+	delete swap;
 	return item;
 }
 

@@ -22,6 +22,11 @@ void BattleView::println(const char* text)
 	ConsoleViewer::println(text);
 }
 
+void BattleView::free()
+{
+	delete instance;
+}
+
 BattleView* BattleView::getInstance()
 {
 	if (instance == nullptr) instance = new BattleView();

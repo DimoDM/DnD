@@ -38,4 +38,6 @@ public:
 	/// </summary>
 	/// <param name="text"></param>
 	void println(const char* text) override;
+
+	void free();
 };
